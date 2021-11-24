@@ -1,0 +1,23 @@
+{
+  "name": "fisheye",
+  "version": "0.0.1",
+  "description": "An OpenClassrooms project focusing on accessibility",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch src/scss/main.scss:public/style/main.css",
+    "commit": "cz"
+  },
+  "keywords": [],
+  "author": "Léonard Wojcik",
+  "license": "ISC",
+  "devDependencies": {
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "sass": "^1.43.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

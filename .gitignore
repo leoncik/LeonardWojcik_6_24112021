@@ -1,0 +1,9 @@
+# Node dependencies
+node_modules/
+
+# SASS files
+.sass-cache*
+*.map
+
+# Personal system files
+.directory
