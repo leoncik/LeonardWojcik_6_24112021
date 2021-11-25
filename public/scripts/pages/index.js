@@ -21,7 +21,7 @@
             },
         ]
         // Fetch data
-        /* **** First version ****
+        // **** First version ****
         fetch('../../../src/data/photographers.json')
             .then(res => {
                 if(res.ok){
@@ -32,11 +32,12 @@
                 } else {
                     console.log("ERROR, can't fetch the data file");
                 }
-            })*/
+            })
         /* **** Second version **** */
+        /*
         let response = await fetch('../../../src/data/photographers.json');
         let fullData = await response.json();
-        console.log(fullData);
+        console.log(fullData);*/
         // et bien retourner le tableau photographers seulement une fois
         return ({
             photographers: [...photographers, ...photographers, ...photographers]})
