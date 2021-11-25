@@ -20,6 +20,23 @@
                 "portrait": "account.png"
             },
         ]
+        // Fetch data
+        /* **** First version ****
+        fetch('../../../src/data/photographers.json')
+            .then(res => {
+                if(res.ok){
+                    return res.json().then((data) => {
+                        console.log(data);
+                        return data;
+                    })
+                } else {
+                    console.log("ERROR, can't fetch the data file");
+                }
+            })*/
+        /* **** Second version **** */
+        let response = await fetch('../../../src/data/photographers.json');
+        let fullData = await response.json();
+        console.log(fullData);
         // et bien retourner le tableau photographers seulement une fois
         return ({
             photographers: [...photographers, ...photographers, ...photographers]})

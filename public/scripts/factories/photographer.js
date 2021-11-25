@@ -15,3 +15,7 @@ function photographerFactory(data) {
     }
     return { name, picture, getUserCardDOM }
 }
+
+/* 
+let photographerName = fullData.photographers.name;
+console.log(photographerName); */
