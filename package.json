@@ -1,6 +1,6 @@
 {
   "name": "fisheye",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An OpenClassrooms project focusing on accessibility",
   "main": "index.js",
   "scripts": {
