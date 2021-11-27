@@ -22,7 +22,7 @@
         ]
         // Fetch data
         // **** First version ****
-        fetch('/src/data/photographers.json')
+        fetch('./src/data/photographers.json')
             .then(res => {
                 if(res.ok){
                     return res.json().then((data) => {
@@ -36,7 +36,7 @@
         /* **** Second version **** */
         /*
         let response = await fetch('../../../src/data/photographers.json');
-        let fullData = await response.json();
+        let fullData = await response.json(); NOTE : pas besoin de mettre de await ici.
         console.log(fullData);*/
         // et bien retourner le tableau photographers seulement une fois
         return ({
