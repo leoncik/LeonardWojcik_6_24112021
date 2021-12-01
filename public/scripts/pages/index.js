@@ -1,7 +1,4 @@
-let photographerData;
-
 async function getPhotographers() {
-    let photographers; 
     // Penser à remplacer par les données récupérées dans le json
     /*
     const photographers = [
@@ -26,15 +23,15 @@ async function getPhotographers() {
     ]*/
     // Fetch data
     const response = await fetch('./src/data/photographers.json');
-    if(response.ok) {
-        photographerData = await response.json();
+    try {
+        const photographerData = await response.json();
         // Save photographer list (type array)
-        photographers = photographerData.photographers;
+        const photographers = photographerData.photographers;
         console.log(photographers);
         // Photographer list (type object)
         console.log({photographers});
-        return  {photographers};
-    } else {
+        return {photographers};
+    } catch {
         console.log("ERROR, can't fetch the data file");
     }
     // et bien retourner le tableau photographers seulement une fois
