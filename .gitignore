@@ -7,3 +7,6 @@ node_modules/
 
 # Personal system files
 .directory
+
+#ESLint cache
+.eslintcache

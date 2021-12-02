@@ -2,8 +2,7 @@ import photographerFactory from '../factories/photographer.js';
 
 async function getPhotographers() {
     // Penser à remplacer par les données récupérées dans le json
-    /*
-    const photographers = [
+    /* const photographers = [
         {
             "name": "Ma data test",
             "id": 1,
@@ -22,7 +21,7 @@ async function getPhotographers() {
             "price": 500,
             "portrait": "account.png"
         },
-    ]*/
+    ] */
     // Fetch data
     const response = await fetch('./src/data/photographers.json');
     try {
@@ -37,7 +36,7 @@ async function getPhotographers() {
         console.log("ERROR, can't fetch the data file");
     }
     // et bien retourner le tableau photographers seulement une fois
-    //return ({
+    // return ({
     //    photographers: [...photographers, ...photographers, ...photographers]})
 }
 
@@ -60,3 +59,4 @@ async function init() {
 }
 
 init();
+// remove this... console.log(test);
