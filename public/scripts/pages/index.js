@@ -31,8 +31,8 @@ async function getPhotographers() {
         const photographers = photographerData.photographers;
         console.log(photographers);
         // Photographer list (type object)
-        console.log({photographers});
-        return {photographers};
+        console.log({ photographers });
+        return { photographers };
     } catch {
         console.log("ERROR, can't fetch the data file");
     }
@@ -41,21 +41,22 @@ async function getPhotographers() {
     //    photographers: [...photographers, ...photographers, ...photographers]})
 }
 
-
 async function displayData(photographers) {
-    const photographersSection = document.querySelector(".photographer_section");
+    const photographersSection = document.querySelector(
+        '.photographer_section'
+    );
 
     photographers.forEach((photographer) => {
         const photographerModel = photographerFactory(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
-};
+}
 
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
     displayData(photographers);
-};
+}
 
 init();
