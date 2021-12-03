@@ -39,7 +39,6 @@ async function getPhotographers() {
     // return ({
     //    photographers: [...photographers, ...photographers, ...photographers]})
 }
-
 async function displayData(photographers) {
     const photographersSection = document.querySelector(
         '.photographer_section'
