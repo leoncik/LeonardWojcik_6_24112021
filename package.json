@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch src/scss/main.scss:style/main.css",
-    "build": "webpack",
+    "build": "webpack --watch",
     "prepare": "husky install",
     "start": "webpack serve"
   },

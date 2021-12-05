@@ -1,27 +1,6 @@
 import photographerFactory from '../factories/photographer.js';
 
 async function getPhotographers() {
-    // Penser à remplacer par les données récupérées dans le json
-    /* const photographers = [
-        {
-            "name": "Ma data test",
-            "id": 1,
-            "city": "Paris",
-            "country": "France",
-            "tagline": "Ceci est ma data test",
-            "price": 400,
-            "portrait": "account.png"
-        },
-        {
-            "name": "Autre data test",
-            "id": 2,
-            "city": "Londres",
-            "country": "UK",
-            "tagline": "Ceci est ma data test 2",
-            "price": 500,
-            "portrait": "account.png"
-        },
-    ] */
     // Fetch data
     const response = await fetch('./src/data/photographers.json');
     try {
@@ -33,11 +12,13 @@ async function getPhotographers() {
         console.log({ photographers });
         return { photographers };
     } catch {
-        console.log("ERROR, can't fetch the data file");
+        document
+            .getElementsByClassName('photographer_section')[0]
+            .insertAdjacentHTML(
+                'beforeend',
+                'ERREUR : impossible de récupérer les données des photographes. Veuillez réessayer plus tard.'
+            );
     }
-    // et bien retourner le tableau photographers seulement une fois
-    // return ({
-    //    photographers: [...photographers, ...photographers, ...photographers]})
 }
 async function displayData(photographers) {
     const photographersSection = document.querySelector(
@@ -58,4 +39,3 @@ async function init() {
 }
 
 init();
-// remove this... console.log(test);
