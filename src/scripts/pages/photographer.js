@@ -1,1 +1,4 @@
-// Mettre le code JavaScript lié à la page photographer.html
+const params = new URL(document.location).searchParams;
+const urlId = params.get('id');
+
+alert(`The Id of this photographer is ${urlId}`);
