@@ -2,7 +2,7 @@ import photographerFactory from '../factories/photographer.js';
 
 async function getPhotographers() {
     // Fetch data
-    const response = await fetch('./src/data/photographers.json');
+    const response = await fetch('./srrc/data/photographers.json');
     try {
         const photographerData = await response.json();
         // Save photographer list (type array)
@@ -13,7 +13,7 @@ async function getPhotographers() {
         return { photographers };
     } catch {
         document
-            .getElementsByClassName('photographer_section')[0]
+            .getElementsByClassName('api-error')[0]
             .insertAdjacentHTML(
                 'beforeend',
                 'ERREUR : impossible de récupérer les données des photographes. Veuillez réessayer plus tard.'
