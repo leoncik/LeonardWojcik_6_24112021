@@ -1,7 +1,7 @@
 import photographerFactory from '../factories/photographer.js';
 
+// Fetch photographers data
 async function getPhotographers() {
-    // Fetch data
     try {
         const response = await fetch('./src/data/photographers.json');
         const photographerData = await response.json();
@@ -20,6 +20,8 @@ async function getPhotographers() {
             );
     }
 }
+
+// Display photographers data on page
 async function displayData(photographers) {
     const photographersSection = document.querySelector(
         '.photographer_section'
@@ -32,6 +34,7 @@ async function displayData(photographers) {
     });
 }
 
+// Initialize page (fetch data, then display It on the page)
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
