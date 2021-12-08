@@ -61,7 +61,7 @@ const urlId = parseInt(params.get('id'));
 // Fetch photographers profile data
 async function getProfile() {
     try {
-        const response = await fetch('/src/data/photographers.json');
+        const response = await fetch('./src/data/photographers.json');
         const photographerData = await response.json();
         const photographers = photographerData.photographers;
         // Search photographer with It's "ID"
