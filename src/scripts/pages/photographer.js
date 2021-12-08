@@ -48,7 +48,6 @@ function photographerFactory(data) {
 
         return article;
     }
-    // Why return getUserCardDOM ?
     return { name, picture, city, tagline, id, price, getUserCardDOM };
 } */
 
@@ -76,6 +75,23 @@ async function getProfile() {
     }
 }
 
+// Fetch photographers media data
+async function getMedia() {
+    try {
+        const response = await fetch('../..//src/data/photographers.json');
+        const photographerData = await response.json();
+        const photographersMedias = photographerData.media;
+        // Filter current photographer medias from data
+        const photographerMedias = photographersMedias.filter(
+            (element) => element.photographerId === urlId
+        );
+        console.log(photographerMedias);
+        return photographerMedias;
+    } catch {
+        console.log('erreur');
+    }
+}
+
 /*  
 ? Display Method 1
 // Display photographer profile data on page
@@ -98,10 +114,21 @@ async function displayData(profile) {
     photographHeader.innerHTML = profileHeaderHtml;
 }
 
+// Display photographer medias on page
+// ! Currently displays only number of likes of first media
+async function displayMedia(media) {
+    const profileHeaderHtml = `<h1>${media[0].likes}</h1>`;
+
+    const photographHeader = document.querySelector('.photographer-medias');
+    photographHeader.innerHTML = profileHeaderHtml;
+}
+
 // Initialize page (fetch data, then display It on the page)
 async function init() {
     const profiles = await getProfile();
+    const medias = await getMedia();
     displayData(profiles);
+    displayMedia(medias);
 }
 
 init();

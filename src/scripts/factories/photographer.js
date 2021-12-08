@@ -41,6 +41,5 @@ export default function photographerFactory(data) {
 
         return article;
     }
-    // Why return getUserCardDOM ?
     return { name, picture, city, tagline, id, price, getUserCardDOM };
 }
