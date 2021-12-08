@@ -1,7 +1,62 @@
+/*
+! Import not working, needs to be fixed
+ import photographerFactory from './src/scripts/factories/photographer.js'; */
+
+// ! Beginning of temporary code. Need to use "import" instead
+/* 
+! Code used for "Method 1 only "
+function photographerFactory(data) {
+    const { name, city, tagline, price, id, portrait } = data;
+
+    const picture = `assets/photographers/${portrait}`;
+
+    function getUserCardDOM() {
+        const article = document.createElement('article');
+
+        // Redirection link
+        const photographerLink = document.createElement('a');
+        photographerLink.setAttribute(
+            'href',
+            `./pages/photographer-pages/photographer.html?id=${id}`
+        );
+        article.appendChild(photographerLink);
+
+        // Profile picture
+        const img = document.createElement('img');
+        img.setAttribute('src', picture);
+        photographerLink.appendChild(img);
+
+        // Photographer name
+        const h2 = document.createElement('h2');
+        h2.textContent = name;
+        photographerLink.appendChild(h2);
+
+        // Location
+        const location = document.createElement('p');
+        location.textContent = city;
+        article.appendChild(location);
+
+        // Motto
+        const motto = document.createElement('p');
+        motto.textContent = tagline;
+        article.appendChild(motto);
+
+        // Pricing
+        const pricing = document.createElement('p');
+        pricing.textContent = price;
+        article.appendChild(pricing);
+
+        return article;
+    }
+    // Why return getUserCardDOM ?
+    return { name, picture, city, tagline, id, price, getUserCardDOM };
+} */
+
+// ! End of temporary code.
+
 // Retrieve the id of the photographer from the URL and convert in number to find It with ".find()" with strict equality
 const params = new URL(document.location).searchParams;
 const urlId = parseInt(params.get('id'));
-console.log(`The Id of this photographer is ${urlId}`);
 
 // Fetch photographers profile data
 async function getProfile() {
@@ -21,10 +76,26 @@ async function getProfile() {
     }
 }
 
+/*  
+? Display Method 1
+// Display photographer profile data on page
+async function displayData(photographerProfile) {
+    const photographHeader = document.querySelector('.photographer-info');
+    const photographerModel = photographerFactory(photographerProfile);
+    const userCardDOM = photographerModel.getUserCardDOM();
+    photographHeader.appendChild(userCardDOM);
+} */
+
+// ? Display Method 2
 // Display photographer profile data on page
 async function displayData(profile) {
-    const photographHeader = document.querySelector('.photograph-header');
-    photographHeader.innerHTML = `${profile.name} ${profile.city} ${profile.country} ${profile.tagline}`;
+    const profileHeaderHtml = `<img src="/assets/photographers/${profile.portrait}">
+    <h1>${profile.name}</h1>
+    <h2>${profile.city} ${profile.country}</h2>
+    <p>${profile.tagline}</p>`;
+
+    const photographHeader = document.querySelector('.photographer-info');
+    photographHeader.innerHTML = profileHeaderHtml;
 }
 
 // Initialize page (fetch data, then display It on the page)

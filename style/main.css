@@ -132,4 +132,9 @@ form input {
     border-radius: 5px;
 }
 
+.photographer-info img {
+    width: 100px;
+    height: 100px;
+}
+
 /*# sourceMappingURL=main.css.map */
