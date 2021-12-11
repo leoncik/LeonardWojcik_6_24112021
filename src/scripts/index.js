@@ -5,7 +5,7 @@ import { displayLog } from './pages/TEST.js';
 // Home page functions
 // import photographerFactory from './factories/photographer.js';
 /* eslint-disable */
-import { getPhotographers } from './pages/home.js';
+import { getPhotographersAvecOuSansFautes } from './pages/home.js';
 /* eslint-enable */
 // import displayData from './pages/home.js';
 // import init from './pages/home.js';
