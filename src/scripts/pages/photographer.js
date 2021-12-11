@@ -58,7 +58,7 @@ const params = new URL(document.location).searchParams;
 const urlId = parseInt(params.get('id'));
 
 // Fetch photographers profile data
-async function getProfile() {
+export async function getProfile() {
     try {
         const response = await fetch('../..//src/data/photographers.json');
         const photographerData = await response.json();
@@ -66,7 +66,7 @@ async function getProfile() {
         // Search photographer with It's "ID"
         // TODO display error if photographerProfile is undefined (can't find photographer "ID")
         const photographerProfile = photographers.find(
-            (element) => parseInt(element.id) === urlId
+            (photographer) => parseInt(photographer.id) === urlId
         );
         console.log(photographerProfile);
         return photographerProfile;
@@ -76,7 +76,7 @@ async function getProfile() {
 }
 
 // Fetch photographers media data
-async function getMedia() {
+export async function getMedia() {
     try {
         const response = await fetch('../..//src/data/photographers.json');
         const photographerData = await response.json();
@@ -104,7 +104,7 @@ async function displayData(photographerProfile) {
 
 // ? Display Method 2
 // Display photographer profile data on page
-async function displayData(profile) {
+export async function displayDataProfile(profile) {
     const profileHeaderHtml = `<img src="/assets/photographers/${profile.portrait}">
     <h1>${profile.name}</h1>
     <h2>${profile.city} ${profile.country}</h2>
@@ -116,7 +116,7 @@ async function displayData(profile) {
 
 // Display photographer medias on page
 // ! Currently displays only number of likes of first media
-async function displayMedia(media) {
+export async function displayMedia(media) {
     const profileHeaderHtml = `<h1>${media[0].likes}</h1>`;
 
     const photographHeader = document.querySelector('.photographer-medias');
@@ -124,11 +124,11 @@ async function displayMedia(media) {
 }
 
 // Initialize page (fetch data, then display It on the page)
-async function init() {
+async function initPhotographer() {
     const profiles = await getProfile();
     const medias = await getMedia();
-    displayData(profiles);
+    displayDataProfile(profiles);
     displayMedia(medias);
 }
 
-init();
+initPhotographer();
