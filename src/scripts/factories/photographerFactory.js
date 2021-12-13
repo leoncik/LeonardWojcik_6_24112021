@@ -41,32 +41,14 @@ export default function photographerFactory(data) {
 
         return article;
     }
-    return { name, picture, city, tagline, id, price, getUserCardDOM };
 
-    /*  
-    TODO : Create a profile function for photographer page.
-    
-    
     function getProfile() {
         const article = document.createElement('article');
 
-        // Redirection link
-        const photographerLink = document.createElement('a');
-        photographerLink.setAttribute(
-            'href',
-            `./pages/photographer-pages/photographer.html?id=${id}`
-        );
-        article.appendChild(photographerLink);
-
-        // Profile picture
-        const img = document.createElement('img');
-        img.setAttribute('src', picture);
-        photographerLink.appendChild(img);
-
         // Photographer name
-        const h2 = document.createElement('h2');
-        h2.textContent = name;
-        photographerLink.appendChild(h2);
+        const h1 = document.createElement('h1');
+        h1.textContent = name;
+        article.appendChild(h1);
 
         // Location
         const location = document.createElement('p');
@@ -84,5 +66,15 @@ export default function photographerFactory(data) {
         article.appendChild(pricing);
 
         return article;
-    } */
+    }
+    return {
+        name,
+        picture,
+        city,
+        tagline,
+        id,
+        price,
+        getUserCardDOM,
+        getProfile,
+    };
 }
