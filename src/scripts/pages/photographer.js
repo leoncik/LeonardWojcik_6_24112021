@@ -1,4 +1,5 @@
 import photographerFactory from '../factories/photographerFactory.js';
+import mediaFactory from '../factories/mediaFactory.js';
 
 // Retrieve the id of the photographer from the URL and convert in number to find It with ".find()" with strict equality
 const params = new URL(document.location).searchParams;
@@ -16,6 +17,7 @@ export async function getProfile() {
             (photographer) => parseInt(photographer.id) === urlId
         );
         console.log(photographerProfile);
+        console.log(photographerProfile.name.split(' ').slice(0, -1).join(' '));
         return photographerProfile;
     } catch {
         console.log('erreur');
@@ -48,12 +50,13 @@ async function displayData(photographerProfile) {
 }
 
 // Display photographer medias on page
-// ! Currently displays only number of likes of first media
 export async function displayMedia(media) {
-    const profileHeaderHtml = `<h1>${media[0].likes}</h1>`;
-
     const photographHeader = document.querySelector('.photographer-medias');
-    photographHeader.innerHTML = profileHeaderHtml;
+    media.forEach((element) => {
+        const photographerMedias = mediaFactory(element);
+        const userMedia = photographerMedias.getPhotographerData();
+        photographHeader.appendChild(userMedia);
+    });
 }
 
 // Initialize page (fetch data, then display It on the page)
