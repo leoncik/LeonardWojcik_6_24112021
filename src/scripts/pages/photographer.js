@@ -124,11 +124,9 @@ export async function displayMedia(media) {
 }
 
 // Initialize page (fetch data, then display It on the page)
-async function initPhotographer() {
+export default async function initPhotographer() {
     const profiles = await getProfile();
     const medias = await getMedia();
     displayDataProfile(profiles);
     displayMedia(medias);
 }
-
-initPhotographer();
