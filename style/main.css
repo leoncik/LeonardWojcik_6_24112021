@@ -137,4 +137,10 @@ form input {
     height: 100px;
 }
 
+.photographer-medias img,
+.photographer-medias video {
+    width: 100px;
+    height: 100px;
+}
+
 /*# sourceMappingURL=main.css.map */

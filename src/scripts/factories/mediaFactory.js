@@ -1,12 +1,11 @@
+const params = new URL(document.location).searchParams;
+const urlId = params.get('id');
+
 export default function mediaFactory(data, profile) {
     const { id, price, title, date, image, video } = data;
-    // faut que je me débrouille pour récupérer un data.name ici...
 
-    // const currentProfile = getProfile();
-    // photogapherFirstName = currentProfile.name.split(' ').slice(0, -1).join(' ');
-
-    // const imageSource = `assets/images/${photogapherFirstName}/${image}`;
-    // const videoSource = `assets/images/${photogapherFirstName}/${video}`;
+    const imageSource = `/assets/images/${urlId}/${image}`;
+    const videoSource = `/assets/images/${urlId}/${video}`;
 
     function getPhotographerData() {
         const article = document.createElement('article');
@@ -15,11 +14,15 @@ export default function mediaFactory(data, profile) {
         if (data.image) {
             console.log("c'est une image");
             // Profile picture
-            // const mediaPicture = document.createElement('img');
-            // mediaPicture.setAttribute('src', mediaSource);
-            // article.appendChild(img);
+            const mediaPicture = document.createElement('img');
+            mediaPicture.setAttribute('src', imageSource);
+            article.appendChild(mediaPicture);
         } else if (data.video) {
             console.log("C'est une vidéo");
+            const mediaVideo = document.createElement('video');
+            mediaVideo.setAttribute('src', videoSource);
+            mediaVideo.setAttribute('controls', '');
+            article.appendChild(mediaVideo);
         } else {
             console.log('format non reconnu');
         }

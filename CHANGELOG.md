@@ -7,13 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
-
-## [0.1.5] - 2021-12-??
+## [0.1.6] - 2021-12-??
 ### Changed
 -   Refactor : fetching data script in a separate file (api.js).
 
+## [0.1.5] - 2021-12-14
+
 ### Added
--   Display photographer media.
+-   Display photographer media in photographer page.
 
 ## [0.1.4] - 2021-12-13
 ### Changed
