@@ -57,3 +57,42 @@ export async function getMedia() {
         console.log('erreur');
     }
 }
+
+/* REFACTOR TEST FOR FETCHING PHOTOGRAPHER */
+export async function fetchPhotographer() {
+    try {
+        // Fetch data
+        const response = await fetch('./src/data/photographers.json');
+        const photographerData = await response.json();
+        const photographers = photographerData.photographers;
+
+        // Return all photographers if user is on index page
+        if (window.location.pathname === '/index.html') {
+            return { photographers };
+        }
+        // Return current photographers if user is on photographer page
+        else if (
+            window.location.pathname ===
+            '/pages/photographer-pages/photographer.html'
+        ) {
+            const photographerProfile = photographers.find(
+                (photographer) => parseInt(photographer.id) === urlId
+            );
+            return photographerProfile;
+        }
+    } catch {
+        if (window.location.pathname === '/index.html') {
+            document
+                .getElementsByClassName('api-error')[0]
+                .insertAdjacentHTML(
+                    'beforeend',
+                    'ERREUR : impossible de récupérer les données des photographes. Veuillez réessayer plus tard.'
+                );
+        } else if (
+            window.location.pathname ===
+            '/pages/photographer-pages/photographer.html'
+        ) {
+            console.log("Message d'erreur sur la page photographe...");
+        }
+    }
+}
