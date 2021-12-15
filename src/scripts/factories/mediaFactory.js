@@ -2,7 +2,7 @@ const params = new URL(document.location).searchParams;
 const urlId = params.get('id');
 
 export default function mediaFactory(data, profile) {
-    const { id, price, title, date, image, video } = data;
+    const { id, price, title, date, image, video, likes } = data;
 
     const imageSource = `/assets/images/${urlId}/${image}`;
     const videoSource = `/assets/images/${urlId}/${video}`;
@@ -12,13 +12,11 @@ export default function mediaFactory(data, profile) {
 
         // Image / video
         if (data.image) {
-            console.log("c'est une image");
             // Profile picture
             const mediaPicture = document.createElement('img');
             mediaPicture.setAttribute('src', imageSource);
             article.appendChild(mediaPicture);
         } else if (data.video) {
-            console.log("C'est une vidéo");
             const mediaVideo = document.createElement('video');
             mediaVideo.setAttribute('src', videoSource);
             mediaVideo.setAttribute('controls', '');
@@ -32,26 +30,14 @@ export default function mediaFactory(data, profile) {
             const mediaTitle = document.createElement('h3');
             mediaTitle.textContent = title;
             article.appendChild(mediaTitle);
-        } else {
-            console.log(
-                "RÈGLES VIDEO temporairement j'affiche un id si c'est une video"
-            );
-            const mediaTitle1 = document.createElement('h3');
-            mediaTitle1.textContent = id;
-            article.appendChild(mediaTitle1);
         }
 
-        // Pricing
-        const pricing = document.createElement('p');
-        pricing.textContent = price;
-        article.appendChild(pricing);
-
-        // Date
-        const mediaDate = document.createElement('p');
-        mediaDate.textContent = date;
-        article.appendChild(mediaDate);
+        // Likes
+        const mediaLikes = document.createElement('p');
+        mediaLikes.textContent = likes;
+        article.appendChild(mediaLikes);
 
         return article;
     }
-    return { id, price, title, date, image, video, getPhotographerData };
+    return { id, price, title, date, image, video, likes, getPhotographerData };
 }

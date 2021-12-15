@@ -132,15 +132,27 @@ form input {
     border-radius: 5px;
 }
 
+.photographer-info {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 .photographer-info img {
     width: 100px;
     height: 100px;
 }
 
+.photographer-medias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 42px;
+}
+
 .photographer-medias img,
 .photographer-medias video {
-    width: 100px;
-    height: 100px;
+    width: 350px;
+    height: 300px;
 }
 
 /*# sourceMappingURL=main.css.map */

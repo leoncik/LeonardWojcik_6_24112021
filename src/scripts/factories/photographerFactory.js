@@ -1,7 +1,7 @@
 export default function photographerFactory(data) {
     const { name, city, tagline, price, id, portrait } = data;
 
-    const picture = `assets/photographers/${portrait}`;
+    const picture = `/assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
         const article = document.createElement('article');
@@ -43,29 +43,31 @@ export default function photographerFactory(data) {
     }
 
     function getProfile() {
-        const article = document.createElement('article');
+        const infos = document.createElement('div');
 
         // Photographer name
         const h1 = document.createElement('h1');
         h1.textContent = name;
-        article.appendChild(h1);
+        infos.appendChild(h1);
 
         // Location
         const location = document.createElement('p');
         location.textContent = city;
-        article.appendChild(location);
+        infos.appendChild(location);
 
         // Motto
         const motto = document.createElement('p');
         motto.textContent = tagline;
-        article.appendChild(motto);
+        infos.appendChild(motto);
 
-        // Pricing
-        const pricing = document.createElement('p');
-        pricing.textContent = price;
-        article.appendChild(pricing);
+        // Profile picture
+        const profilePicture = document.createElement('img');
+        profilePicture.setAttribute('src', picture);
+        document
+            .getElementsByClassName('photographer-info')[0]
+            .appendChild(profilePicture);
 
-        return article;
+        return infos;
     }
     return {
         name,
