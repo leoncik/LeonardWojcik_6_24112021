@@ -59,6 +59,7 @@ export async function getMedia() {
 }
 
 /* REFACTOR TEST FOR FETCHING PHOTOGRAPHER */
+// ? TEST 1
 export async function fetchPhotographer() {
     try {
         // Fetch data
@@ -96,3 +97,49 @@ export async function fetchPhotographer() {
         }
     }
 }
+
+// ? TEST 2
+/* eslint-disable */
+async function fetchingPhotographer() {
+    try {
+        const response = await fetch('./src/data/photographers.json');
+        const photographerData = await response.json();
+        const photographers = photographerData.photographers;
+        return photographers;
+    } catch {
+        displayErrorMessage();
+    }
+}
+
+function displayErrorMessage() {
+    if (window.location.pathname === '/index.html') {
+        console.log("Message d'erreur pour la page d'accueil");
+    } else if (
+        window.location.pathname ===
+        '/pages/photographer-pages/photographer.html'
+    ) {
+        console.log("Message d'erreur pour la page de photographe");
+    }
+}
+
+async function gettingPhotographers() {
+    await fetchingPhotographer();
+    return { photographers };
+    // code
+}
+
+async function gettingProfile() {
+    await fetchingPhotographer();
+    const photographerProfile = photographers.find(
+        (photographer) => parseInt(photographer.id) === urlId
+    );
+    return photographerProfile;
+}
+
+// Exemple d'init pour la page d'index
+async function initTEST() {
+    fetchingPhotographer();
+    await gettingPhotographers();
+    displayData(photographers);
+}
+/* eslint-enable */
