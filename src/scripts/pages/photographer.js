@@ -1,45 +1,13 @@
 import photographerFactory from '../factories/photographerFactory.js';
 import mediaFactory from '../factories/mediaFactory.js';
 
-// Retrieve the id of the photographer from the URL and convert in number to find It with ".find()" with strict equality
+import { getProfile , getMedia } from '../api/api.js';
+
+/*
+? Ces constantes doivent être déclarées dans "api.js" et non dans ce fichier, sinon les médias ne s'affichent pas.
+? Essayer de comprendre pourquoi.
 const params = new URL(document.location).searchParams;
-const urlId = parseInt(params.get('id'));
-
-// Fetch photographers profile data
-export async function getProfile() {
-    try {
-        const response = await fetch('../..//src/data/photographers.json');
-        const photographerData = await response.json();
-        const photographers = photographerData.photographers;
-        // Search photographer with It's "ID"
-        // TODO display error if photographerProfile is undefined (can't find photographer "ID")
-        const photographerProfile = photographers.find(
-            (photographer) => parseInt(photographer.id) === urlId
-        );
-        console.log(photographerProfile);
-        console.log(photographerProfile.name.split(' ').slice(0, -1).join(' '));
-        return photographerProfile;
-    } catch {
-        console.log('erreur');
-    }
-}
-
-// Fetch photographers media data
-export async function getMedia() {
-    try {
-        const response = await fetch('../..//src/data/photographers.json');
-        const photographerData = await response.json();
-        const photographersMedias = photographerData.media;
-        // Filter current photographer medias from data
-        const photographerMedias = photographersMedias.filter(
-            (element) => element.photographerId === urlId
-        );
-        console.log(photographerMedias);
-        return photographerMedias;
-    } catch {
-        console.log('erreur');
-    }
-}
+const urlId = parseInt(params.get('id')); */
 
 // Display photographer profile data on page
 async function displayData(photographerProfile) {

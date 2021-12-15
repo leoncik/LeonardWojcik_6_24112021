@@ -1,16 +1,9 @@
 // IMPORT FUNCTIONS
 
-// Home page functions
-// import photographerFactory from './factories/photographer.js';
-// import { getPhotographers } from './pages/home.js';
-// import {displayData} from './pages/home.js';
+// Home page
 import { init } from './pages/home.js';
 
-// Photographer page functions
-// import getProfile from './pages/photographer.js';
-// import getMedia from './pages/photographer.js';
-// import displayDataProfile from './pages/photographer.js';
-// import displayMedia from './pages/photographer.js';
+// Photographer page
 import initPhotographer from './pages/photographer.js';
 
 // CALL FUNCTIONS

@@ -1,25 +1,5 @@
 import photographerFactory from '../factories/photographerFactory.js';
-
-// Fetch photographers data
-export async function getPhotographers() {
-    try {
-        const response = await fetch('./src/data/photographers.json');
-        const photographerData = await response.json();
-        // Save photographer list (type array)
-        const photographers = photographerData.photographers;
-        console.log(photographers);
-        // Photographer list (type object)
-        console.log({ photographers });
-        return { photographers };
-    } catch {
-        document
-            .getElementsByClassName('api-error')[0]
-            .insertAdjacentHTML(
-                'beforeend',
-                'ERREUR : impossible de récupérer les données des photographes. Veuillez réessayer plus tard.'
-            );
-    }
-}
+import { getPhotographers } from '../api/api.js';
 
 // Display photographers data on page
 export async function displayData(photographers) {
