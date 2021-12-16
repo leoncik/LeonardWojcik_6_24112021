@@ -1,5 +1,5 @@
-const params = new URL(document.location).searchParams;
-const urlId = parseInt(params.get('id'));
+import { getParam } from '../utils/helpers';
+const urlId = parseInt(getParam('id'));
 
 // Fetch photographers data
 export async function fetchPhotographersData() {

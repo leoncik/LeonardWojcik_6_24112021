@@ -19,6 +19,14 @@ function getProfile() {
     return photographerProfile;
 }
 
+// Display photographer profile data on page
+async function displayData(photographerProfile) {
+    const photographHeader = document.querySelector('.photographer-info');
+    const photographerModel = photographerFactory(photographerProfile);
+    const userCardDOM = photographerModel.getProfile();
+    photographHeader.appendChild(userCardDOM);
+}
+
 // Retrieve media
 function getMedia() {
     const photographersMedias = photographersData.media;
@@ -28,14 +36,6 @@ function getMedia() {
     );
     console.log(photographerMedias);
     return photographerMedias;
-}
-
-// Display photographer profile data on page
-async function displayData(photographerProfile) {
-    const photographHeader = document.querySelector('.photographer-info');
-    const photographerModel = photographerFactory(photographerProfile);
-    const userCardDOM = photographerModel.getProfile();
-    photographHeader.appendChild(userCardDOM);
 }
 
 // Display photographer medias on page
