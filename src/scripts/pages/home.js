@@ -1,5 +1,5 @@
 import photographerFactory from '../factories/photographerFactory.js';
-import { getPhotographers } from '../api/api.js';
+import { photographersData } from '../api/api.js';
 
 // Display photographers data on page
 export async function displayData(photographers) {
@@ -16,7 +16,6 @@ export async function displayData(photographers) {
 
 // Initialize page (fetch data, then display It on the page)
 export async function init() {
-    // Récupère les datas des photographes
-    const { photographers } = await getPhotographers();
+    const photographers = photographersData.photographers;
     displayData(photographers);
 }

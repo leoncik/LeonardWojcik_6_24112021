@@ -1,13 +1,34 @@
 import photographerFactory from '../factories/photographerFactory.js';
 import mediaFactory from '../factories/mediaFactory.js';
 
-import { getProfile , getMedia } from '../api/api.js';
+// Retrieve profile
+import { photographersData } from '../api/api.js';
 
-/*
-? Ces constantes doivent être déclarées dans "api.js" et non dans ce fichier, sinon les médias ne s'affichent pas.
-? Essayer de comprendre pourquoi.
 const params = new URL(document.location).searchParams;
-const urlId = parseInt(params.get('id')); */
+const urlId = parseInt(params.get('id'));
+
+function getProfile() {
+    const photographers = photographersData.photographers;
+    // Search photographer with It's "ID"
+    // TODO display error if photographerProfile is undefined (can't find photographer "ID")
+    const photographerProfile = photographers.find(
+        (photographer) => parseInt(photographer.id) === urlId
+    );
+    console.log(photographerProfile);
+    console.log(photographerProfile.name.split(' ').slice(0, -1).join(' '));
+    return photographerProfile;
+}
+
+// Retrieve media
+function getMedia() {
+    const photographersMedias = photographersData.media;
+    // Filter current photographer medias from data
+    const photographerMedias = photographersMedias.filter(
+        (element) => element.photographerId === urlId
+    );
+    console.log(photographerMedias);
+    return photographerMedias;
+}
 
 // Display photographer profile data on page
 async function displayData(photographerProfile) {
@@ -29,8 +50,10 @@ export async function displayMedia(media) {
 
 // Initialize page (fetch data, then display It on the page)
 export default async function initPhotographer() {
-    const profiles = await getProfile();
+    const profiles = getProfile();
     const medias = await getMedia();
     displayData(profiles);
     displayMedia(medias);
 }
+
+console.log('Un log volant');

@@ -9,16 +9,12 @@ import initPhotographer from './pages/photographer.js';
 // CALL FUNCTIONS
 
 const main = async () => {
-    console.log(window.location.pathname);
-
     switch (window.location.pathname) {
         case '/':
         case '/index.html':
-            console.log("Page d'accueil");
             await init();
             break;
         case '/pages/photographer-pages/photographer.html':
-            console.log('Page de photographe');
             await initPhotographer();
             break;
         default:
