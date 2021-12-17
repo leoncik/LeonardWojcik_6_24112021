@@ -15,7 +15,7 @@ export async function displayData(photographers) {
 }
 
 // Initialize page (fetch data, then display It on the page)
-export async function init() {
+export async function initHome() {
     const photographers = photographersData.photographers;
     displayData(photographers);
 }

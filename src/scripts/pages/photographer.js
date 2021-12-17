@@ -55,5 +55,3 @@ export default async function initPhotographer() {
     displayData(profiles);
     displayMedia(medias);
 }
-
-console.log('Un log volant');
