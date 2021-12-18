@@ -2,12 +2,13 @@ import photographerFactory from '../factories/photographerFactory.js';
 import mediaFactory from '../factories/mediaFactory.js';
 
 // Retrieve profile
-import { photographersData } from '../api/api.js';
+import { fetchPhotographers } from '../api/api.js';
 
 const params = new URL(document.location).searchParams;
 const urlId = parseInt(params.get('id'));
 
-function getProfile() {
+async function getProfile() {
+    const photographersData = await fetchPhotographers();
     const photographers = photographersData.photographers;
     // Search photographer with It's "ID"
     // TODO display error if photographerProfile is undefined (can't find photographer "ID")
@@ -28,7 +29,8 @@ async function displayData(photographerProfile) {
 }
 
 // Retrieve media
-function getMedia() {
+async function getMedia() {
+    const photographersData = await fetchPhotographers();
     const photographersMedias = photographersData.media;
     // Filter current photographer medias from data
     const photographerMedias = photographersMedias.filter(
@@ -50,7 +52,7 @@ export async function displayMedia(media) {
 
 // Initialize page (fetch data, then display It on the page)
 export default async function initPhotographer() {
-    const profiles = getProfile();
+    const profiles = await getProfile();
     const medias = await getMedia();
     displayData(profiles);
     displayMedia(medias);

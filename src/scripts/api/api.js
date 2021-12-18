@@ -18,9 +18,9 @@ export async function genericFetch(
     }
 }
 
-// Erreur eslint : « Parsing error: Cannot use keyword 'await' outside an async function ».
-// Ajout de ce fichier dans "eslintignore" temporairement.
-// TODO : remplacer par une fonction? OUI !
-export const photographersData = await genericFetch(
-    '../..//src/data/photographers.json'
-);
+export async function fetchPhotographers() {
+    const photographersData = await genericFetch(
+        '../..//src/data/photographers.json'
+    );
+    return photographersData;
+}
