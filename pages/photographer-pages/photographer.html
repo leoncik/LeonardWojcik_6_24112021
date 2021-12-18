@@ -17,6 +17,7 @@
         <script src="../..//dist/app.bundle.js" defer></script> -->
         <title>Fisheye - photographe</title>
     </head>
+
     <body>
         <header>
             <a href="/index.html"><img src="/assets/images/logo.png" class="logo" /></a> 
@@ -34,12 +35,13 @@
 
             <!-- PHOTOGRAPHER MEDIAS -->
 
-
-
             <div class="photographer-medias">
 
             </div>
         </main>
+
+        <!-- CONTACT MODAL -->
+        
         <div id="contact_modal">
             <div class="modal">
                 <header>
@@ -50,14 +52,25 @@
                     />
                 </header>
                 <form>
-                    <div>
-                        <label>Prénom</label>
-                        <input />
-                    </div>
+                    <div class="formData" data-error="">
+                        <label for="first-name">Prénom</label><br>
+                        <input class="text-control" type="text" id="first-name" name="first-name"/><br>
+                      </div>
+                      <div class="formData" data-error="">
+                        <label for="last-name">Nom</label><br>
+                        <input class="text-control" type="text" id="last-name" name="last-name"/><br>
+                      </div>
+                      <div class="formData" data-error="">
+                        <label for="email">E-mail</label><br>
+                        <input class="text-control" type="text" id="email" name="email"/><br>
+                      </div>
+                      <div class="formData" data-error="">
+                        <label for="message">Votre message</label><br>
+                        <textarea class="text-control" type="text" id="message" name="message"></textarea>
+                      </div>
                     <button class="contact_button">Envoyer</button>
                 </form>
             </div>
         </div>
-        <script src="../..//src/scripts/utils/contactForm.js"></script>
     </body>
 </html>

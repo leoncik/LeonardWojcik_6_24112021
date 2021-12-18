@@ -1,6 +1,4 @@
-#contact_modal {
-    display: none;
-}
+// Header section
 
 .photograph-header {
     background-color: #FAFAFA;
@@ -19,6 +17,43 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.photographer-info {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.photographer-info img {
+    width: 100px;
+    height: 100px;
+}
+
+// Media section
+
+.photographer-medias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 42px;
+}
+
+.photographer-medias img, .photographer-medias video  {
+    width: 350px;
+    height: 300px;
+}
+
+// Modal section
+
+#contact_modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(196, 196, 196, 0.4)
 }
 
 .modal {
@@ -73,26 +108,4 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
-}
-
-.photographer-info {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.photographer-info img {
-    width: 100px;
-    height: 100px;
-}
-
-.photographer-medias {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 42px;
-}
-
-.photographer-medias img, .photographer-medias video  {
-    width: 350px;
-    height: 300px;
 }

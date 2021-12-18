@@ -1,8 +1,10 @@
+// Photographer profile scripts
 import photographerFactory from '../factories/photographerFactory.js';
 import mediaFactory from '../factories/mediaFactory.js';
-
-// Retrieve profile
 import { fetchPhotographers } from '../api/api.js';
+
+// Contact form scripts
+import { modalDisplay } from '../utils/contactFormDisplay';
 
 const params = new URL(document.location).searchParams;
 const urlId = parseInt(params.get('id'));
@@ -50,10 +52,11 @@ export async function displayMedia(media) {
     });
 }
 
-// Initialize page (fetch data, then display It on the page)
+// Initialize page (fetch data, then display It on the page and add behaviour to contact modal)
 export default async function initPhotographer() {
     const profiles = await getProfile();
     const medias = await getMedia();
     displayData(profiles);
     displayMedia(medias);
+    modalDisplay();
 }
