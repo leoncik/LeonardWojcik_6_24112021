@@ -88,6 +88,7 @@ export const formSubmitValidation = () => {
             e.preventDefault();
             fieldValidation();
             if (fieldValidationIsValid()) {
+                console.log(message.value);
                 submitedForm();
                 resetForm();
             }
@@ -98,7 +99,7 @@ export const formSubmitValidation = () => {
 
 function submitedForm() {
     // Hide all elements inside "form-data-container" and set a custom message.
-    document.getElementById('contact-form').style.display = 'none';
+    contactForm.style.display = 'none';
     validationMessage.insertAdjacentHTML(
         'afterbegin',
         "<span class='submission-message'>Votre message a bien été envoyé, merci ! Vous pouvez à présent fermer le formulaire de contact.</span>"

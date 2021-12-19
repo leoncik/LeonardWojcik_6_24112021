@@ -1,11 +1,19 @@
+import { modal, contactForm, validationMessage } from '../utils/helpers.js';
+
 export function modalDisplay() {
     function displayModal() {
-        const modal = document.getElementById('contact_modal');
         modal.style.display = 'block';
+        contactForm.style.display = 'block';
+
+        // Remove validation message.
+        validationMessage.textContent = ' ';
+        // TODO : use a condition to remove validation message ?
+        // if (validationMessage.textContent !== ' ') {
+        //    validationMessage.textContent = ' ';
+        // }
     }
 
     function closeModal() {
-        const modal = document.getElementById('contact_modal');
         modal.style.display = 'none';
     }
 

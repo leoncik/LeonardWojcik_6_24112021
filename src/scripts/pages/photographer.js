@@ -18,8 +18,6 @@ async function getProfile() {
     const photographerProfile = photographers.find(
         (photographer) => parseInt(photographer.id) === urlId
     );
-    console.log(photographerProfile);
-    console.log(photographerProfile.name.split(' ').slice(0, -1).join(' '));
     return photographerProfile;
 }
 
@@ -39,7 +37,6 @@ async function getMedia() {
     const photographerMedias = photographersMedias.filter(
         (element) => element.photographerId === urlId
     );
-    console.log(photographerMedias);
     return photographerMedias;
 }
 
