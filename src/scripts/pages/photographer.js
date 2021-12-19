@@ -5,6 +5,7 @@ import { fetchPhotographers } from '../api/api.js';
 
 // Contact form scripts
 import { modalDisplay } from '../utils/contactFormDisplay';
+import { formSubmitValidation } from '../utils/contactFormValidation';
 
 const params = new URL(document.location).searchParams;
 const urlId = parseInt(params.get('id'));
@@ -59,4 +60,5 @@ export default async function initPhotographer() {
     displayData(profiles);
     displayMedia(medias);
     modalDisplay();
+    formSubmitValidation();
 }

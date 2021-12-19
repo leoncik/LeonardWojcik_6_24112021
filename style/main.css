@@ -162,4 +162,9 @@ form input {
     border-radius: 5px;
 }
 
+.submission-message {
+    display: inline-block;
+    margin-top: 100px;
+}
+
 /*# sourceMappingURL=main.css.map */
