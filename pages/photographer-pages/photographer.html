@@ -52,23 +52,51 @@
                     />
                 </header>
                 <form id="contact-form" name="contact" action="photographer.html" method="get">
-                    <div class="formData" data-error="">
-                        <label for="first-name">Prénom</label><br>
-                        <input class="text-control" type="text" id="first-name" name="first-name" value="John"/><br>
-                      </div>
-                      <div class="formData" data-error="">
-                        <label for="last-name">Nom</label><br>
-                        <input class="text-control" type="text" id="last-name" name="last-name" value="Titor"/><br>
-                      </div>
-                      <div class="formData" data-error="">
-                        <label for="email">E-mail</label><br>
-                        <input class="text-control" type="text" id="email" name="email" value="j.titor@traveler.com"/><br>
-                      </div>
-                      <div class="formData" data-error="">
-                        <label for="message">Votre message</label><br>
-                        <textarea class="text-control" type="text" id="message" name="message">A test message.</textarea>
-                      </div>
-                      <input class="button btn-submit" type="submit" value="Envoyer"/>
+                    <label class="inputform-containter" for="first-name">
+                        <div class="label-text">
+                            <span>Prénom</span>
+                        </div>
+                        <div class="input-field">
+                            <input class="text-control" type="text" id="first-name" name="first-name" value="John"/>
+                        </div>
+                        <div class="inputform-assist">
+                            <span class="error-message"></span>
+                        </div>
+                    </label>
+                    <label class="inputform-containter" for="last-name">
+                        <div class="label-text">
+                            <span>Nom</span>
+                        </div>
+                        <div class="input-field">
+                            <input class="text-control" type="text" id="last-name" name="last-name" value="Titor"/>
+                        </div>
+                        <div class="inputform-assist">
+                            <span class="error-message"></span>
+                        </div>
+                    </label>
+                    <label class="inputform-containter" for="email">
+                        <div class="label-text">
+                            <span>E-mail</span>
+                        </div>
+                        <div class="input-field">
+                            <input class="text-control" type="text" id="email" name="email" value="j.titor@traveler.com"/>
+                        </div>
+                        <div class="inputform-assist">
+                            <span class="error-message"></span>
+                        </div>
+                    </label>
+                    <label class="inputform-containter" for="message">
+                        <div class="label-text">
+                            <span>Votre message</span>
+                        </div>
+                        <div class="input-field">
+                            <textarea class="text-control" type="text" id="message" name="message">A test message.</textarea>
+                        </div>
+                        <div class="inputform-assist">
+                            <span class="error-message"></span>
+                        </div>
+                    </label>
+                    <input class="contact_button button btn-submit" type="submit" value="Envoyer"/>
                 </form>
                 <div class="validation-message">
                 </div>
