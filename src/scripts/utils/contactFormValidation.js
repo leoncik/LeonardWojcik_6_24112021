@@ -10,24 +10,23 @@ import {
 
 // *** Form fields validation *** //
 
+// TODO : add style to valid and invalid fields
+
 // Check if the name, surname and message fields are valid.
 
-const checkInputText = (elt, key) => {
+const checkInputText = (elt, key, className) => {
     if (elt.value === '') {
-        // Add a custom error message with red border around the input field
-        elt.parentNode.setAttribute('data-error', `Veuillez saisir un ${key}.`);
-        elt.parentNode.setAttribute('data-error-visible', 'true');
+        document.querySelector(
+            `.${className} .error-message`
+        ).innerHTML = `Veuillez saisir un ${key}`;
         return false;
     } else if (elt.value.length < 2) {
-        elt.parentNode.setAttribute(
-            'data-error',
-            `Votre ${key} doit contenir au moins deux caractères.`
-        );
-        elt.parentNode.setAttribute('data-error-visible', 'true');
+        document.querySelector(
+            `.${className} .error-message`
+        ).innerHTML = `Votre ${key} doit contenir au moins deux caractères.`;
         return false;
     } else {
-        // Hide error message and set input border to green
-        elt.parentNode.setAttribute('data-error-visible', 'false');
+        document.querySelector(`.${className} .error-message`).innerHTML = ` `;
     }
     return true;
 };
@@ -36,21 +35,17 @@ const checkInputText = (elt, key) => {
 
 const checkEmail = () => {
     if (email.value === '') {
-        email.parentNode.setAttribute(
-            'data-error',
-            'Veuillez saisir votre courriel.'
-        );
-        email.parentNode.setAttribute('data-error-visible', 'true');
+        // ? Why is nextElementSiblings null ? And why is the console.log displayed twice ?
+        console.log(email.nextElementSibling);
+        document.querySelector('.email .error-message').innerHTML =
+            'Veuillez saisir votre courriel.';
         return false;
     } else if (!email.value.match(mailformat)) {
-        email.parentNode.setAttribute(
-            'data-error',
-            'Veuillez saisir un courriel valide.'
-        );
-        email.parentNode.setAttribute('data-error-visible', 'true');
+        document.querySelector('.email .error-message').innerHTML =
+            'Veuillez saisir un courriel valide.';
         return false;
     } else {
-        email.parentNode.setAttribute('data-error-visible', 'false');
+        document.querySelector('.email .error-message').innerHTML = ' ';
     }
     return true;
 };
@@ -58,20 +53,20 @@ const checkEmail = () => {
 // Check all fields
 
 function fieldValidation() {
-    checkInputText(firstName, 'prénom');
-    checkInputText(lastName, 'nom');
+    checkInputText(firstName, 'prénom', 'first-name');
+    checkInputText(lastName, 'nom', 'last-name');
     checkEmail();
-    checkInputText(message, 'message');
+    checkInputText(message, 'message', 'message');
 }
 
 // Check validity of all fields
 
 function fieldValidationIsValid() {
     if (
-        checkInputText(firstName, 'prénom') &&
-        checkInputText(lastName, 'nom') &&
+        checkInputText(firstName, 'prénom', 'first-name') &&
+        checkInputText(lastName, 'nom', 'last-name') &&
         checkEmail() &&
-        checkInputText(message, 'message')
+        checkInputText(message, 'message', 'message')
     ) {
         return true;
     }

@@ -23,7 +23,8 @@ const submitButton = document.querySelector('.contact_button');
 // Validation message
 const validationMessage = document.querySelector('.validation-message');
 
-// Custom messages
+// Error field (inputform-assist)
+const errorFields = document.getElementsByClassName('inputform-assist');
 
 export {
     getParam,
@@ -36,4 +37,5 @@ export {
     submitButton,
     contactForm,
     validationMessage,
+    errorFields,
 };
