@@ -10,12 +10,10 @@ import { formSubmitValidation } from '../utils/contactFormValidation';
 const params = new URL(document.location).searchParams;
 const urlId = parseInt(params.get('id'));
 
-async function getProfile() {
-    const photographersData = await fetchPhotographers();
-    const photographers = photographersData.photographers;
+async function getProfile(elt) {
     // Search photographer with It's "ID"
     // TODO display error if photographerProfile is undefined (can't find photographer "ID")
-    const photographerProfile = photographers.find(
+    const photographerProfile = elt.find(
         (photographer) => parseInt(photographer.id) === urlId
     );
     return photographerProfile;
@@ -30,11 +28,9 @@ async function displayData(photographerProfile) {
 }
 
 // Retrieve media
-async function getMedia() {
-    const photographersData = await fetchPhotographers();
-    const photographersMedias = photographersData.media;
+async function getMedia(elt) {
     // Filter current photographer medias from data
-    const photographerMedias = photographersMedias.filter(
+    const photographerMedias = elt.filter(
         (element) => element.photographerId === urlId
     );
     return photographerMedias;
@@ -52,8 +48,9 @@ export async function displayMedia(media) {
 
 // Initialize page (fetch data, then display It on the page and add behaviour to contact modal)
 export default async function initPhotographer() {
-    const profiles = await getProfile();
-    const medias = await getMedia();
+    const { photographers, media } = await fetchPhotographers();
+    const profiles = await getProfile(photographers);
+    const medias = await getMedia(media);
     displayData(profiles);
     displayMedia(medias);
     modalDisplay();
