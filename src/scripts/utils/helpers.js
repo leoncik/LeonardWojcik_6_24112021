@@ -26,6 +26,10 @@ const validationMessage = document.querySelector('.validation-message');
 // Error field (inputform-assist)
 const errorFields = document.getElementsByClassName('inputform-assist');
 
+// *** DOM elements of the lightbox *** //
+const lightbox = document.getElementById('lightbox-modal');
+const currentMedia = document.getElementById('current-media');
+
 export {
     getParam,
     mailformat,
@@ -38,4 +42,6 @@ export {
     contactForm,
     validationMessage,
     errorFields,
+    lightbox,
+    currentMedia,
 };

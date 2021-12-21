@@ -1,3 +1,8 @@
+/*
+ TODO : both lightbox and form fall in the "modal" category. Refactor to make a single "modalDisplay" to control
+ TODO : the lightbox and the modal.
+ */
+
 import { modal, contactForm, validationMessage } from '../utils/helpers.js';
 
 export function modalDisplay() {

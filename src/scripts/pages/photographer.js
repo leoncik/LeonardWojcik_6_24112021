@@ -7,6 +7,9 @@ import { fetchPhotographers } from '../api/api.js';
 import { modalDisplay } from '../utils/contactFormDisplay';
 import { formSubmitValidation } from '../utils/contactFormValidation';
 
+// Lightbox scripts
+import { lightboxDisplay } from '../utils/lightboxDisplay';
+
 const params = new URL(document.location).searchParams;
 const urlId = parseInt(params.get('id'));
 
@@ -55,4 +58,5 @@ export default async function initPhotographer() {
     displayMedia(medias);
     modalDisplay();
     formSubmitValidation();
+    lightboxDisplay();
 }

@@ -10,11 +10,11 @@
             rel="stylesheet"
         />
         <!-- JavaScript (development) -->
-        <script src="/polyfill.bundle.js" defer></script>
-        <script src="/app.bundle.js" defer></script>
+        <!-- <script src="/polyfill.bundle.js" defer></script>
+        <script src="/app.bundle.js" defer></script> -->
         <!-- JavaScript (production) -->
-        <!-- <script src="../..//dist/polyfill.bundle.js" defer></script>
-        <script src="../..//dist/app.bundle.js" defer></script> -->
+        <script src="../..//dist/polyfill.bundle.js" defer></script>
+        <script src="../..//dist/app.bundle.js" defer></script>
         <title>Fisheye - photographe</title>
     </head>
 
@@ -102,5 +102,32 @@
                 </div>
             </div>
         </div>
+
+        <!-- LIGHTBOX GALLERY -->
+
+        <div id="lightbox-modal">
+            <div class="modal">
+                <!-- Lightbox controls -->
+                <div class="lightbox-controls">
+                    <div class="close-button-lightbox">
+                        <span class="close"><img src="/assets/icons/close.svg" alt="close btn"></span>
+                    </div>
+                    <div class="select-image">
+                        <span class="previous"><img src="/assets/icons/previous.svg" alt="previous img"></span>
+                        <span class="next"><img src="/assets/icons/next.svg" alt="next img"></span>
+                    </div>
+                </div>
+                <!-- Lightbox content -->
+                <div class="lightbox-content">
+                    <div class="lightbox-media">
+                        <img id="current-media" src="/assets/photographers/account.png" alt="Text alt">
+                    </div>
+                    <div class="current-image-title">
+                        <span>CURRENT TITLE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>

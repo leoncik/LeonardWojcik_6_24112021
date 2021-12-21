@@ -97,7 +97,8 @@ h1 {
     height: 300px;
 }
 
-#contact_modal {
+#contact_modal,
+#lightbox-modal {
     display: none;
     position: fixed;
     left: 0;
