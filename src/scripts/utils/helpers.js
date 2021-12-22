@@ -29,6 +29,8 @@ const errorFields = document.getElementsByClassName('inputform-assist');
 // *** DOM elements of the lightbox *** //
 const lightbox = document.getElementById('lightbox-modal');
 const currentMedia = document.getElementById('current-media');
+const previousButton = document.querySelector('.previous');
+const nextButton = document.querySelector('.next');
 
 export {
     getParam,
@@ -44,4 +46,6 @@ export {
     errorFields,
     lightbox,
     currentMedia,
+    previousButton,
+    nextButton,
 };
