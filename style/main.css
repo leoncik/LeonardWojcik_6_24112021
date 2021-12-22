@@ -178,4 +178,9 @@ form input {
     color: white;
 }
 
+.lightbox-media img,
+.lightbox-media video {
+    width: 200px;
+}
+
 /*# sourceMappingURL=main.css.map */

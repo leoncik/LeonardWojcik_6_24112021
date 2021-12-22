@@ -1,4 +1,4 @@
-import { lightbox } from '../utils/helpers.js';
+import { lightbox, currentMedia } from '../utils/helpers.js';
 
 export function lightboxDisplay() {
     function displayLightbox() {
@@ -18,6 +18,10 @@ export function lightboxDisplay() {
 
     // Display lighbox and clicked media
     for (const iterator of galleryItems) {
-        iterator.addEventListener('click', displayLightbox);
+        iterator.addEventListener('click', () => {
+            displayLightbox();
+            const mediaSrc = iterator.querySelector('img').src;
+            currentMedia.src = mediaSrc;
+        });
     }
 }
