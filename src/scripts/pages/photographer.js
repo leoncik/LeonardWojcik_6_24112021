@@ -9,7 +9,7 @@ import { formSubmitValidation } from '../utils/contactFormValidation';
 
 // Lightbox scripts
 import { lightboxDisplay } from '../utils/lightboxDisplay';
-import { imagesSrcList, lightboxControls } from '../utils/lightboxControl';
+import { lightboxControls } from '../utils/lightboxControl';
 
 const params = new URL(document.location).searchParams;
 const urlId = parseInt(params.get('id'));
@@ -60,6 +60,5 @@ export default async function initPhotographer() {
     modalDisplay();
     formSubmitValidation();
     lightboxDisplay();
-    imagesSrcList();
     lightboxControls();
 }

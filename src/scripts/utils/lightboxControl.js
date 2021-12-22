@@ -3,44 +3,42 @@ import { currentMedia, previousButton, nextButton } from '../utils/helpers.js';
 // ? Is It possible to retrieve all src ?
 // const imagesSrc = document.querySelectorAll('img').src;
 
-// ? Check why It is not getting all photographer images
-const imagesList = document.querySelectorAll('img');
-console.log(imagesList);
+let imagesList = [];
 const imagesSrc = [];
 
 // Make an array with the "src" of all images
-export const imagesSrcList = () => {
+window.setTimeout(function getImagesSrc() {
+    imagesList = document.querySelectorAll('.photographer-medias img');
+    console.log(imagesList);
     for (const iterator of imagesList) {
         imagesSrc.push(iterator.src);
     }
     console.log(imagesSrc);
-};
+}, 3000);
 
+let currentIndex = 0;
 export const lightboxControls = () => {
     const previousMedia = () => {
-        const currentIndex = imagesSrc[0];
+        console.log(currentIndex);
         // If at the beginning of the array, go to the end of the array
         if (currentIndex === 0) {
-            return imagesSrc[imagesSrc.length - 1];
+            currentIndex = imagesSrc.length - 1;
+            currentMedia.src = imagesSrc[currentIndex];
         } else {
-            return imagesSrc[currentIndex - 1];
+            currentIndex--;
+            currentMedia.src = imagesSrc[currentIndex];
         }
     };
 
     const nextMedia = () => {
-        console.log(imagesSrc);
-        // let currentIndex = imagesSrc[0];
-        let currentIndex = 0;
+        console.log(currentIndex);
         // If at the end of the array, go to the beginning of the array
-        if ((currentIndex = imagesSrc.length - 1)) {
+        if (currentIndex === imagesSrc.length - 1) {
             currentIndex = 0;
-            console.log(imagesSrc[0]);
             currentMedia.src = imagesSrc[currentIndex];
-            // return imagesSrc[0];
         } else {
             currentIndex++;
             currentMedia.src = imagesSrc[currentIndex];
-            // console.log(imagesSrc[currentIndex + 1]);
         }
     };
 
