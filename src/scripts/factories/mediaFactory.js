@@ -15,11 +15,13 @@ export default function mediaFactory(data, profile) {
             // Profile picture
             const mediaPicture = document.createElement('img');
             mediaPicture.setAttribute('src', imageSource);
+            mediaPicture.classList.add('media');
             article.appendChild(mediaPicture);
         } else if (data.video) {
             const mediaVideo = document.createElement('video');
             mediaVideo.setAttribute('src', videoSource);
             mediaVideo.setAttribute('controls', '');
+            mediaVideo.classList.add('media');
             article.appendChild(mediaVideo);
         } else {
             console.log('format non reconnu');

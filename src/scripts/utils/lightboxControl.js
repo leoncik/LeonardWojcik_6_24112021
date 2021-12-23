@@ -1,19 +1,20 @@
 import { currentMedia, previousButton, nextButton } from '../utils/helpers.js';
 
+// TODO : remove currentIndex = 0; and set It's value to the index of the clicked media (lightboxDisplay.js)
 // ? Is It possible to retrieve all src ?
-// const imagesSrc = document.querySelectorAll('img').src;
+// const mediasSrc = document.querySelectorAll('img').src;
 
-let imagesList = [];
-const imagesSrc = [];
+let mediaList = [];
+const mediasSrc = [];
 
 // Make an array with the "src" of all images
-window.setTimeout(function getImagesSrc() {
-    imagesList = document.querySelectorAll('.photographer-medias img');
-    console.log(imagesList);
-    for (const iterator of imagesList) {
-        imagesSrc.push(iterator.src);
+window.setTimeout(function getmediasSrc() {
+    mediaList = document.querySelectorAll('.media');
+    console.log(mediaList);
+    for (const iterator of mediaList) {
+        mediasSrc.push(iterator.src);
     }
-    console.log(imagesSrc);
+    console.log(mediasSrc);
 }, 3000);
 
 let currentIndex = 0;
@@ -22,23 +23,23 @@ export const lightboxControls = () => {
         console.log(currentIndex);
         // If at the beginning of the array, go to the end of the array
         if (currentIndex === 0) {
-            currentIndex = imagesSrc.length - 1;
-            currentMedia.src = imagesSrc[currentIndex];
+            currentIndex = mediasSrc.length - 1;
+            currentMedia.src = mediasSrc[currentIndex];
         } else {
             currentIndex--;
-            currentMedia.src = imagesSrc[currentIndex];
+            currentMedia.src = mediasSrc[currentIndex];
         }
     };
 
     const nextMedia = () => {
         console.log(currentIndex);
         // If at the end of the array, go to the beginning of the array
-        if (currentIndex === imagesSrc.length - 1) {
+        if (currentIndex === mediasSrc.length - 1) {
             currentIndex = 0;
-            currentMedia.src = imagesSrc[currentIndex];
+            currentMedia.src = mediasSrc[currentIndex];
         } else {
             currentIndex++;
-            currentMedia.src = imagesSrc[currentIndex];
+            currentMedia.src = mediasSrc[currentIndex];
         }
     };
 

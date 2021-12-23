@@ -20,7 +20,8 @@ export function lightboxDisplay() {
     for (const iterator of galleryItems) {
         iterator.addEventListener('click', () => {
             displayLightbox();
-            const mediaSrc = iterator.querySelector('img').src;
+            // TODO : if mediatype = video, set img tag to video (or use two tags in HTML ?)
+            const mediaSrc = iterator.querySelector('.media').src;
             currentMedia.src = mediaSrc;
         });
     }
