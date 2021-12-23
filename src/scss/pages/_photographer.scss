@@ -1,9 +1,16 @@
 // Header section
 
 .photograph-header {
+    display: flex;
+    justify-content: space-between;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+}
+
+.photograph-header img {
+    width: 200px;
+    height: 200px;
 }
 
 .contact_button {
@@ -27,6 +34,15 @@
 .photographer-info img {
     width: 100px;
     height: 100px;
+}
+
+.total-likes-pricing {
+    width: 376px;
+    height: 89px;
+    position: fixed;
+    bottom: 0;
+    right: 35px;
+    background-color: #DB8876;
 }
 
 // Media section

@@ -64,8 +64,13 @@ export default function photographerFactory(data) {
         const profilePicture = document.createElement('img');
         profilePicture.setAttribute('src', picture);
         document
-            .getElementsByClassName('photographer-info')[0]
+            .getElementsByClassName('photographer-profile-picture')[0]
             .appendChild(profilePicture);
+
+        // Pricing
+        const pricing = document.createElement('span');
+        pricing.textContent = `${price} €`;
+        document.querySelector('.total-likes-pricing').appendChild(pricing);
 
         return infos;
     }
