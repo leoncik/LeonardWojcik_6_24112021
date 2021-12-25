@@ -41,6 +41,7 @@ async function getMedia(elt) {
 }
 
 // Display photographer medias on page
+// TODO : remove display rules from factory and put them here.
 export async function displayMedia(media) {
     const photographHeader = document.querySelector('.photographer-medias');
     media.forEach((element) => {
@@ -60,5 +61,5 @@ export default async function initPhotographer() {
     modalDisplay();
     formSubmitValidation();
     lightboxDisplay();
-    lightboxControls();
+    lightboxControls(medias);
 }

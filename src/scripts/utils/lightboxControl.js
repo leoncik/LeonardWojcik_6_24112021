@@ -1,24 +1,38 @@
-import { currentMedia, previousButton, nextButton } from '../utils/helpers.js';
+import {
+    currentMedia,
+    previousButton,
+    nextButton,
+    getParam,
+} from '../utils/helpers.js';
 
 // TODO : remove currentIndex = 0; and set It's value to the index of the clicked media (lightboxDisplay.js)
-// ? Is It possible to retrieve all src ?
-// const mediasSrc = document.querySelectorAll('img').src;
 
-let mediaList = [];
-const mediasSrc = [];
+let mediasSrc = [];
+const urlId = parseInt(getParam('id'));
 
-// Make an array with the "src" of all images
-window.setTimeout(function getmediasSrc() {
-    mediaList = document.querySelectorAll('.media');
-    console.log(mediaList);
-    for (const iterator of mediaList) {
-        mediasSrc.push(iterator.src);
-    }
-    console.log(mediasSrc);
-}, 3000);
+const getImagesSrc = (media) => {
+    // https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+    // https://stackoverflow.com/questions/34398279/map-and-filter-an-array-at-the-same-time?rq=1
+    // const images = media.reduce((mediasSrc, image) => {
+    //     if (image.photographerId === urlId) {
+    //         mediasSrc.push(`assets/images/${urlId}/${image.image}`);
+    //     }
+    //     return mediasSrc;
+    // }, []);
+
+    return media
+        .filter((element) => element.photographerId === urlId)
+        .map((img) => {
+            mediasSrc = [...mediasSrc, `/assets/images/${urlId}/${img.image}`];
+            // return value required by linter : « Array.prototype.map() expects a return value from arrow function »
+            return mediasSrc;
+        });
+};
 
 let currentIndex = 0;
-export const lightboxControls = () => {
+export const lightboxControls = (media) => {
+    getImagesSrc(media);
+
     const previousMedia = () => {
         console.log(currentIndex);
         // If at the beginning of the array, go to the end of the array

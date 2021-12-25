@@ -20,7 +20,7 @@ export default function mediaFactory(data, profile) {
         } else if (data.video) {
             const mediaVideo = document.createElement('video');
             mediaVideo.setAttribute('src', videoSource);
-            mediaVideo.setAttribute('controls', '');
+            // mediaVideo.setAttribute('controls', '');
             mediaVideo.classList.add('media');
             article.appendChild(mediaVideo);
         } else {
