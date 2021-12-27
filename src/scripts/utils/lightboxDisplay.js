@@ -1,10 +1,12 @@
 import { lightbox, emptyMediaContainer } from '../utils/helpers.js';
 
 export function lightboxDisplay() {
+    // Display the lightbox
     function displayLightbox() {
         lightbox.style.display = 'block';
     }
 
+    // Close the lightbox
     function closeLightbox() {
         lightbox.style.display = 'none';
     }
@@ -16,6 +18,7 @@ export function lightboxDisplay() {
         '.photographer-medias article'
     );
 
+    // Add tag and src of clicked media
     const displayMedia = (src, type) => {
         const currentTag = document.createElement(type);
         currentTag.src = src;

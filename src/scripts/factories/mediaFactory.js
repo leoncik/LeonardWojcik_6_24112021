@@ -27,12 +27,10 @@ export default function mediaFactory(data, profile) {
             console.log('format non reconnu');
         }
 
-        // Title (only if the media type is a picture)
-        if (data.title) {
-            const mediaTitle = document.createElement('h3');
-            mediaTitle.textContent = title;
-            article.appendChild(mediaTitle);
-        }
+        // Title
+        const mediaTitle = document.createElement('h3');
+        mediaTitle.textContent = title;
+        article.appendChild(mediaTitle);
 
         // Likes
         const mediaLikes = document.createElement('p');
