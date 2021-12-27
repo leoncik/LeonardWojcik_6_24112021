@@ -11,15 +11,6 @@ let mediasSrc = [];
 const urlId = parseInt(getParam('id'));
 
 const getImagesSrc = (media) => {
-    // https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
-    // https://stackoverflow.com/questions/34398279/map-and-filter-an-array-at-the-same-time?rq=1
-    // const images = media.reduce((mediasSrc, image) => {
-    //     if (image.photographerId === urlId) {
-    //         mediasSrc.push(`assets/images/${urlId}/${image.image}`);
-    //     }
-    //     return mediasSrc;
-    // }, []);
-
     return media
         .filter((element) => element.photographerId === urlId)
         .map((img) => {
@@ -29,9 +20,24 @@ const getImagesSrc = (media) => {
         });
 };
 
-let currentIndex = 0;
+// Get the index of the clicked media
+let currentIndex;
+const getMediaIndex = () => {
+    const galleryItems = document.querySelectorAll(
+        '.photographer-medias article'
+    );
+
+    for (let i = 0; i < galleryItems.length; i++) {
+        galleryItems[i].addEventListener('click', () => {
+            currentIndex = i;
+            console.log(currentIndex);
+        });
+    }
+};
+
 export const lightboxControls = (media) => {
     getImagesSrc(media);
+    getMediaIndex();
 
     const previousMedia = () => {
         console.log(currentIndex);
