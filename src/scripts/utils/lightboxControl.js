@@ -11,9 +11,11 @@ const urlId = parseInt(getParam('id'));
 const getImagesSrc = (media) => {
     return media
         .filter((element) => element.photographerId === urlId)
-        .map((img) => {
-            mediasSrc = [...mediasSrc, `/assets/images/${urlId}/${img.image}`];
-            // return value required by linter : « Array.prototype.map() expects a return value from arrow function »
+        .map((media) => {
+            mediasSrc = [
+                ...mediasSrc,
+                `/assets/images/${urlId}/${media.image || media.video}`,
+            ];
             return mediasSrc;
         });
 };
@@ -39,26 +41,62 @@ export const lightboxControls = (media) => {
 
     const previousMedia = () => {
         console.log(currentIndex);
-        const currentMedia = document.querySelector('.current-media > *');
+        document.querySelector('.current-media').innerHTML = ' ';
         // If at the beginning of the array, go to the end of the array
         if (currentIndex === 0) {
             currentIndex = mediasSrc.length - 1;
+            // Create proper tag according to media extension
+            if (mediasSrc[currentIndex].split('.').pop() === 'jpg') {
+                const imageTag = document.createElement('img');
+                document.querySelector('.current-media').appendChild(imageTag);
+            } else if (mediasSrc[currentIndex].split('.').pop() === 'mp4') {
+                const videoTag = document.createElement('video');
+                document.querySelector('.current-media').appendChild(videoTag);
+            }
+            let currentMedia = document.querySelector('.current-media > *');
             currentMedia.src = mediasSrc[currentIndex];
         } else {
             currentIndex--;
+            // Create proper tag according to media extension
+            if (mediasSrc[currentIndex].split('.').pop() === 'jpg') {
+                const imageTag = document.createElement('img');
+                document.querySelector('.current-media').appendChild(imageTag);
+            } else if (mediasSrc[currentIndex].split('.').pop() === 'mp4') {
+                const videoTag = document.createElement('video');
+                document.querySelector('.current-media').appendChild(videoTag);
+            }
+            let currentMedia = document.querySelector('.current-media > *');
             currentMedia.src = mediasSrc[currentIndex];
         }
     };
 
     const nextMedia = () => {
-        const currentMedia = document.querySelector('.current-media > *');
         console.log(currentIndex);
+        document.querySelector('.current-media').innerHTML = ' ';
         // If at the end of the array, go to the beginning of the array
         if (currentIndex === mediasSrc.length - 1) {
             currentIndex = 0;
+            // Create proper tag according to media extension
+            if (mediasSrc[currentIndex].split('.').pop() === 'jpg') {
+                const imageTag = document.createElement('img');
+                document.querySelector('.current-media').appendChild(imageTag);
+            } else if (mediasSrc[currentIndex].split('.').pop() === 'mp4') {
+                const videoTag = document.createElement('video');
+                document.querySelector('.current-media').appendChild(videoTag);
+            }
+            let currentMedia = document.querySelector('.current-media > *');
             currentMedia.src = mediasSrc[currentIndex];
         } else {
             currentIndex++;
+            // Create proper tag according to media extension
+            if (mediasSrc[currentIndex].split('.').pop() === 'jpg') {
+                const imageTag = document.createElement('img');
+                document.querySelector('.current-media').appendChild(imageTag);
+            } else if (mediasSrc[currentIndex].split('.').pop() === 'mp4') {
+                const videoTag = document.createElement('video');
+                document.querySelector('.current-media').appendChild(videoTag);
+            }
+            let currentMedia = document.querySelector('.current-media > *');
             currentMedia.src = mediasSrc[currentIndex];
         }
     };
