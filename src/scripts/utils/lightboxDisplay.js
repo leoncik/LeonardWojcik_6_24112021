@@ -1,4 +1,4 @@
-import { lightbox } from '../utils/helpers.js';
+import { lightbox, emptyMediaContainer } from '../utils/helpers.js';
 
 export function lightboxDisplay() {
     function displayLightbox() {
@@ -22,10 +22,6 @@ export function lightboxDisplay() {
         document.querySelector('.current-media').appendChild(currentTag);
     };
 
-    const emptyMediaContainer = () => {
-        document.querySelector('.current-media').innerHTML = ' ';
-    };
-
     // Display lighbox and clicked media
     for (const iterator of galleryItems) {
         const mediaSrc = iterator.querySelector('.media').src;
@@ -33,11 +29,9 @@ export function lightboxDisplay() {
             displayLightbox();
             emptyMediaContainer();
             if (mediaSrc.split('.').pop() === 'jpg') {
-                // ? Why return ?
                 return displayMedia(mediaSrc, 'img');
             } else if (mediaSrc.split('.').pop() === 'mp4') {
-                // ? It seems to work fine without return...
-                displayMedia(mediaSrc, 'video');
+                return displayMedia(mediaSrc, 'video');
             }
         });
     }

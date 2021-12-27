@@ -1,8 +1,8 @@
 import {
-    // currentMedia,
     previousButton,
     nextButton,
     getParam,
+    emptyMediaContainer,
 } from '../utils/helpers.js';
 
 let mediasSrc = [];
@@ -35,69 +35,53 @@ const getMediaIndex = () => {
     }
 };
 
+// Create proper tag according to media extension
+const setMediaTag = () => {
+    if (mediasSrc[currentIndex].split('.').pop() === 'jpg') {
+        const imageTag = document.createElement('img');
+        document.querySelector('.current-media').appendChild(imageTag);
+    } else if (mediasSrc[currentIndex].split('.').pop() === 'mp4') {
+        const videoTag = document.createElement('video');
+        document.querySelector('.current-media').appendChild(videoTag);
+    }
+};
+
+const setMediaSrc = () => {
+    const currentMedia = document.querySelector('.current-media > *');
+    currentMedia.src = mediasSrc[currentIndex];
+}
+
 export const lightboxControls = (media) => {
     getImagesSrc(media);
     getMediaIndex();
 
     const previousMedia = () => {
         console.log(currentIndex);
-        document.querySelector('.current-media').innerHTML = ' ';
+        emptyMediaContainer();
         // If at the beginning of the array, go to the end of the array
         if (currentIndex === 0) {
             currentIndex = mediasSrc.length - 1;
-            // Create proper tag according to media extension
-            if (mediasSrc[currentIndex].split('.').pop() === 'jpg') {
-                const imageTag = document.createElement('img');
-                document.querySelector('.current-media').appendChild(imageTag);
-            } else if (mediasSrc[currentIndex].split('.').pop() === 'mp4') {
-                const videoTag = document.createElement('video');
-                document.querySelector('.current-media').appendChild(videoTag);
-            }
-            let currentMedia = document.querySelector('.current-media > *');
-            currentMedia.src = mediasSrc[currentIndex];
+            setMediaTag();
+            setMediaSrc();
         } else {
             currentIndex--;
-            // Create proper tag according to media extension
-            if (mediasSrc[currentIndex].split('.').pop() === 'jpg') {
-                const imageTag = document.createElement('img');
-                document.querySelector('.current-media').appendChild(imageTag);
-            } else if (mediasSrc[currentIndex].split('.').pop() === 'mp4') {
-                const videoTag = document.createElement('video');
-                document.querySelector('.current-media').appendChild(videoTag);
-            }
-            let currentMedia = document.querySelector('.current-media > *');
-            currentMedia.src = mediasSrc[currentIndex];
+            setMediaTag();
+            setMediaSrc();
         }
     };
 
     const nextMedia = () => {
         console.log(currentIndex);
-        document.querySelector('.current-media').innerHTML = ' ';
+        emptyMediaContainer();
         // If at the end of the array, go to the beginning of the array
         if (currentIndex === mediasSrc.length - 1) {
             currentIndex = 0;
-            // Create proper tag according to media extension
-            if (mediasSrc[currentIndex].split('.').pop() === 'jpg') {
-                const imageTag = document.createElement('img');
-                document.querySelector('.current-media').appendChild(imageTag);
-            } else if (mediasSrc[currentIndex].split('.').pop() === 'mp4') {
-                const videoTag = document.createElement('video');
-                document.querySelector('.current-media').appendChild(videoTag);
-            }
-            let currentMedia = document.querySelector('.current-media > *');
-            currentMedia.src = mediasSrc[currentIndex];
+            setMediaTag();
+            setMediaSrc();
         } else {
             currentIndex++;
-            // Create proper tag according to media extension
-            if (mediasSrc[currentIndex].split('.').pop() === 'jpg') {
-                const imageTag = document.createElement('img');
-                document.querySelector('.current-media').appendChild(imageTag);
-            } else if (mediasSrc[currentIndex].split('.').pop() === 'mp4') {
-                const videoTag = document.createElement('video');
-                document.querySelector('.current-media').appendChild(videoTag);
-            }
-            let currentMedia = document.querySelector('.current-media > *');
-            currentMedia.src = mediasSrc[currentIndex];
+            setMediaTag();
+            setMediaSrc();
         }
     };
 
