@@ -1,11 +1,9 @@
 import {
-    currentMedia,
+    // currentMedia,
     previousButton,
     nextButton,
     getParam,
 } from '../utils/helpers.js';
-
-// TODO : remove currentIndex = 0; and set It's value to the index of the clicked media (lightboxDisplay.js)
 
 let mediasSrc = [];
 const urlId = parseInt(getParam('id'));
@@ -41,6 +39,7 @@ export const lightboxControls = (media) => {
 
     const previousMedia = () => {
         console.log(currentIndex);
+        const currentMedia = document.querySelector('.current-media > *');
         // If at the beginning of the array, go to the end of the array
         if (currentIndex === 0) {
             currentIndex = mediasSrc.length - 1;
@@ -52,6 +51,7 @@ export const lightboxControls = (media) => {
     };
 
     const nextMedia = () => {
+        const currentMedia = document.querySelector('.current-media > *');
         console.log(currentIndex);
         // If at the end of the array, go to the beginning of the array
         if (currentIndex === mediasSrc.length - 1) {

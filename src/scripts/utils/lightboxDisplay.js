@@ -1,4 +1,4 @@
-import { lightbox, currentMedia } from '../utils/helpers.js';
+import { lightbox } from '../utils/helpers.js';
 
 export function lightboxDisplay() {
     function displayLightbox() {
@@ -16,32 +16,29 @@ export function lightboxDisplay() {
         '.photographer-medias article'
     );
 
+    const displayMedia = (src, type) => {
+        const currentTag = document.createElement(type);
+        currentTag.src = src;
+        document.querySelector('.current-media').appendChild(currentTag);
+    };
+
+    const emptyMediaContainer = () => {
+        document.querySelector('.current-media').innerHTML = ' ';
+    };
+
     // Display lighbox and clicked media
     for (const iterator of galleryItems) {
+        const mediaSrc = iterator.querySelector('.media').src;
         iterator.addEventListener('click', () => {
             displayLightbox();
-            const mediaSrc = iterator.querySelector('.media').src;
-            // TEST if mediatype = image, create img tag (if not already here)
+            emptyMediaContainer();
             if (mediaSrc.split('.').pop() === 'jpg') {
-                document.querySelector(
-                    '.current-media-factory-method'
-                ).innerHTML = ' ';
-                const imageTag = document.createElement('img');
-                document
-                    .querySelector('.current-media-factory-method')
-                    .appendChild(imageTag);
-                imageTag.src = mediaSrc;
+                // ? Why return ?
+                return displayMedia(mediaSrc, 'img');
             } else if (mediaSrc.split('.').pop() === 'mp4') {
-                document.querySelector(
-                    '.current-media-factory-method'
-                ).innerHTML = ' ';
-                const videoTag = document.createElement('video');
-                document
-                    .querySelector('.current-media-factory-method')
-                    .appendChild(videoTag);
-                videoTag.src = mediaSrc;
+                // ? It seems to work fine without return...
+                displayMedia(mediaSrc, 'video');
             }
-            currentMedia.src = mediaSrc;
         });
     }
 }
