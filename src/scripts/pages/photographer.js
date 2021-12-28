@@ -11,6 +11,9 @@ import { formSubmitValidation } from '../utils/contactFormValidation';
 import { lightboxDisplay } from '../utils/lightboxDisplay';
 import { lightboxControls } from '../utils/lightboxControl';
 
+// Like toggler
+import { likeToggler } from '../utils/likeCounters';
+
 const params = new URL(document.location).searchParams;
 const urlId = parseInt(params.get('id'));
 
@@ -62,4 +65,5 @@ export default async function initPhotographer() {
     formSubmitValidation();
     lightboxDisplay();
     lightboxControls(medias);
+    likeToggler();
 }
