@@ -14,9 +14,7 @@ export function lightboxDisplay() {
     const closeButton = document.querySelector('.close');
     closeButton.addEventListener('click', closeLightbox);
 
-    const galleryItems = document.querySelectorAll(
-        '.photographer-medias article'
-    );
+    const galleryItems = document.querySelectorAll('.media-content');
 
     // Add tag and src of clicked media
     const displayMedia = (src, type) => {

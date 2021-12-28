@@ -23,9 +23,7 @@ const getImagesSrc = (media) => {
 // Get the index of the clicked media
 let currentIndex;
 const getMediaIndex = () => {
-    const galleryItems = document.querySelectorAll(
-        '.photographer-medias article'
-    );
+    const galleryItems = document.querySelectorAll('.media-content');
 
     for (let i = 0; i < galleryItems.length; i++) {
         galleryItems[i].addEventListener('click', () => {
