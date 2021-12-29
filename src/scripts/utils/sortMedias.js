@@ -1,4 +1,3 @@
-// Note : dans mon git add ne pas ajouter "likeCounter", je n'ai mis qu'un commentaire.
 // TODO : try to refactor using orgiments. E.g : genericSort(type){...}
 import {
     popularityButton,
@@ -25,16 +24,49 @@ export function sortMedias(media) {
         lightboxControls(media);
         console.log('Sorted by popularity');
     };
-
-    // Sort by date
+    
+    // Sort by Date
     const sortByDate = () => {
+
+        media.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateA - dateB;
+        });
+        emptyGallery();
+        displayMedia(media);
+        likeToggler();
+        lightboxDisplay();
+        lightboxControls(media);
         console.log('Sorted by date');
     };
 
     // Sort by title
     const sortByTitle = () => {
+        media.sort((a, b) => {
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
+        /*
+        ? Is it better to write :
+        let titleA = a.firstName.toLowerCase(),
+        titleB = b.firstName.toLowerCase();
+        */
+
+        if (titleA < titleB) {
+            return -1;
+        }
+        if (titleA > titleB) {
+            return 1;
+        }
+        return 0;});
+        emptyGallery();
+        displayMedia(media);
+        likeToggler();
+        lightboxDisplay();
+        lightboxControls(media);
         console.log('Sorted by title');
     };
+
 
     popularityButton.addEventListener('click', sortByPopularity);
     dateButton.addEventListener('click', sortByDate);
