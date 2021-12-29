@@ -14,6 +14,9 @@ import { lightboxControls } from '../utils/lightboxControl';
 // Like toggler
 import { likeToggler } from '../utils/likeCounters';
 
+// Sort Medias
+import { sortMedias } from '../utils/sortMedias';
+
 const params = new URL(document.location).searchParams;
 const urlId = parseInt(params.get('id'));
 
@@ -66,4 +69,5 @@ export default async function initPhotographer() {
     lightboxDisplay();
     lightboxControls(medias);
     likeToggler();
+    sortMedias(medias);
 }

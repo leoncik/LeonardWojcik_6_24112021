@@ -8,7 +8,7 @@ import {
 // Get src of all medias for the current photographer
 let mediasSrc = [];
 const urlId = parseInt(getParam('id'));
-const getImagesSrc = (media) => {
+const getMediasSrc = (media) => {
     return media
         .filter((element) => element.photographerId === urlId)
         .map((media) => {
@@ -52,7 +52,7 @@ const setMediaSrc = () => {
 
 // Events when user clicks on "next" and "previous" buttons of the lightbox.
 export const lightboxControls = (media) => {
-    getImagesSrc(media);
+    getMediasSrc(media);
     getMediaIndex();
 
     const previousMedia = () => {

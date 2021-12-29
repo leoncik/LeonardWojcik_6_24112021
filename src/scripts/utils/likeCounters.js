@@ -17,3 +17,5 @@ export const likeToggler = () => {
     }
 };
 /* eslint-enable */
+
+// TODO : make sum of likes and increment inside the function "likeToggler"
