@@ -1,6 +1,7 @@
 // TODO : check why strict equality for "if (iterator.nextElementSibling.classList == 'liked')" does not work.
 /* eslint-disable */
 // Toggle like number if user clicks on like icon
+// TODO : increment total of likes
 export const likeToggler = () => {
     const likeIcon = document.querySelectorAll('.like-icon');
     for (const iterator of likeIcon) {
@@ -18,4 +19,19 @@ export const likeToggler = () => {
 };
 /* eslint-enable */
 
-// TODO : make sum of likes and increment inside the function "likeToggler"
+// TODO : put the totalLike function inside factory ?
+export const findTotalLikes = (media) => {
+    let totalOfLikes = 0;
+
+    media.forEach((element) => {
+        totalOfLikes += element.likes;
+        console.log(totalOfLikes);
+
+        /*
+    ? is there performance differences between forEach and for...of ?
+    for (const iterator of media) {
+        totalOfLikes = totalOfLikes + iterator.likes;
+        console.log(totalOfLikes);
+    } */
+    });
+};

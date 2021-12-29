@@ -12,7 +12,7 @@ import { lightboxDisplay } from '../utils/lightboxDisplay';
 import { lightboxControls } from '../utils/lightboxControl';
 
 // Like toggler
-import { likeToggler } from '../utils/likeCounters';
+import { likeToggler, findTotalLikes } from '../utils/likeCounters';
 
 // Sort Medias
 import { sortMedias } from '../utils/sortMedias';
@@ -64,6 +64,7 @@ export default async function initPhotographer() {
     const medias = await getMedia(media);
     displayData(profiles);
     displayMedia(medias);
+    findTotalLikes(medias);
     modalDisplay();
     formSubmitValidation();
     lightboxDisplay();
