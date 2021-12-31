@@ -8,8 +8,7 @@ import { modalDisplay } from '../utils/contactFormDisplay';
 import { formSubmitValidation } from '../utils/contactFormValidation';
 
 // Lightbox scripts
-import { lightboxDisplay } from '../utils/lightboxDisplay';
-import { lightboxControls } from '../utils/lightboxControl';
+// import { lightboxControls } from '../utils/lightboxControl';
 
 // Sort Medias
 import { sortMedias } from '../utils/sortMedias';
@@ -66,6 +65,11 @@ async function displayTotalLikes(media) {
     totalLikesContainer.innerHTML = totalLikes;
 }
 
+// Enable lightbox
+async function enableLightbox(media) {
+    mediaFactory(media).lightboxDisplay();
+}
+
 // Initialize page (fetch data, then display It on the page and add behaviour to contact modal)
 export default async function initPhotographer() {
     const { photographers, media } = await fetchPhotographers();
@@ -76,8 +80,8 @@ export default async function initPhotographer() {
     displayTotalLikes(medias);
     modalDisplay();
     formSubmitValidation();
-    lightboxDisplay();
-    lightboxControls(medias);
+    enableLightbox(medias);
+    // lightboxControls(medias);
     enableLikeToggler(medias);
     // enableLikeToggler(profiles also works...);
     sortMedias(medias);

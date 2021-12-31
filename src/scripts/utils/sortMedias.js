@@ -7,8 +7,8 @@ import {
 } from '../utils/helpers.js';
 import { displayMedia } from '../pages/photographer.js';
 // import { likeToggler } from './likeCounters.js';
-import { lightboxDisplay } from './lightboxDisplay.js';
-import { lightboxControls } from './lightboxControl.js';
+// import { lightboxDisplay } from './lightboxDisplay.js';
+// import { lightboxControls } from './lightboxControl.js';
 
 export function sortMedias(media) {
     // Sort by popularity
@@ -20,8 +20,8 @@ export function sortMedias(media) {
         displayMedia(media);
         // TODO : needs refactoring. After displaying media, lightbox control and likes toggler needs to be reset
         // likeToggler();
-        lightboxDisplay();
-        lightboxControls(media);
+        // lightboxDisplay();
+        // lightboxControls(media);
         console.log('Sorted by popularity');
     };
 
@@ -35,8 +35,8 @@ export function sortMedias(media) {
         emptyGallery();
         displayMedia(media);
         // likeToggler();
-        lightboxDisplay();
-        lightboxControls(media);
+        // lightboxDisplay();
+        // lightboxControls(media);
         console.log('Sorted by date');
     };
 
@@ -62,8 +62,8 @@ export function sortMedias(media) {
         emptyGallery();
         displayMedia(media);
         // likeToggler();
-        lightboxDisplay();
-        lightboxControls(media);
+        // lightboxDisplay();
+        // lightboxControls(media);
         console.log('Sorted by title');
     };
 
