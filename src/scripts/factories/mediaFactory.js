@@ -1,11 +1,16 @@
 const params = new URL(document.location).searchParams;
 const urlId = params.get('id');
+let totalOfLikes = 0;
 
-export default function mediaFactory(data, profile) {
+export default function mediaFactory(data) {
     const { id, price, title, date, image, video, likes } = data;
 
     const imageSource = `/assets/images/${urlId}/${image}`;
     const videoSource = `/assets/images/${urlId}/${video}`;
+
+    // -----------------------------
+    // OBJECTS CREATION TEMPLATE
+    // ------------------------------
 
     function getPhotographerData() {
         const article = document.createElement('article');
@@ -62,5 +67,54 @@ export default function mediaFactory(data, profile) {
 
         return article;
     }
-    return { id, price, title, date, image, video, likes, getPhotographerData };
+
+    // -----------------------------
+    // FEATURES
+    // ------------------------------
+
+    const findTotalLikes = (media) => {
+        for (const iterator of media) {
+            totalOfLikes += iterator.likes;
+        }
+        return totalOfLikes;
+    };
+
+    // TODO : check why strict equality for "if (iterator.nextElementSibling.classList == 'liked')" does not work.
+    /* eslint-disable */
+    // Toggle like number if user clicks on like icon
+    const likeToggler = () => {
+        const likeIcon = document.querySelectorAll('.like-icon');
+        for (const iterator of likeIcon) {
+            iterator.addEventListener('click', () => {
+                iterator.nextElementSibling.classList.toggle('liked');
+                if (iterator.nextElementSibling.classList == 'liked') {
+                    iterator.nextElementSibling.textContent =
+                        parseInt(iterator.nextElementSibling.textContent) + 1;
+                    totalOfLikes += 1;
+                    document.querySelector('.total-likes').textContent =
+                        totalOfLikes;
+                } else {
+                    iterator.nextElementSibling.textContent =
+                        parseInt(iterator.nextElementSibling.textContent) - 1;
+                    totalOfLikes -= 1;
+                    document.querySelector('.total-likes').textContent =
+                        totalOfLikes;
+                }
+            });
+        }
+    };
+    /* eslint-enable */
+
+    return {
+        id,
+        price,
+        title,
+        date,
+        image,
+        video,
+        likes,
+        getPhotographerData,
+        likeToggler,
+        findTotalLikes,
+    };
 }

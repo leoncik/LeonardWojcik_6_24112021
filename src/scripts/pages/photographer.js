@@ -11,9 +11,6 @@ import { formSubmitValidation } from '../utils/contactFormValidation';
 import { lightboxDisplay } from '../utils/lightboxDisplay';
 import { lightboxControls } from '../utils/lightboxControl';
 
-// Like toggler
-import { likeToggler, findTotalLikes } from '../utils/likeCounters';
-
 // Sort Medias
 import { sortMedias } from '../utils/sortMedias';
 
@@ -57,6 +54,18 @@ export async function displayMedia(media) {
     });
 }
 
+// Enable like toggler
+async function enableLikeToggler(media) {
+    mediaFactory(media).likeToggler();
+}
+
+// Display total likes (is async necessary ?)
+async function displayTotalLikes(media) {
+    const totalLikesContainer = document.querySelector('.total-likes');
+    const totalLikes = mediaFactory(media).findTotalLikes(media);
+    totalLikesContainer.innerHTML = totalLikes;
+}
+
 // Initialize page (fetch data, then display It on the page and add behaviour to contact modal)
 export default async function initPhotographer() {
     const { photographers, media } = await fetchPhotographers();
@@ -64,11 +73,12 @@ export default async function initPhotographer() {
     const medias = await getMedia(media);
     displayData(profiles);
     displayMedia(medias);
-    findTotalLikes(medias);
+    displayTotalLikes(medias);
     modalDisplay();
     formSubmitValidation();
     lightboxDisplay();
     lightboxControls(medias);
-    likeToggler();
+    enableLikeToggler(medias);
+    // enableLikeToggler(profiles also works...);
     sortMedias(medias);
 }
