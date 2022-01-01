@@ -174,7 +174,7 @@ export default function mediaFactory(data) {
         for (let i = 0; i < galleryItems.length; i++) {
             galleryItems[i].addEventListener('click', () => {
                 currentIndex = i;
-                console.log(currentIndex);
+                console.log(`Index au clic : ${currentIndex}`);
             });
         }
     };
@@ -228,7 +228,7 @@ export default function mediaFactory(data) {
         getMediasTitle(media);
 
         const previousMedia = () => {
-            console.log(currentIndex);
+            console.log(`Index précédent : ${currentIndex}`);
             emptyMediaContainer();
             // If at the beginning of the array, go to the end of the array
             if (currentIndex === 0) {
@@ -245,7 +245,7 @@ export default function mediaFactory(data) {
         };
 
         const nextMedia = () => {
-            console.log(currentIndex);
+            console.log(`Index suivant : ${currentIndex}`);
             emptyMediaContainer();
             // If at the end of the array, go to the beginning of the array
             if (currentIndex === mediasSrc.length - 1) {
@@ -278,5 +278,6 @@ export default function mediaFactory(data) {
         findTotalLikes,
         lightboxDisplay,
         lightboxControls,
+        getMediaIndex,
     };
 }

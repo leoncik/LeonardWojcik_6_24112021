@@ -7,9 +7,6 @@ import { fetchPhotographers } from '../api/api.js';
 import { modalDisplay } from '../utils/contactFormDisplay';
 import { formSubmitValidation } from '../utils/contactFormValidation';
 
-// Lightbox scripts
-// import { lightboxControls } from '../utils/lightboxControl';
-
 // Sort Medias
 import { sortMedias } from '../utils/sortMedias';
 
@@ -82,8 +79,7 @@ export default async function initPhotographer() {
     modalDisplay();
     formSubmitValidation();
     enableLightbox(medias);
-    // lightboxControls(medias);
     enableLikeToggler(medias);
-    // enableLikeToggler(profiles also works...);
+    // enableLikeToggler(profiles); also works...
     sortMedias(medias);
 }

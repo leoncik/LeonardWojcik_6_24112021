@@ -1,3 +1,9 @@
+// ! Navigation problem after sorting. A link (currentIndex variable ?) should be made between getMediaIndex() and lightboxControls().
+
+// ! Note that "lightboxControl" function is not reset after sorting (unlike the like toggler and lighbox display).
+// ! "Killing" "lightboxControl" and reset It after sorting could fix the navigation problem.
+
+// ! Other solution : instead of using JSON medias, search medias inside DOM ?
 // TODO : try to refactor using arguments. E.g : genericSort(type){...}
 import {
     popularityButton,
@@ -6,9 +12,7 @@ import {
     emptyGallery,
 } from '../utils/helpers.js';
 import { displayMedia } from '../pages/photographer.js';
-// import { likeToggler } from './likeCounters.js';
-// import { lightboxDisplay } from './lightboxDisplay.js';
-// import { lightboxControls } from './lightboxControl.js';
+import mediaFactory from '../factories/mediaFactory.js';
 
 export function sortMedias(media) {
     // Sort by popularity
@@ -19,9 +23,9 @@ export function sortMedias(media) {
         emptyGallery();
         displayMedia(media);
         // TODO : needs refactoring. After displaying media, lightbox control and likes toggler needs to be reset
-        // likeToggler();
-        // lightboxDisplay();
-        // lightboxControls(media);
+        mediaFactory(media).likeToggler();
+        mediaFactory(media).getMediaIndex();
+        mediaFactory(media).lightboxDisplay();
         console.log('Sorted by popularity');
     };
 
@@ -34,9 +38,9 @@ export function sortMedias(media) {
         });
         emptyGallery();
         displayMedia(media);
-        // likeToggler();
-        // lightboxDisplay();
-        // lightboxControls(media);
+        mediaFactory(media).likeToggler();
+        mediaFactory(media).getMediaIndex();
+        mediaFactory(media).lightboxDisplay();
         console.log('Sorted by date');
     };
 
@@ -61,9 +65,9 @@ export function sortMedias(media) {
         });
         emptyGallery();
         displayMedia(media);
-        // likeToggler();
-        // lightboxDisplay();
-        // lightboxControls(media);
+        mediaFactory(media).likeToggler();
+        mediaFactory(media).getMediaIndex();
+        mediaFactory(media).lightboxDisplay();
         console.log('Sorted by title');
     };
 
