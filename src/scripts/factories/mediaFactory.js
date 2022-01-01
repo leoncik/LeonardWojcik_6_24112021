@@ -1,10 +1,14 @@
-import { lightbox, emptyMediaContainer, 
-    // previousButton, nextButton, getParam 
+import {
+    lightbox,
+    emptyMediaContainer,
+    previousButton,
+    nextButton,
 } from '../utils/helpers.js';
 
 const params = new URL(document.location).searchParams;
 const urlId = params.get('id');
 let totalOfLikes = 0;
+let mediasSrc = [];
 
 export default function mediaFactory(data) {
     const { id, price, title, date, image, video, likes } = data;
@@ -119,24 +123,24 @@ export default function mediaFactory(data) {
         function displayLightbox() {
             lightbox.style.display = 'block';
         }
-    
+
         // Close the lightbox
         function closeLightbox() {
             lightbox.style.display = 'none';
         }
-    
+
         const closeButton = document.querySelector('.close');
         closeButton.addEventListener('click', closeLightbox);
-    
+
         const galleryItems = document.querySelectorAll('.media-content');
-    
+
         // Add tag and src of clicked media
         const displayMedia = (src, type) => {
             const currentTag = document.createElement(type);
             currentTag.src = src;
             document.querySelector('.current-media').appendChild(currentTag);
         };
-    
+
         // Display lighbox and clicked media
         for (const iterator of galleryItems) {
             const mediaSrc = iterator.querySelector('.media').src;
@@ -153,21 +157,6 @@ export default function mediaFactory(data) {
     }
 
     // LIGHTBOX CONTROLS
-    /*
-    // Get src of all medias for the current photographer
-    let mediasSrc = [];
-    const urlId = parseInt(getParam('id'));
-    const getMediasSrc = (media) => {
-        return media
-            .filter((element) => element.photographerId === urlId)
-            .map((media) => {
-                mediasSrc = [
-                    ...mediasSrc,
-                    `/assets/images/${urlId}/${media.image || media.video}`,
-                ];
-                return mediasSrc;
-            });
-    };
 
     // Get the index of the clicked media
     let currentIndex;
@@ -197,6 +186,17 @@ export default function mediaFactory(data) {
     const setMediaSrc = () => {
         const currentMedia = document.querySelector('.current-media > *');
         currentMedia.src = mediasSrc[currentIndex];
+    };
+
+    // Get src of all medias
+    const getMediasSrc = (media) => {
+        return media.map((media) => {
+            mediasSrc = [
+                ...mediasSrc,
+                `/assets/images/${urlId}/${media.image || media.video}`,
+            ];
+            return mediasSrc;
+        });
     };
 
     // Events when user clicks on "next" and "previous" buttons of the lightbox.
@@ -236,8 +236,7 @@ export default function mediaFactory(data) {
 
         previousButton.addEventListener('click', previousMedia);
         nextButton.addEventListener('click', nextMedia);
-    }; */
-
+    };
 
     return {
         id,
@@ -251,5 +250,6 @@ export default function mediaFactory(data) {
         likeToggler,
         findTotalLikes,
         lightboxDisplay,
+        lightboxControls,
     };
 }

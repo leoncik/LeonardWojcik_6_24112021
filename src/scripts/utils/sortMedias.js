@@ -1,4 +1,4 @@
-// TODO : try to refactor using orgiments. E.g : genericSort(type){...}
+// TODO : try to refactor using arguments. E.g : genericSort(type){...}
 import {
     popularityButton,
     dateButton,
