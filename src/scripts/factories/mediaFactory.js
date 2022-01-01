@@ -9,6 +9,7 @@ const params = new URL(document.location).searchParams;
 const urlId = params.get('id');
 let totalOfLikes = 0;
 let mediasSrc = [];
+let mediasTitle = [];
 
 export default function mediaFactory(data) {
     const { id, price, title, date, image, video, likes } = data;
@@ -132,25 +133,32 @@ export default function mediaFactory(data) {
         const closeButton = document.querySelector('.close');
         closeButton.addEventListener('click', closeLightbox);
 
-        const galleryItems = document.querySelectorAll('.media-content');
+        const galleryItems = document.querySelectorAll(
+            '.photographer-medias article'
+        );
 
         // Add tag and src of clicked media
-        const displayMedia = (src, type) => {
+        const displayMedia = (src, title, type) => {
             const currentTag = document.createElement(type);
             currentTag.src = src;
             document.querySelector('.current-media').appendChild(currentTag);
+            document.querySelector('.current-image-title span').innerHTML =
+                title;
         };
 
         // Display lighbox and clicked media
         for (const iterator of galleryItems) {
             const mediaSrc = iterator.querySelector('.media').src;
-            iterator.addEventListener('click', () => {
+            const title = iterator.querySelector(
+                '.media-description h3'
+            ).innerText;
+            iterator.firstChild.addEventListener('click', () => {
                 displayLightbox();
                 emptyMediaContainer();
                 if (mediaSrc.split('.').pop() === 'jpg') {
-                    return displayMedia(mediaSrc, 'img');
+                    return displayMedia(mediaSrc, title, 'img');
                 } else if (mediaSrc.split('.').pop() === 'mp4') {
-                    return displayMedia(mediaSrc, 'video');
+                    return displayMedia(mediaSrc, title, 'video');
                 }
             });
         }
@@ -199,10 +207,25 @@ export default function mediaFactory(data) {
         });
     };
 
+    // Get title of all medias
+    const getMediasTitle = (media) => {
+        return media.map((media) => {
+            mediasTitle = [...mediasTitle, `${media.title}`];
+            return mediasTitle;
+        });
+    };
+
+    // Set title to current media
+    const setTitle = () => {
+        const currentTitle = document.querySelector('.current-image-title > *');
+        currentTitle.innerText = mediasTitle[currentIndex];
+    };
+
     // Events when user clicks on "next" and "previous" buttons of the lightbox.
     const lightboxControls = (media) => {
         getMediasSrc(media);
         getMediaIndex();
+        getMediasTitle(media);
 
         const previousMedia = () => {
             console.log(currentIndex);
@@ -212,10 +235,12 @@ export default function mediaFactory(data) {
                 currentIndex = mediasSrc.length - 1;
                 setMediaTag();
                 setMediaSrc();
+                setTitle();
             } else {
                 currentIndex--;
                 setMediaTag();
                 setMediaSrc();
+                setTitle();
             }
         };
 
@@ -227,10 +252,12 @@ export default function mediaFactory(data) {
                 currentIndex = 0;
                 setMediaTag();
                 setMediaSrc();
+                setTitle();
             } else {
                 currentIndex++;
                 setMediaTag();
                 setMediaSrc();
+                setTitle();
             }
         };
 
