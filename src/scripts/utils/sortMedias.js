@@ -3,7 +3,7 @@
 // ! Note that "lightboxControl" function is not reset after sorting (unlike the like toggler and lighbox display).
 // ! "Killing" "lightboxControl" and reset It after sorting could fix the navigation problem.
 
-// ! Other solution : instead of using JSON medias, search medias inside DOM ?
+// ! Other solution : instead of using JSON medias, search medias inside DOM ? Tested with lightboxControlsNEW().
 // TODO : try to refactor using arguments. E.g : genericSort(type){...}
 import {
     popularityButton,
@@ -24,8 +24,8 @@ export function sortMedias(media) {
         displayMedia(media);
         // TODO : needs refactoring. After displaying media, lightbox control and likes toggler needs to be reset
         mediaFactory(media).likeToggler();
-        mediaFactory(media).getMediaIndex();
         mediaFactory(media).lightboxDisplay();
+        mediaFactory(media).lightboxControlsNEW();
         console.log('Sorted by popularity');
     };
 
@@ -39,8 +39,8 @@ export function sortMedias(media) {
         emptyGallery();
         displayMedia(media);
         mediaFactory(media).likeToggler();
-        mediaFactory(media).getMediaIndex();
         mediaFactory(media).lightboxDisplay();
+        mediaFactory(media).lightboxControlsNEW();
         console.log('Sorted by date');
     };
 
@@ -66,8 +66,8 @@ export function sortMedias(media) {
         emptyGallery();
         displayMedia(media);
         mediaFactory(media).likeToggler();
-        mediaFactory(media).getMediaIndex();
         mediaFactory(media).lightboxDisplay();
+        mediaFactory(media).lightboxControlsNEW();
         console.log('Sorted by title');
     };
 

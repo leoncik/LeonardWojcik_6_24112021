@@ -65,7 +65,8 @@ async function displayTotalLikes(media) {
 // Enable lightbox
 async function enableLightbox(media) {
     mediaFactory(media).lightboxDisplay();
-    mediaFactory(media).lightboxControls(media);
+    // mediaFactory(media).lightboxControls(media);
+    mediaFactory(media).lightboxControlsNEW();
 }
 
 // Initialize page (fetch data, then display It on the page and add behaviour to contact modal)

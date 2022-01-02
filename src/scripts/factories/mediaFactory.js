@@ -221,11 +221,77 @@ export default function mediaFactory(data) {
         currentTitle.innerText = mediasTitle[currentIndex];
     };
 
+    // ! LIGHTBOX CONTROL OLD VERSION
     // Events when user clicks on "next" and "previous" buttons of the lightbox.
     const lightboxControls = (media) => {
         getMediasSrc(media);
         getMediaIndex();
         getMediasTitle(media);
+
+        const previousMedia = () => {
+            console.log(`Index précédent : ${currentIndex}`);
+            emptyMediaContainer();
+            // If at the beginning of the array, go to the end of the array
+            if (currentIndex === 0) {
+                currentIndex = mediasSrc.length - 1;
+                setMediaTag();
+                setMediaSrc();
+                setTitle();
+            } else {
+                currentIndex--;
+                setMediaTag();
+                setMediaSrc();
+                setTitle();
+            }
+        };
+
+        const nextMedia = () => {
+            console.log(`Index suivant : ${currentIndex}`);
+            emptyMediaContainer();
+            // If at the end of the array, go to the beginning of the array
+            if (currentIndex === mediasSrc.length - 1) {
+                currentIndex = 0;
+                setMediaTag();
+                setMediaSrc();
+                setTitle();
+            } else {
+                currentIndex++;
+                setMediaTag();
+                setMediaSrc();
+                setTitle();
+            }
+        };
+
+        previousButton.addEventListener('click', previousMedia);
+        nextButton.addEventListener('click', nextMedia);
+    };
+
+    // ! LIGHTBOX CONTROL NEW VERSION
+    // Events when user clicks on "next" and "previous" buttons of the lightbox.
+    const getMediasSrcNEW = () => {
+        const medias = document.querySelectorAll('.media');
+        for (const iterator of medias) {
+            mediasSrc.push(iterator.src);
+        }
+        return mediasSrc;
+    };
+
+    const getMediasTitleNEW = () => {
+        const titles = document.querySelectorAll('.media-description h3');
+        for (const iterator of titles) {
+            mediasTitle.push(iterator.innerText);
+        }
+        return mediasTitle;
+    };
+    const lightboxControlsNEW = () => {
+        // Reset previous arrays
+        mediasSrc = [];
+        mediasTitle = [];
+        currentIndex = 0;
+
+        getMediasSrcNEW();
+        getMediaIndex();
+        getMediasTitleNEW();
 
         const previousMedia = () => {
             console.log(`Index précédent : ${currentIndex}`);
@@ -279,5 +345,6 @@ export default function mediaFactory(data) {
         lightboxDisplay,
         lightboxControls,
         getMediaIndex,
+        lightboxControlsNEW,
     };
 }
