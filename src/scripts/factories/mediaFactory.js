@@ -283,6 +283,17 @@ export default function mediaFactory(data) {
         }
         return mediasTitle;
     };
+
+    const setLightboxMedias = () => {
+        mediasSrc = [];
+        mediasTitle = [];
+        currentIndex = 0;
+
+        getMediasSrcNEW();
+        getMediaIndex();
+        getMediasTitleNEW();
+    };
+
     const lightboxControlsNEW = () => {
         // Reset previous arrays
         mediasSrc = [];
@@ -294,7 +305,7 @@ export default function mediaFactory(data) {
         getMediasTitleNEW();
 
         const previousMedia = () => {
-            console.log(`Index précédent : ${currentIndex}`);
+            console.log(`Index avant clic sur précédent : ${currentIndex}`);
             emptyMediaContainer();
             // If at the beginning of the array, go to the end of the array
             if (currentIndex === 0) {
@@ -302,16 +313,18 @@ export default function mediaFactory(data) {
                 setMediaTag();
                 setMediaSrc();
                 setTitle();
+                console.log(`Index après clic sur précédent : ${currentIndex}`);
             } else {
                 currentIndex--;
                 setMediaTag();
                 setMediaSrc();
                 setTitle();
+                console.log(`Index après clic sur précédent : ${currentIndex}`);
             }
         };
 
         const nextMedia = () => {
-            console.log(`Index suivant : ${currentIndex}`);
+            console.log(`Index avant clic sur suivant : ${currentIndex}`);
             emptyMediaContainer();
             // If at the end of the array, go to the beginning of the array
             if (currentIndex === mediasSrc.length - 1) {
@@ -319,11 +332,13 @@ export default function mediaFactory(data) {
                 setMediaTag();
                 setMediaSrc();
                 setTitle();
+                console.log(`Index après clic sur suivant : ${currentIndex}`);
             } else {
                 currentIndex++;
                 setMediaTag();
                 setMediaSrc();
                 setTitle();
+                console.log(`Index après clic sur suivant : ${currentIndex}`);
             }
         };
 
@@ -346,5 +361,6 @@ export default function mediaFactory(data) {
         lightboxControls,
         getMediaIndex,
         lightboxControlsNEW,
+        setLightboxMedias,
     };
 }
