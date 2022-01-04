@@ -17,7 +17,7 @@ let totalOfLikes = 0;
 let mediasSrc = [];
 let mediasTitle = [];
 
-export default function mediaFactory(data) {
+export default function mediaFactory(data, currentIndex) {
     const { id, price, title, date, image, video, likes } = data;
 
     const imageSource = `/assets/images/${urlId}/${image}`;
@@ -173,7 +173,6 @@ export default function mediaFactory(data) {
     // LIGHTBOX CONTROLS
 
     // Get the index of the clicked media
-    let currentIndex;
 
     // ! OLD VERSION
     const getMediaIndex = () => {
@@ -181,13 +180,15 @@ export default function mediaFactory(data) {
 
         for (let i = 0; i < galleryItems.length; i++) {
             galleryItems[i].addEventListener('click', () => {
-                currentIndex = i;
+                // setting currentIndex has actually no effect.
+                // currentIndex = i;
                 console.log(`Index au clic : ${currentIndex}`);
             });
         }
     };
 
     // ! NEW VERSION
+    // ! Not working since addeventlistener only works on DOM elements...
     const getMediaIndexNEW = (media) => {
         for (let i = 0; i < media.length; i++) {
             media[i].addEventListener('click', () => {
@@ -368,7 +369,6 @@ export default function mediaFactory(data) {
 
     // TODO : try to refactor using arguments. E.g : genericSort(type){...}
     const sortMedias = (media) => {
-        console.log(media);
         // Sort by popularity
         const sortByPopularity = () => {
             media.sort((a, b) => {

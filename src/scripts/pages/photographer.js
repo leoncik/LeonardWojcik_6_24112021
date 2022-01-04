@@ -62,8 +62,8 @@ async function displayTotalLikes(media) {
 // Enable lightbox
 async function enableLightbox(media) {
     mediaFactory(media).lightboxDisplay();
-    // mediaFactory(media).lightboxControls(media);
-    mediaFactory(media).lightboxControlsNEW();
+    mediaFactory(media).lightboxControls(media);
+    // mediaFactory(media).lightboxControlsNEW();
 }
 
 async function enableSortMedias(media) {
