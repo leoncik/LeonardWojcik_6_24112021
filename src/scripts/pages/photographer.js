@@ -7,9 +7,6 @@ import { fetchPhotographers } from '../api/api.js';
 import { modalDisplay } from '../utils/contactFormDisplay';
 import { formSubmitValidation } from '../utils/contactFormValidation';
 
-// Sort Medias
-import { sortMedias } from '../utils/sortMedias';
-
 const params = new URL(document.location).searchParams;
 const urlId = parseInt(params.get('id'));
 
@@ -69,6 +66,10 @@ async function enableLightbox(media) {
     mediaFactory(media).lightboxControlsNEW();
 }
 
+async function enableSortMedias(media) {
+    mediaFactory(media).sortMedias(media);
+}
+
 // Initialize page (fetch data, then display It on the page and add behaviour to contact modal)
 export default async function initPhotographer() {
     const { photographers, media } = await fetchPhotographers();
@@ -82,5 +83,5 @@ export default async function initPhotographer() {
     enableLightbox(medias);
     enableLikeToggler(medias);
     // enableLikeToggler(profiles); also works...
-    sortMedias(medias);
+    enableSortMedias(medias);
 }
