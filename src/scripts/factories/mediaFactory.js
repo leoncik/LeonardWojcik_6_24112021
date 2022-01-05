@@ -17,11 +17,13 @@ let totalOfLikes = 0;
 let mediasSrc = [];
 let mediasTitle = [];
 
-export default function mediaFactory(data, currentIndex) {
+export default function mediaFactory(data) {
     const { id, price, title, date, image, video, likes } = data;
 
     const imageSource = `/assets/images/${urlId}/${image}`;
     const videoSource = `/assets/images/${urlId}/${video}`;
+
+    let currentIndex;
 
     // -----------------------------
     // OBJECTS CREATION TEMPLATE
@@ -180,8 +182,7 @@ export default function mediaFactory(data, currentIndex) {
 
         for (let i = 0; i < galleryItems.length; i++) {
             galleryItems[i].addEventListener('click', () => {
-                // setting currentIndex has actually no effect.
-                // currentIndex = i;
+                currentIndex = data.findIndex((d) => d.image === data[i].image);
                 console.log(`Index au clic : ${currentIndex}`);
             });
         }
@@ -252,7 +253,7 @@ export default function mediaFactory(data, currentIndex) {
             emptyMediaContainer();
             // If at the beginning of the array, go to the end of the array
             if (currentIndex === 0) {
-                currentIndex = mediasSrc.length - 1;
+                currentIndex = data.length - 1;
                 setMediaTag();
                 setMediaSrc();
                 setTitle();
@@ -267,8 +268,10 @@ export default function mediaFactory(data, currentIndex) {
         const nextMedia = () => {
             console.log(`Index suivant : ${currentIndex}`);
             emptyMediaContainer();
+            // Calling getMediaIndex here duplicate functions but makes navigation almost functionnal.
+            // getMediaIndex();
             // If at the end of the array, go to the beginning of the array
-            if (currentIndex === mediasSrc.length - 1) {
+            if (currentIndex === data.length - 1) {
                 currentIndex = 0;
                 setMediaTag();
                 setMediaSrc();
@@ -376,11 +379,12 @@ export default function mediaFactory(data, currentIndex) {
             });
             emptyGallery();
             displayMedia(media);
+            // getMediaIndex has no effect...
+            // getMediaIndex();
             // TODO : needs refactoring. After displaying media, lightbox control and likes toggler needs to be reset
             likeToggler();
             lightboxDisplay();
             setLightboxMedias();
-            // lightboxControlsNEW();
             console.log('Sorted by popularity');
         };
 
@@ -393,10 +397,11 @@ export default function mediaFactory(data, currentIndex) {
             });
             emptyGallery();
             displayMedia(media);
+            // getMediaIndex has no effect...
+            // getMediaIndex();
             likeToggler();
             lightboxDisplay();
             setLightboxMedias();
-            // lightboxControlsNEW();
             console.log('Sorted by date');
         };
 
@@ -416,10 +421,11 @@ export default function mediaFactory(data, currentIndex) {
             });
             emptyGallery();
             displayMedia(media);
+            // getMediaIndex has no effect
+            // getMediaIndex();
             likeToggler();
             lightboxDisplay();
             setLightboxMedias();
-            // lightboxControlsNEW();
             console.log('Sorted by title');
         };
 
