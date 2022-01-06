@@ -30,6 +30,9 @@ export default function mediaFactory(data) {
 
     function getPhotographerData() {
         const article = document.createElement('article');
+        // Accessibility settings
+        article.setAttribute('tabindex', '0');
+        article.setAttribute('role', 'button');
 
         // MEDIA CONTENT
         const mediaContent = document.createElement('div');
@@ -153,7 +156,7 @@ export default function mediaFactory(data) {
                 title;
         };
 
-        // Display lighbox and clicked media
+        // Display lightbox and clicked media
         for (const iterator of galleryItems) {
             const mediaSrc = iterator.querySelector('.media').src;
             const title = iterator.querySelector(
@@ -267,7 +270,7 @@ export default function mediaFactory(data) {
         const nextMedia = () => {
             console.log(`Index suivant : ${currentIndex}`);
             emptyMediaContainer();
-            // Calling getMediaIndex here duplicate functions but makes navigation almost functionnal.
+            // Calling getMediaIndex here duplicate functions but makes navigation almost functional.
             // getMediaIndex();
             // If at the end of the array, go to the beginning of the array
             if (currentIndex === data.length - 1) {

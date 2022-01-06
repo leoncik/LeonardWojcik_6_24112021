@@ -9,6 +9,12 @@ export function modalDisplay() {
     function displayModal() {
         modal.style.display = 'block';
         contactForm.style.display = 'block';
+        // Accessibility settings
+        document.getElementById('main').setAttribute('aria-hidden', 'true');
+        document
+            .getElementById('contact_modal')
+            .setAttribute('aria-hidden', 'false');
+        closeButton.focus();
 
         // Remove validation message.
         validationMessage.textContent = ' ';
@@ -20,10 +26,16 @@ export function modalDisplay() {
 
     function closeModal() {
         modal.style.display = 'none';
+        // Accessibility settings
+        document.getElementById('main').setAttribute('aria-hidden', 'false');
+        document
+            .getElementById('contact_modal')
+            .setAttribute('aria-hidden', 'true');
+        document.querySelector('a').focus();
     }
 
-    const closeButton = document.getElementsByClassName('close-button');
-    closeButton[0].addEventListener('click', closeModal);
+    const closeButton = document.querySelector('.close-button');
+    closeButton.addEventListener('click', closeModal);
 
     const contactButton = document.getElementsByClassName('contact_button');
     contactButton[0].addEventListener('click', displayModal);

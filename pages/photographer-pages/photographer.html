@@ -23,7 +23,7 @@
             <a href="/index.html"><img src="/assets/images/logo.png" class="logo" /></a> 
         </header>
 
-        <main id="main">
+        <main id="main" aria-hidden="false">
             <div class="photograph-header">
                 <div class="photographer-info">
 
@@ -58,14 +58,16 @@
 
         <!-- CONTACT MODAL -->
         
-        <div id="contact_modal">
+        <div id="contact_modal" aria-hidden="true" role="dialog">
             <div class="modal">
                 <header class="contact-header">
                     <h2>Contactez-moi</h2>
-                    <img class="close-button"
+                    <button class="close-button">
+                        <img
                         src="/assets/icons/close.svg"
                         
                     />
+                    </button>
                 </header>
                 <form id="contact-form" name="contact" action="photographer.html" method="get">
                     <label class="first-name inputform-containter" for="first-name">
