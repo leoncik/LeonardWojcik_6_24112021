@@ -16,14 +16,13 @@ const urlId = params.get('id');
 let totalOfLikes = 0;
 let mediasSrc = [];
 let mediasTitle = [];
+let currentIndex;
 
 export default function mediaFactory(data) {
     const { id, price, title, date, image, video, likes } = data;
 
     const imageSource = `/assets/images/${urlId}/${image}`;
     const videoSource = `/assets/images/${urlId}/${video}`;
-
-    let currentIndex;
 
     // -----------------------------
     // OBJECTS CREATION TEMPLATE
