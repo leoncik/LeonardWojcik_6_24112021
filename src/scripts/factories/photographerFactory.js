@@ -17,6 +17,7 @@ export default function photographerFactory(data) {
         // Profile picture
         const img = document.createElement('img');
         img.setAttribute('src', picture);
+        img.setAttribute('alt', `Photo de profil de ${name}`);
         photographerLink.appendChild(img);
 
         // Photographer name

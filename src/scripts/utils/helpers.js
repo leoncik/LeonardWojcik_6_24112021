@@ -45,6 +45,9 @@ const emptyGallery = () => {
     document.querySelector('.photographer-medias').innerHTML = ' ';
 };
 
+// TODO : Empty gallery and mediaContainer could be refactored with something more generic like this :
+// const emptyHtmlElt = (elt) => document.querySelector(elt).innerHTML = ' ';
+
 export {
     getParam,
     mailformat,

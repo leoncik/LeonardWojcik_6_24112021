@@ -19,7 +19,7 @@ let mediasTitle = [];
 let currentIndex;
 
 export default function mediaFactory(data) {
-    const { id, price, title, date, image, video, likes } = data;
+    const { id, price, title, date, image, video, likes, altText } = data;
 
     const imageSource = `/assets/images/${urlId}/${image}`;
     const videoSource = `/assets/images/${urlId}/${video}`;
@@ -39,21 +39,33 @@ export default function mediaFactory(data) {
         mediaContent.classList.add('media-content');
         article.appendChild(mediaContent);
 
+        /* 
+        TODO : refactor media creation. This should replace all the section starting with "// Image / video"
+        const createMediaDom = (type) => {
+            const media = document.createElement(type);
+            media.setAttribute("src", imageSource);
+            media.classList.add("media");
+            mediaContent.appendChild(media);
+        }
+
+        createMediaDom(data.image ? 'img' : 'video');
+        */
+
         // Image / video
         if (data.image) {
             // Profile picture
             const mediaPicture = document.createElement('img');
             mediaPicture.setAttribute('src', imageSource);
+            mediaPicture.setAttribute('alt', altText);
             mediaPicture.classList.add('media');
             mediaContent.appendChild(mediaPicture);
         } else if (data.video) {
             const mediaVideo = document.createElement('video');
             mediaVideo.setAttribute('src', videoSource);
+            mediaVideo.setAttribute('alt', altText);
             // mediaVideo.setAttribute('controls', '');
             mediaVideo.classList.add('media');
             mediaContent.appendChild(mediaVideo);
-        } else {
-            console.log('format non reconnu');
         }
 
         // MEDIA DESCRIPTION
@@ -285,6 +297,7 @@ export default function mediaFactory(data) {
     // TODO : try to refactor using arguments. E.g : genericSort(type){...}
     const sortMedias = (media) => {
         // Sort by popularity
+        // TODO : sort by placing the more popular medias first.
         const sortByPopularity = () => {
             media.sort((a, b) => {
                 return a.likes - b.likes;
@@ -348,6 +361,7 @@ export default function mediaFactory(data) {
         image,
         video,
         likes,
+        altText,
         getPhotographerData,
         likeToggler,
         findTotalLikes,
