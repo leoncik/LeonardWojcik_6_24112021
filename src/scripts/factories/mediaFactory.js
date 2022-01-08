@@ -101,15 +101,13 @@ export default function mediaFactory(data) {
         return totalOfLikes;
     };
 
-    // TODO : check why strict equality for "if (iterator.nextElementSibling.classList == 'liked')" does not work.
-    /* eslint-disable */
     // Toggle like number if user clicks on like icon
     const likeToggler = () => {
         const likeIcon = document.querySelectorAll('.like-icon');
         for (const iterator of likeIcon) {
             iterator.addEventListener('click', () => {
                 iterator.nextElementSibling.classList.toggle('liked');
-                if (iterator.nextElementSibling.classList == 'liked') {
+                if (String(iterator.nextElementSibling.classList) === 'liked') {
                     iterator.nextElementSibling.textContent =
                         parseInt(iterator.nextElementSibling.textContent) + 1;
                     totalOfLikes += 1;
@@ -125,7 +123,6 @@ export default function mediaFactory(data) {
             });
         }
     };
-    /* eslint-enable */
 
     // LIGHTBOX FEATURES
 
@@ -177,26 +174,12 @@ export default function mediaFactory(data) {
     // LIGHTBOX CONTROLS
 
     // Get the index of the clicked media
-
-    // ! OLD VERSION
     const getMediaIndex = () => {
         const galleryItems = document.querySelectorAll('.media-content');
 
         for (let i = 0; i < galleryItems.length; i++) {
             galleryItems[i].addEventListener('click', () => {
                 currentIndex = data.findIndex((d) => d.image === data[i].image);
-                console.log(`Index au clic : ${currentIndex}`);
-            });
-        }
-    };
-
-    // ! NEW VERSION
-    // ! Not working since addeventlistener only works on DOM elements...
-    const getMediaIndexNEW = (media) => {
-        for (let i = 0; i < media.length; i++) {
-            media[i].addEventListener('click', () => {
-                currentIndex = i;
-                console.log(`Index au clic : ${currentIndex}`);
             });
         }
     };
@@ -243,7 +226,8 @@ export default function mediaFactory(data) {
         currentTitle.innerText = mediasTitle[currentIndex];
     };
 
-    // ! LIGHTBOX CONTROL OLD VERSION
+    // LIGHTBOX CONTROL
+
     // Events when user clicks on "next" and "previous" buttons of the lightbox.
     const lightboxControls = (media) => {
         getMediasSrc(media);
@@ -251,7 +235,6 @@ export default function mediaFactory(data) {
         getMediasTitle(media);
 
         const previousMedia = () => {
-            console.log(`Index précédent : ${currentIndex}`);
             emptyMediaContainer();
             // If at the beginning of the array, go to the end of the array
             if (currentIndex === 0) {
@@ -268,10 +251,7 @@ export default function mediaFactory(data) {
         };
 
         const nextMedia = () => {
-            console.log(`Index suivant : ${currentIndex}`);
             emptyMediaContainer();
-            // Calling getMediaIndex here duplicate functions but makes navigation almost functional.
-            // getMediaIndex();
             // If at the end of the array, go to the beginning of the array
             if (currentIndex === data.length - 1) {
                 currentIndex = 0;
@@ -290,84 +270,14 @@ export default function mediaFactory(data) {
         nextButton.addEventListener('click', nextMedia);
     };
 
-    // ! LIGHTBOX CONTROL NEW VERSION
-    // Events when user clicks on "next" and "previous" buttons of the lightbox.
-    const getMediasSrcNEW = () => {
-        const medias = document.querySelectorAll('.media');
-        for (const iterator of medias) {
-            mediasSrc.push(iterator.src);
-        }
-        return mediasSrc;
-    };
-
-    const getMediasTitleNEW = () => {
-        const titles = document.querySelectorAll('.media-description h3');
-        for (const iterator of titles) {
-            mediasTitle.push(iterator.innerText);
-        }
-        return mediasTitle;
-    };
-
     const setLightboxMedias = () => {
         mediasSrc = [];
         mediasTitle = [];
         currentIndex = 0;
 
-        getMediasSrcNEW();
+        getMediasSrc(data);
         getMediaIndex();
-        getMediasTitleNEW();
-    };
-
-    const lightboxControlsNEW = () => {
-        // Reset previous arrays
-        mediasSrc = [];
-        mediasTitle = [];
-        currentIndex = 0;
-
-        getMediasSrcNEW();
-        getMediaIndex();
-        getMediasTitleNEW();
-
-        const previousMedia = () => {
-            console.log(`Index avant clic sur précédent : ${currentIndex}`);
-            emptyMediaContainer();
-            // If at the beginning of the array, go to the end of the array
-            if (currentIndex === 0) {
-                currentIndex = mediasSrc.length - 1;
-                setMediaTag();
-                setMediaSrc();
-                setTitle();
-                console.log(`Index après clic sur précédent : ${currentIndex}`);
-            } else {
-                currentIndex--;
-                setMediaTag();
-                setMediaSrc();
-                setTitle();
-                console.log(`Index après clic sur précédent : ${currentIndex}`);
-            }
-        };
-
-        const nextMedia = () => {
-            console.log(`Index avant clic sur suivant : ${currentIndex}`);
-            emptyMediaContainer();
-            // If at the end of the array, go to the beginning of the array
-            if (currentIndex === mediasSrc.length - 1) {
-                currentIndex = 0;
-                setMediaTag();
-                setMediaSrc();
-                setTitle();
-                console.log(`Index après clic sur suivant : ${currentIndex}`);
-            } else {
-                currentIndex++;
-                setMediaTag();
-                setMediaSrc();
-                setTitle();
-                console.log(`Index après clic sur suivant : ${currentIndex}`);
-            }
-        };
-
-        previousButton.addEventListener('click', previousMedia);
-        nextButton.addEventListener('click', nextMedia);
+        getMediasTitle(data);
     };
 
     // SORT MEDIAS
@@ -381,8 +291,6 @@ export default function mediaFactory(data) {
             });
             emptyGallery();
             displayMedia(media);
-            // getMediaIndex has no effect...
-            // getMediaIndex();
             // TODO : needs refactoring. After displaying media, lightbox control and likes toggler needs to be reset
             likeToggler();
             lightboxDisplay();
@@ -399,8 +307,6 @@ export default function mediaFactory(data) {
             });
             emptyGallery();
             displayMedia(media);
-            // getMediaIndex has no effect...
-            // getMediaIndex();
             likeToggler();
             lightboxDisplay();
             setLightboxMedias();
@@ -423,8 +329,6 @@ export default function mediaFactory(data) {
             });
             emptyGallery();
             displayMedia(media);
-            // getMediaIndex has no effect
-            // getMediaIndex();
             likeToggler();
             lightboxDisplay();
             setLightboxMedias();
@@ -450,9 +354,7 @@ export default function mediaFactory(data) {
         lightboxDisplay,
         lightboxControls,
         getMediaIndex,
-        lightboxControlsNEW,
         setLightboxMedias,
         sortMedias,
-        getMediaIndexNEW,
     };
 }

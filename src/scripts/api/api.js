@@ -1,6 +1,3 @@
-import { getParam } from '../utils/helpers';
-const urlId = parseInt(getParam('id'));
-
 // Fetch photographers data
 export async function genericFetch(
     url,
