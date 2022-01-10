@@ -1,3 +1,8 @@
+/* General styles */
+*:focus {
+    border: 3px solid steelblue;
+}
+
 .media-description {
     display: flex;
     justify-content: space-between;

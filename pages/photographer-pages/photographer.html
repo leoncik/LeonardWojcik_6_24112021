@@ -123,16 +123,16 @@
 
         <!-- LIGHTBOX GALLERY -->
 
-        <div id="lightbox-modal">
+        <div id="lightbox-modal" aria-hidden="true" role="dialog">
             <div class="modal">
                 <!-- Lightbox controls -->
                 <div class="lightbox-controls">
                     <div class="close-button-lightbox">
-                        <span class="close"><img src="/assets/icons/close.svg" alt="close btn"></span>
+                        <span class="close" tabindex="0"><img src="/assets/icons/close.svg" alt="close btn"></span>
                     </div>
                     <div class="select-image">
-                        <span class="previous"><img src="/assets/icons/previous.svg" alt="previous img"></span>
-                        <span class="next"><img src="/assets/icons/next.svg" alt="next img"></span>
+                        <span class="previous" tabindex="0"><img src="/assets/icons/previous.svg" alt="previous img"></span>
+                        <span class="next" tabindex="0"><img src="/assets/icons/next.svg" alt="next img"></span>
                     </div>
                 </div>
                 <!-- Lightbox content -->

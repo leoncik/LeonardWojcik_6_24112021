@@ -57,6 +57,7 @@ export default function mediaFactory(data) {
             const mediaPicture = document.createElement('img');
             mediaPicture.setAttribute('src', imageSource);
             mediaPicture.setAttribute('alt', altText);
+            mediaPicture.setAttribute('tabindex', '0');
             mediaPicture.classList.add('media');
             mediaContent.appendChild(mediaPicture);
         } else if (data.video) {
@@ -89,6 +90,7 @@ export default function mediaFactory(data) {
         likesIcon.innerHTML = `<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z" fill="#911C1C"/>
         </svg>`;
+        likesIcon.setAttribute('tabindex', '0');
         mediaLikesContainer.appendChild(likesIcon);
 
         // Number of likes
@@ -117,6 +119,7 @@ export default function mediaFactory(data) {
     const likeToggler = () => {
         const likeIcon = document.querySelectorAll('.like-icon');
         for (const iterator of likeIcon) {
+            // Mouse controls
             iterator.addEventListener('click', () => {
                 iterator.nextElementSibling.classList.toggle('liked');
                 if (String(iterator.nextElementSibling.classList) === 'liked') {
@@ -133,6 +136,30 @@ export default function mediaFactory(data) {
                         totalOfLikes;
                 }
             });
+            // Keyboard controls
+            iterator.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    iterator.nextElementSibling.classList.toggle('liked');
+                    if (
+                        String(iterator.nextElementSibling.classList) ===
+                        'liked'
+                    ) {
+                        iterator.nextElementSibling.textContent =
+                            parseInt(iterator.nextElementSibling.textContent) +
+                            1;
+                        totalOfLikes += 1;
+                        document.querySelector('.total-likes').textContent =
+                            totalOfLikes;
+                    } else {
+                        iterator.nextElementSibling.textContent =
+                            parseInt(iterator.nextElementSibling.textContent) -
+                            1;
+                        totalOfLikes -= 1;
+                        document.querySelector('.total-likes').textContent =
+                            totalOfLikes;
+                    }
+                }
+            });
         }
     };
 
@@ -142,19 +169,41 @@ export default function mediaFactory(data) {
         // Display the lightbox
         function displayLightbox() {
             lightbox.style.display = 'block';
+            document.getElementById('main').setAttribute('aria-hidden', 'true');
+            document
+                .getElementById('lightbox-modal')
+                .setAttribute('aria-hidden', 'false');
+            closeButton.focus();
         }
 
         // Close the lightbox
         function closeLightbox() {
             lightbox.style.display = 'none';
+            document
+                .getElementById('main')
+                .setAttribute('aria-hidden', 'false');
+            document
+                .getElementById('lightbox-modal')
+                .setAttribute('aria-hidden', 'true');
+            popularityButton.focus();
         }
 
+        // Mouse controls
         const closeButton = document.querySelector('.close');
         closeButton.addEventListener('click', closeLightbox);
 
-        const galleryItems = document.querySelectorAll(
-            '.photographer-medias article'
-        );
+        // Keyboard controls
+        closeButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                closeLightbox();
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
 
         // Add tag and src of clicked media
         const displayMedia = (src, title, type) => {
@@ -165,7 +214,11 @@ export default function mediaFactory(data) {
                 title;
         };
 
-        // Display lightbox and clicked media
+        const galleryItems = document.querySelectorAll(
+            '.photographer-medias article'
+        );
+
+        // Display lightbox and media on click
         for (const iterator of galleryItems) {
             const mediaSrc = iterator.querySelector('.media').src;
             const title = iterator.querySelector(
@@ -178,6 +231,25 @@ export default function mediaFactory(data) {
                     return displayMedia(mediaSrc, title, 'img');
                 } else if (mediaSrc.split('.').pop() === 'mp4') {
                     return displayMedia(mediaSrc, title, 'video');
+                }
+            });
+        }
+
+        // Display lightbox and media (keyboard control)
+        for (const iterator of galleryItems) {
+            const mediaSrc = iterator.querySelector('.media').src;
+            const title = iterator.querySelector(
+                '.media-description h3'
+            ).innerText;
+            iterator.firstChild.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    displayLightbox();
+                    emptyMediaContainer();
+                    if (mediaSrc.split('.').pop() === 'jpg') {
+                        return displayMedia(mediaSrc, title, 'img');
+                    } else if (mediaSrc.split('.').pop() === 'mp4') {
+                        return displayMedia(mediaSrc, title, 'video');
+                    }
                 }
             });
         }
@@ -278,8 +350,33 @@ export default function mediaFactory(data) {
             }
         };
 
+        // Mouse controls
         previousButton.addEventListener('click', previousMedia);
         nextButton.addEventListener('click', nextMedia);
+
+        // Keyboard controls
+        // ! Bug: needs to be run twice or sort medias before working
+        previousButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                previousMedia();
+            }
+        });
+
+        // ! Bug: needs to be run twice or sort medias before working
+        nextButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                nextMedia();
+            }
+        });
+
+        // ! Prevent controls if lightbox is not displayed
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                previousMedia();
+            } else if (e.key === 'ArrowRight') {
+                nextMedia();
+            }
+        });
     };
 
     const setLightboxMedias = () => {
