@@ -3,7 +3,12 @@
  TODO : the lightbox and the modal.
  */
 
-import { modal, contactForm, validationMessage } from '../utils/helpers.js';
+import {
+    modal,
+    contactForm,
+    validationMessage,
+    focusTrap,
+} from '../utils/helpers.js';
 
 export function modalDisplay() {
     function displayModal() {
@@ -15,6 +20,7 @@ export function modalDisplay() {
             .getElementById('contact_modal')
             .setAttribute('aria-hidden', 'false');
         closeButton.focus();
+        focusTrap(modal);
 
         // Remove validation message.
         validationMessage.textContent = ' ';

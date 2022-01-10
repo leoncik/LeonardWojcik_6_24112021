@@ -86,6 +86,7 @@ export const formSubmitValidation = () => {
                 console.log(message.value);
                 submitedForm();
                 resetForm();
+                document.querySelector('.close-button').focus();
             }
         },
         false

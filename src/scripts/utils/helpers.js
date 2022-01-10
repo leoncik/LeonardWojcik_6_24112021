@@ -48,6 +48,34 @@ const emptyGallery = () => {
 // TODO : Empty gallery and mediaContainer could be refactored with something more generic like this :
 // const emptyHtmlElt = (elt) => document.querySelector(elt).innerHTML = ' ';
 
+// Add focus trap to a section
+const focusTrap = (section) => {
+    const focusableElements = section.querySelectorAll(
+        '[tabindex], a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), input[type="submit"]:not([disabled]), select:not([disabled])'
+    );
+    console.log(focusableElements);
+    const firstFocusableElement = focusableElements[0];
+    const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+    section.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                /* shift + tab */ if (
+                    document.activeElement === firstFocusableElement
+                ) {
+                    lastFocusableElement.focus();
+                    e.preventDefault();
+                }
+            } /* tab */ else {
+                if (document.activeElement === lastFocusableElement) {
+                    firstFocusableElement.focus();
+                    e.preventDefault();
+                }
+            }
+        }
+    });
+};
+
 export {
     getParam,
     mailformat,
@@ -68,4 +96,5 @@ export {
     dateButton,
     titleButton,
     emptyGallery,
+    focusTrap,
 };

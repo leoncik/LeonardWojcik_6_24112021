@@ -7,6 +7,7 @@ import {
     dateButton,
     titleButton,
     emptyGallery,
+    focusTrap,
 } from '../utils/helpers.js';
 
 import { displayMedia } from '../pages/photographer';
@@ -174,6 +175,7 @@ export default function mediaFactory(data) {
                 .getElementById('lightbox-modal')
                 .setAttribute('aria-hidden', 'false');
             closeButton.focus();
+            focusTrap(lightbox);
         }
 
         // Close the lightbox
