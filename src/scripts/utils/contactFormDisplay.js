@@ -40,9 +40,17 @@ export function modalDisplay() {
         document.querySelector('a').focus();
     }
 
+    // Mouse controls
     const closeButton = document.querySelector('.close-button');
     closeButton.addEventListener('click', closeModal);
 
     const contactButton = document.getElementsByClassName('contact_button');
     contactButton[0].addEventListener('click', displayModal);
+
+    // Keyboard controls
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            closeModal();
+        }
+    });
 }

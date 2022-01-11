@@ -202,7 +202,7 @@ export default function mediaFactory(data) {
         });
 
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
+            if (e.key === 'Escape' && lightbox.style.display === 'block') {
                 closeLightbox();
             }
         });

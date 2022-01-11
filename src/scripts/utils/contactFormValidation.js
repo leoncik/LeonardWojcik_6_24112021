@@ -6,6 +6,7 @@ import {
     message,
     contactForm,
     validationMessage,
+    // focusTrap
 } from '../utils/helpers.js';
 
 // *** Form fields validation *** //
@@ -87,6 +88,8 @@ export const formSubmitValidation = () => {
                 submitedForm();
                 resetForm();
                 document.querySelector('.close-button').focus();
+                // ! Makes focus stuck after opening modal again (Tab wont leave exit button but Shift + tab can)
+                // focusTrap(document.querySelector('.contact-header'));
             }
         },
         false
