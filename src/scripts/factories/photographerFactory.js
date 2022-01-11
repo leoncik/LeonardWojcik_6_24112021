@@ -52,28 +52,35 @@ export default function photographerFactory(data) {
         // Photographer name
         const h1 = document.createElement('h1');
         h1.textContent = name;
+        h1.setAttribute('class', 'photograph-header__name');
         infos.appendChild(h1);
 
         // Location
         const location = document.createElement('p');
         location.textContent = city;
+        location.setAttribute('class', 'photograph-header__location');
         infos.appendChild(location);
 
         // Motto
         const motto = document.createElement('p');
         motto.textContent = tagline;
+        motto.setAttribute('class', 'photograph-header__motto');
         infos.appendChild(motto);
 
         // Profile picture
         const profilePicture = document.createElement('img');
         profilePicture.setAttribute('src', picture);
+        profilePicture.setAttribute(
+            'class',
+            'photograph-header__profile-picture'
+        );
         document
             .getElementsByClassName('photographer-profile-picture')[0]
             .appendChild(profilePicture);
 
         // Pricing
         const pricing = document.createElement('span');
-        pricing.textContent = `${price} €`;
+        pricing.textContent = `${price} €/jour`;
         document.querySelector('.total-likes-pricing').appendChild(pricing);
 
         return infos;

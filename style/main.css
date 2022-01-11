@@ -7,19 +7,6 @@ a {
     text-decoration: none;
 }
 
-.media-description {
-    display: flex;
-    justify-content: space-between;
-}
-
-.media-description h3 {
-    margin-top: 0;
-}
-
-.like-icon {
-    cursor: pointer;
-}
-
 .photographer_section article {
     justify-self: center;
     display: flex;
@@ -62,6 +49,51 @@ a {
     color: #757575;
 }
 
+.photographer-medias img,
+.photographer-medias video {
+    width: 350px;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.photographer-medias video {
+    object-fit: cover;
+}
+
+.media-description {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #901c1c;
+}
+
+.media-description h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.like-icon {
+    cursor: pointer;
+}
+
+.like-number {
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-left: 4px;
+}
+
+.total-likes-pricing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    font-weight: bold;
+}
+
+.total-likes svg path {
+    fill: black;
+}
+
 body {
     font-family: 'DM Sans', sans-serif;
     margin: 0;
@@ -95,21 +127,42 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fill, 350px);
     justify-content: center;
-    gap: 70px;
+    gap: 140px;
     margin-top: 100px;
 }
 
 .photograph-header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     background-color: #fafafa;
-    height: 300px;
     margin: 0 100px;
+    padding: 70px 50px;
+}
+
+.photograph-header h1 {
+    color: #d3573c;
+    font-size: 3rem;
+    margin-bottom: 5px;
+}
+
+.photograph-header__location {
+    color: #901c1c;
+    font-size: 1.6rem;
+    margin-top: 10px;
+}
+
+.photograph-header__motto {
+    margin-top: 5px;
+    color: #525252;
 }
 
 .photograph-header img {
     width: 200px;
     height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .contact_button {
@@ -145,16 +198,12 @@ h1 {
 }
 
 .photographer-medias {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 350px);
     justify-content: center;
-    gap: 42px;
-}
-
-.photographer-medias img,
-.photographer-medias video {
-    width: 350px;
-    height: 300px;
+    gap: 70px;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 #contact_modal,

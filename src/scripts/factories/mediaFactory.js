@@ -97,6 +97,7 @@ export default function mediaFactory(data) {
         // Number of likes
         const numberOfLikes = document.createElement('span');
         numberOfLikes.textContent = likes;
+        numberOfLikes.classList.add('like-number');
         mediaLikesContainer.appendChild(numberOfLikes);
 
         return article;
@@ -117,6 +118,7 @@ export default function mediaFactory(data) {
     };
 
     // Toggle like number if user clicks on like icon
+    // ! Unknown bug detected : like toggler is now only decrementing
     const likeToggler = () => {
         const likeIcon = document.querySelectorAll('.like-icon');
         for (const iterator of likeIcon) {

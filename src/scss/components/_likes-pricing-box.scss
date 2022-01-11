@@ -1,0 +1,11 @@
+.total-likes-pricing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    font-weight: bold;
+}
+
+.total-likes svg path {
+    fill: black;
+}

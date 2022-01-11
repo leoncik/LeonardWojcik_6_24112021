@@ -1,0 +1,33 @@
+@use "../utils/variables";
+
+.photographer-medias img, .photographer-medias video  {
+    width: 350px;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.photographer-medias video {
+    object-fit: cover;
+}
+
+.media-description {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: variables.$primary-color;
+}
+
+.media-description h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.like-icon {
+    cursor: pointer;
+}
+
+.like-number {
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-left: 4px;
+}

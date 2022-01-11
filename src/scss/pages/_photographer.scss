@@ -4,15 +4,36 @@
 
 .photograph-header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     background-color: #FAFAFA;
-    height: 300px;
     margin: 0 100px;
+    padding: 70px 50px;
+}
+
+.photograph-header h1 {
+    color: variables.$secondary-color;
+    font-size: 3rem;
+    margin-bottom: 5px;
+}
+
+.photograph-header__location {
+    color: variables.$primary-color;
+    font-size: 1.6rem;
+    margin-top: 10px;
+}
+
+.photograph-header__motto {
+    margin-top: 5px;
+    color: #525252;
 }
 
 .photograph-header img {
     width: 200px;
     height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .contact_button {
@@ -47,18 +68,15 @@
     background-color: #DB8876;
 }
 
-// Media section
+// Media gallery section
 
 .photographer-medias {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 350px);
     justify-content: center;
-    gap: 42px;
-}
-
-.photographer-medias img, .photographer-medias video  {
-    width: 350px;
-    height: 300px;
+    gap: 70px;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 // Modal section
