@@ -28,16 +28,19 @@ export default function photographerFactory(data) {
         // Location
         const location = document.createElement('p');
         location.textContent = city;
+        location.setAttribute('class', 'photographer-location');
         article.appendChild(location);
 
         // Motto
         const motto = document.createElement('p');
         motto.textContent = tagline;
+        motto.setAttribute('class', 'photographer-motto');
         article.appendChild(motto);
 
         // Pricing
         const pricing = document.createElement('p');
-        pricing.textContent = price;
+        pricing.textContent = `${price}€/jour`;
+        pricing.setAttribute('class', 'photographer-pricing');
         article.appendChild(pricing);
 
         return article;

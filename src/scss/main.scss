@@ -1,8 +1,12 @@
+// utils
+@use "utils/variables";
+
 // base
 @use "base/base";
 
 // components
 @use "components/media-cards";
+@use "components/photographer-cards";
 
 //pages
 @use "pages/home";
