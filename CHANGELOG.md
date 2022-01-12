@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [0.3.3] - 2022-01-12
+### Added
+-   Accessibility features (ARIA and keyboard navigation).
+-   Styling for the index page (complete) and photographer page (WIP).
+
 ## [0.3.2] - 2022-01-06
 ### Fixed
 -   Index problem after sorting medias.
