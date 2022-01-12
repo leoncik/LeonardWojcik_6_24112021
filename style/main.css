@@ -76,7 +76,7 @@ a {
     cursor: pointer;
 }
 
-.like-number {
+.like-icon + span {
     font-weight: bold;
     font-size: 1.4rem;
     margin-left: 4px;

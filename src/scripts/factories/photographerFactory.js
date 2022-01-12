@@ -50,8 +50,12 @@ export default function photographerFactory(data) {
         const infos = document.createElement('div');
 
         // Photographer name
+        const contactPhotographer = document.querySelector(
+            '.contact-photographer'
+        );
         const h1 = document.createElement('h1');
         h1.textContent = name;
+        contactPhotographer.textContent = name;
         h1.setAttribute('class', 'photograph-header__name');
         infos.appendChild(h1);
 
