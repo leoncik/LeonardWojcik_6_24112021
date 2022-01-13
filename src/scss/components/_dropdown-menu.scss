@@ -1,0 +1,39 @@
+.dropdown-menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    background-color: rgb(117, 0, 128);
+}
+
+.sort-button {
+    margin: 15px;
+}
+
+.active {
+    display: block;
+}
+
+.wrapped {
+    display: none;
+}
+
+.unexpanded::before {
+    content: "▲";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 20px;
+    background-color:rgb(255, 145, 0);
+}
+
+.expanded::after {
+    content: "▼";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 20px;
+    background-color:rgb(255, 145, 0);
+}

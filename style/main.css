@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* General styles */
 *:focus {
     border: 3px solid steelblue;
@@ -90,8 +91,48 @@ a {
     font-weight: bold;
 }
 
-.total-likes svg path {
+.total-likes-icon svg path {
     fill: black;
+}
+
+.dropdown-menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    background-color: #750080;
+}
+
+.sort-button {
+    margin: 15px;
+}
+
+.active {
+    display: block;
+}
+
+.wrapped {
+    display: none;
+}
+
+.unexpanded::before {
+    content: '▲';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 20px;
+    background-color: #ff9100;
+}
+
+.expanded::after {
+    content: '▼';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 20px;
+    background-color: #ff9100;
 }
 
 body {

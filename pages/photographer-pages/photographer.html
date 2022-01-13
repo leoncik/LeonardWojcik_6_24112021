@@ -53,6 +53,22 @@
                 <button id="sort-popularity-button">Popularité</button>
                 <button id="sort-date-button">Date</button>
                 <button id="sort-title-button">Titre</button>
+
+                <!-- Test using <select> -->
+                <label for="media-sorting">Trier par :</label>
+                <select class="contact_button" name="tris" id="media-sorting">
+                    <option value="popularity">Popularité</option>
+                    <option value="date">Date</option>
+                    <option value="title">Titre</option>
+                </select>
+
+                <!-- Test using buttons -->
+                <p>Trier par :</p>
+                <div class="dropdown-menu">
+                    <button class="sort-button unexpanded active">Popularité</button>
+                    <button class="sort-button wrapped">Date</button>
+                    <button class="sort-button wrapped">Titre</button>
+                </div>
             </div>
 
             <div class="photographer-medias">

@@ -65,9 +65,55 @@ async function enableLightbox(media) {
     mediaFactory(media).lightboxControls(media);
 }
 
+// Enable media sorting
 async function enableSortMedias(media) {
     mediaFactory(media).sortMedias(media);
 }
+
+// DROPDOWN MENU
+const sortButtons = document.querySelectorAll('.sort-button');
+
+// Reset order of buttons
+const resetOrder = () => {
+    for (const iterator of sortButtons) {
+        iterator.style.order = 0;
+        iterator.classList.remove('active');
+    }
+};
+
+// Change order of buttons on click
+for (const iterator of sortButtons) {
+    iterator.addEventListener('click', () => {
+        resetOrder();
+        iterator.style.order = -1;
+        iterator.classList.add('active');
+        expendDropDownMenu();
+    });
+}
+
+const expand = () => {
+    for (const iterator of sortButtons) {
+        // iterator.classList.toggle('wrapped'); serait mieux
+        iterator.classList.remove('wrapped');
+    }
+};
+
+/*
+const unexpand = () => {
+    for (const iterator of sortButtons) {
+        // iterator.classList.toggle('wrapped'); serait mieux
+        iterator.classList.add('wrapped'); 
+    }
+} */
+
+// Expand or unexpand
+const expendDropDownMenu = () => {
+    for (const iterator of sortButtons) {
+        if (iterator.matches('.active')) {
+            expand();
+        }
+    }
+};
 
 // Initialize page (fetch data, then display It on the page and add behaviour to contact modal)
 export default async function initPhotographer() {
@@ -81,6 +127,5 @@ export default async function initPhotographer() {
     formSubmitValidation();
     enableLightbox(medias);
     enableLikeToggler(medias);
-    // enableLikeToggler(profiles); also works...
     enableSortMedias(medias);
 }

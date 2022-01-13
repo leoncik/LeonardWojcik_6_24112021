@@ -28,19 +28,19 @@ export default function photographerFactory(data) {
         // Location
         const location = document.createElement('p');
         location.textContent = city;
-        location.setAttribute('class', 'photographer-location');
+        location.classList.add('photographer-location');
         article.appendChild(location);
 
         // Motto
         const motto = document.createElement('p');
         motto.textContent = tagline;
-        motto.setAttribute('class', 'photographer-motto');
+        motto.classList.add('photographer-motto');
         article.appendChild(motto);
 
         // Pricing
         const pricing = document.createElement('p');
         pricing.textContent = `${price}€/jour`;
-        pricing.setAttribute('class', 'photographer-pricing');
+        pricing.classList.add('photographer-pricing');
         article.appendChild(pricing);
 
         return article;
@@ -56,28 +56,25 @@ export default function photographerFactory(data) {
         const h1 = document.createElement('h1');
         h1.textContent = name;
         contactPhotographer.textContent = name;
-        h1.setAttribute('class', 'photograph-header__name');
+        h1.classList.add('photograph-header__name');
         infos.appendChild(h1);
 
         // Location
         const location = document.createElement('p');
         location.textContent = city;
-        location.setAttribute('class', 'photograph-header__location');
+        location.classList.add('photograph-header__location');
         infos.appendChild(location);
 
         // Motto
         const motto = document.createElement('p');
         motto.textContent = tagline;
-        motto.setAttribute('class', 'photograph-header__motto');
+        motto.classList.add('photograph-header__motto');
         infos.appendChild(motto);
 
         // Profile picture
         const profilePicture = document.createElement('img');
         profilePicture.setAttribute('src', picture);
-        profilePicture.setAttribute(
-            'class',
-            'photograph-header__profile-picture'
-        );
+        profilePicture.classList.add('photograph-header__profile-picture');
         document
             .getElementsByClassName('photographer-profile-picture')[0]
             .appendChild(profilePicture);
