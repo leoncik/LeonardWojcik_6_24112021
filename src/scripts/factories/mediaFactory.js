@@ -393,13 +393,13 @@ export default function mediaFactory(data) {
 
     // SORT MEDIAS
 
+    // TODO : prevent sorting if dropdown select menu if closed or if the same sorting method is used twice
     // TODO : try to refactor using arguments. E.g : genericSort(type){...}
     const sortMedias = (media) => {
         // Sort by popularity
-        // TODO : sort by placing the more popular medias first.
         const sortByPopularity = () => {
             media.sort((a, b) => {
-                return a.likes - b.likes;
+                return b.likes - a.likes;
             });
             emptyGallery();
             displayMedia(media);

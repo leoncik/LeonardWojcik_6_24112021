@@ -87,30 +87,24 @@ for (const iterator of sortButtons) {
         resetOrder();
         iterator.style.order = -1;
         iterator.classList.add('active');
-        expendDropDownMenu();
+        toggleDropDownMenu();
     });
 }
 
-const expand = () => {
-    for (const iterator of sortButtons) {
-        // iterator.classList.toggle('wrapped'); serait mieux
-        iterator.classList.remove('wrapped');
-    }
-};
-
-/*
-const unexpand = () => {
-    for (const iterator of sortButtons) {
-        // iterator.classList.toggle('wrapped'); serait mieux
-        iterator.classList.add('wrapped'); 
-    }
-} */
-
-// Expand or unexpand
-const expendDropDownMenu = () => {
-    for (const iterator of sortButtons) {
-        if (iterator.matches('.active')) {
-            expand();
+// Expand or unexpand dropdown menu
+const toggleDropDownMenu = () => {
+    let wrappedButtons = document.querySelectorAll('.wrapped');
+    let notActiveButtons = document.querySelectorAll(
+        '.dropdown-menu button:not(.active)'
+    );
+    // Expand menu if there are any wrapped element
+    if (wrappedButtons.length > 0) {
+        for (const iterator of wrappedButtons) {
+            iterator.classList.remove('wrapped');
+        }
+    } else {
+        for (const iterator of notActiveButtons) {
+            iterator.classList.add('wrapped');
         }
     }
 };
