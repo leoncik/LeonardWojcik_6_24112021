@@ -259,13 +259,22 @@ export default function mediaFactory(data) {
 
     // LIGHTBOX CONTROLS
 
-    // Get the index of the clicked media
+    // Get the index of the selected media
     const getMediaIndex = () => {
         const galleryItems = document.querySelectorAll('.media-content');
 
         for (let i = 0; i < galleryItems.length; i++) {
+            // Mouse controls
             galleryItems[i].addEventListener('click', () => {
                 currentIndex = data.findIndex((d) => d.image === data[i].image);
+            });
+            // Keyboard controls
+            galleryItems[i].addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    currentIndex = data.findIndex(
+                        (d) => d.image === data[i].image
+                    );
+                }
             });
         }
     };
@@ -357,14 +366,12 @@ export default function mediaFactory(data) {
         nextButton.addEventListener('click', nextMedia);
 
         // Keyboard controls
-        // ! Bug: needs to be run twice or sort medias before working
         previousButton.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 previousMedia();
             }
         });
 
-        // ! Bug: needs to be run twice or sort medias before working
         nextButton.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 nextMedia();
