@@ -46,35 +46,48 @@
                 </div>
             </div>
 
-            <!-- PHOTOGRAPHER MEDIAS -->
 
-            <!-- Old code for testing sorting -->
-            <div class="media-sorting">
-                <p>Trier par :</p>
+            <!-- Sorting medias menu -->
+            <section class="media-sorting">
+                <label for="dropdown-input">Trier par :</label>
+                <input type="button" id="dropdown-input" value="Popularité" aria-haspopup="listbox">
+                <div class="dropdown-options">
+                    <button id="sort-popularity-button" class="sort-button active-new" value="Popularité">Popularité</button>
+                    <button id="sort-date-button" class="sort-button wrapped" value="Date">Date</button>
+                    <button id="sort-title-button" class="sort-button wrapped" value="Titre">Titre</button>
+                </div>
+
+
+
+
+                <!-- OLD TESTS -->
+                <!-- <p>Trier par :</p>
                 <button >Popularité</button>
                 <button >Date</button>
-                <button >Titre</button>
+                <button >Titre</button> -->
 
                 <!-- Test using <select> -->
-                <label for="media-sorting">Trier par :</label>
+                <!-- <label for="media-sorting">Trier par :</label>
                 <select class="contact_button" name="tris" id="media-sorting">
                     <option value="popularity">Popularité</option>
                     <option value="date">Date</option>
                     <option value="title">Titre</option>
-                </select>
+                </select> -->
 
-                <!-- Test using buttons currently used for surting medias -->
-                <p>Trier par :</p>
+                <!-- Test using buttons currently used for sorting medias -->
+                <!-- <p>Trier par :</p>
                 <div class="dropdown-menu">
                     <button id="sort-popularity-button" class="sort-button unexpanded active">Popularité</button>
                     <button id="sort-date-button" class="sort-button wrapped">Date</button>
                     <button id="sort-title-button" class="sort-button wrapped">Titre</button>
-                </div>
-            </div>
+                </div> -->
+            </section>
 
-            <div class="photographer-medias">
+            <!-- PHOTOGRAPHER MEDIAS -->
 
-            </div>
+            <section class="photographer-medias">
+
+            </section>
         </main>
 
         <!-- CONTACT MODAL -->

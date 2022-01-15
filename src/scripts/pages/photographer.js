@@ -71,6 +71,8 @@ async function enableSortMedias(media) {
 }
 
 // DROPDOWN MENU
+// ! OLD METHOD
+/*
 const sortButtons = document.querySelectorAll('.sort-button');
 
 // Reset order of buttons
@@ -87,6 +89,8 @@ for (const iterator of sortButtons) {
         resetOrder();
         iterator.style.order = -1;
         iterator.classList.add('active');
+        iterator.setAttribute('tabindex', '1');
+        iterator.setAttribute('aria-haspopup', 'listbox');
         toggleDropDownMenu();
     });
 }
@@ -101,13 +105,60 @@ const toggleDropDownMenu = () => {
     if (wrappedButtons.length > 0) {
         for (const iterator of wrappedButtons) {
             iterator.classList.remove('wrapped');
+            iterator.setAttribute('tabindex', '2');
+            // dire que while dropdown, laisser la fonction active...
+            focusTrap(document.querySelector('.dropdown-menu'));
         }
+    // Unexpand menu if there are no wrapped element
     } else {
         for (const iterator of notActiveButtons) {
             iterator.classList.add('wrapped');
+            document.querySelector('.active').setAttribute('tabindex', '0');
+            // Destroy focus trap
         }
     }
+}; */
+
+// ! NEW METHOD
+// Display options of the dropdown menu (except the active one)
+const dropdownInput = document.querySelector('#dropdown-input');
+dropdownInput.addEventListener('click', () => {
+    const notActiveButtons = document.querySelectorAll(
+        '.dropdown-options button:not(.active-new)'
+    );
+    for (const iterator of notActiveButtons) {
+        iterator.classList.toggle('wrapped');
+    }
+});
+
+// Reset active buttons
+const resetActive = () => {
+    for (const iterator of sortButtons) {
+        iterator.classList.remove('active-new');
+    }
 };
+
+// Close dropdown menu
+const closeDropdown = () => {
+    const notActiveButtons = document.querySelectorAll(
+        '.dropdown-options button:not(.active-new)'
+    );
+    for (const iterator of notActiveButtons) {
+        iterator.classList.add('wrapped');
+    }
+};
+
+// Set sort option value to dropdown-input and close dropdown menu
+const inputButton = document.querySelector('#dropdown-input');
+const sortButtons = document.querySelectorAll('.sort-button');
+for (const iterator of sortButtons) {
+    iterator.addEventListener('click', () => {
+        resetActive();
+        iterator.classList.add('active-new');
+        inputButton.value = iterator.value;
+        closeDropdown();
+    });
+}
 
 // Initialize page (fetch data, then display It on the page and add behaviour to contact modal)
 export default async function initPhotographer() {

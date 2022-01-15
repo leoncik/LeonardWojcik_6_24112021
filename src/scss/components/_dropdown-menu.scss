@@ -1,4 +1,4 @@
-.dropdown-menu {
+.dropdown-options {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -12,6 +12,10 @@
 
 .active {
     display: block;
+}
+
+.active-new {
+    display: none;
 }
 
 .wrapped {

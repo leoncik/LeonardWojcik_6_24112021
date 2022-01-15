@@ -95,7 +95,7 @@ a {
     fill: black;
 }
 
-.dropdown-menu {
+.dropdown-options {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -109,6 +109,10 @@ a {
 
 .active {
     display: block;
+}
+
+.active-new {
+    display: none;
 }
 
 .wrapped {
