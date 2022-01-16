@@ -10,11 +10,11 @@
             rel="stylesheet"
         />
         <!-- JavaScript (development) -->
-        <script src="/polyfill.bundle.js" defer></script>
-        <script src="/app.bundle.js" defer></script>
+        <!-- <script src="/polyfill.bundle.js" defer></script>
+        <script src="/app.bundle.js" defer></script> -->
         <!-- JavaScript (production) -->
-        <!-- <script src="../..//dist/polyfill.bundle.js" defer></script>
-        <script src="../..//dist/app.bundle.js" defer></script> -->
+        <script src="../..//dist/polyfill.bundle.js" defer></script>
+        <script src="../..//dist/app.bundle.js" defer></script>
         <title>Fisheye - photographe</title>
     </head>
 
@@ -24,11 +24,13 @@
         </header>
 
         <main id="main" aria-hidden="false">
+
+            <!-- Photographer header banner -->
             <div class="photograph-header">
                 <div class="photographer-info">
 
                 </div>
-                <button class="contact_button">
+                <button class="button contact-button">
                     Contactez-moi
                 </button>
                 <div class="photographer-profile-picture">
@@ -50,37 +52,17 @@
             <!-- Sorting medias menu -->
             <section class="media-sorting">
                 <label for="dropdown-input">Trier par :</label>
-                <input type="button" id="dropdown-input" value="Popularité" aria-haspopup="listbox">
-                <div class="dropdown-options">
-                    <button id="sort-popularity-button" class="sort-button active-new" value="Popularité">Popularité</button>
-                    <button id="sort-date-button" class="sort-button wrapped" value="Date">Date</button>
-                    <button id="sort-title-button" class="sort-button wrapped" value="Titre">Titre</button>
+                <div class="dropdown-container">
+                    <input type="button" id="dropdown-input" class="button dropdown-button" value="Popularité" aria-haspopup="listbox">
+                    <svg class="dropdown-arrow" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.12 0.453125L8 6.55979L1.88 0.453125L0 2.33312L8 10.3331L16 2.33312L14.12 0.453125Z" fill="white"/>
+                        </svg>
+                    <div class="dropdown-options">
+                        <button id="sort-popularity-button" class="button sort-button active" value="Popularité">Popularité</button>
+                        <button id="sort-date-button" class="button sort-button wrapped" value="Date">Date</button>
+                        <button id="sort-title-button" class="button sort-button wrapped" value="Titre">Titre</button>
+                    </div>
                 </div>
-
-
-
-
-                <!-- OLD TESTS -->
-                <!-- <p>Trier par :</p>
-                <button >Popularité</button>
-                <button >Date</button>
-                <button >Titre</button> -->
-
-                <!-- Test using <select> -->
-                <!-- <label for="media-sorting">Trier par :</label>
-                <select class="contact_button" name="tris" id="media-sorting">
-                    <option value="popularity">Popularité</option>
-                    <option value="date">Date</option>
-                    <option value="title">Titre</option>
-                </select> -->
-
-                <!-- Test using buttons currently used for sorting medias -->
-                <!-- <p>Trier par :</p>
-                <div class="dropdown-menu">
-                    <button id="sort-popularity-button" class="sort-button unexpanded active">Popularité</button>
-                    <button id="sort-date-button" class="sort-button wrapped">Date</button>
-                    <button id="sort-title-button" class="sort-button wrapped">Titre</button>
-                </div> -->
             </section>
 
             <!-- PHOTOGRAPHER MEDIAS -->
@@ -149,7 +131,7 @@
                             <span class="error-message"></span>
                         </div>
                     </label>
-                    <input class="contact_button button btn-submit" type="submit" value="Envoyer"/>
+                    <input class="contact_button button submit-button" type="submit" value="Envoyer"/>
                 </form>
                 <div class="validation-message">
                 </div>

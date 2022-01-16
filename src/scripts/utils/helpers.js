@@ -18,7 +18,7 @@ const email = document.getElementById('email');
 const message = document.getElementById('message');
 
 // Submit button
-const submitButton = document.querySelector('.contact_button');
+const submitButton = document.querySelector('.submit-button');
 
 // Validation message
 const validationMessage = document.querySelector('.validation-message');
@@ -55,7 +55,8 @@ const focusTrap = (section) => {
     );
     console.log(focusableElements);
     const firstFocusableElement = focusableElements[0];
-    const lastFocusableElement = focusableElements[focusableElements.length - 1];
+    const lastFocusableElement =
+        focusableElements[focusableElements.length - 1];
 
     section.addEventListener('keydown', (e) => {
         if (e.key === 'Tab') {

@@ -1,0 +1,26 @@
+@use '../utils/variables';
+
+.button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: variables.$primary-color;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+        color: black;
+        background-color: variables.$secondary-color;
+    }
+}
+
+.sort-button {
+    border-radius: 0;
+}
+
+.dropdown-expanded {
+    border-radius: 5px 5px 0 0;
+}

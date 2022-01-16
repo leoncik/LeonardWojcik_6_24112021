@@ -71,81 +71,58 @@ async function enableSortMedias(media) {
 }
 
 // DROPDOWN MENU
-// ! OLD METHOD
-/*
-const sortButtons = document.querySelectorAll('.sort-button');
 
-// Reset order of buttons
-const resetOrder = () => {
-    for (const iterator of sortButtons) {
-        iterator.style.order = 0;
-        iterator.classList.remove('active');
-    }
-};
-
-// Change order of buttons on click
-for (const iterator of sortButtons) {
-    iterator.addEventListener('click', () => {
-        resetOrder();
-        iterator.style.order = -1;
-        iterator.classList.add('active');
-        iterator.setAttribute('tabindex', '1');
-        iterator.setAttribute('aria-haspopup', 'listbox');
-        toggleDropDownMenu();
-    });
-}
-
-// Expand or unexpand dropdown menu
-const toggleDropDownMenu = () => {
-    let wrappedButtons = document.querySelectorAll('.wrapped');
-    let notActiveButtons = document.querySelectorAll(
-        '.dropdown-menu button:not(.active)'
-    );
-    // Expand menu if there are any wrapped element
-    if (wrappedButtons.length > 0) {
-        for (const iterator of wrappedButtons) {
-            iterator.classList.remove('wrapped');
-            iterator.setAttribute('tabindex', '2');
-            // dire que while dropdown, laisser la fonction active...
-            focusTrap(document.querySelector('.dropdown-menu'));
-        }
-    // Unexpand menu if there are no wrapped element
-    } else {
-        for (const iterator of notActiveButtons) {
-            iterator.classList.add('wrapped');
-            document.querySelector('.active').setAttribute('tabindex', '0');
-            // Destroy focus trap
-        }
-    }
-}; */
-
-// ! NEW METHOD
 // Display options of the dropdown menu (except the active one)
 const dropdownInput = document.querySelector('#dropdown-input');
-dropdownInput.addEventListener('click', () => {
-    const notActiveButtons = document.querySelectorAll(
-        '.dropdown-options button:not(.active-new)'
-    );
-    for (const iterator of notActiveButtons) {
-        iterator.classList.toggle('wrapped');
-    }
-});
+const dropdownArrow = document.querySelector(
+    '.dropdown-container > svg:nth-child(2)'
+);
+const enableSortMenuDropdown = () => {
+    dropdownInput.addEventListener('click', () => {
+        const notActiveButtons = document.querySelectorAll(
+            '.dropdown-options button:not(.active)'
+        );
+        for (const iterator of notActiveButtons) {
+            iterator.classList.toggle('wrapped');
+        }
+        dropdownInput.classList.toggle('dropdown-expanded');
+        dropdownArrow.classList.toggle('dropdown-arrow');
+        dropdownArrow.classList.toggle('dropdown-arrow_rotate');
+        // Give appropriate border-radius to the last element of the dropdown menu
+        // ? Could It be done with one line ? document.querySelector('sort-button:last-child:not(.active').style.borderRadius = "20px";
+        resetLastButton();
+        const notActiveButtons2 = document.querySelectorAll(
+            '.sort-button:not(.active'
+        );
+        const lastNotActiveButton =
+            notActiveButtons2[notActiveButtons2.length - 1];
+        lastNotActiveButton.classList.add('last-dropdown-option');
+    });
+};
 
 // Reset active buttons
 const resetActive = () => {
     for (const iterator of sortButtons) {
-        iterator.classList.remove('active-new');
+        iterator.classList.remove('active');
+    }
+};
+
+// Reset last expanded button
+const resetLastButton = () => {
+    for (const iterator of sortButtons) {
+        iterator.classList.remove('last-dropdown-option');
     }
 };
 
 // Close dropdown menu
 const closeDropdown = () => {
     const notActiveButtons = document.querySelectorAll(
-        '.dropdown-options button:not(.active-new)'
+        '.dropdown-options button:not(.active)'
     );
     for (const iterator of notActiveButtons) {
         iterator.classList.add('wrapped');
     }
+    dropdownInput.classList.remove('dropdown-expanded');
 };
 
 // Set sort option value to dropdown-input and close dropdown menu
@@ -154,7 +131,7 @@ const sortButtons = document.querySelectorAll('.sort-button');
 for (const iterator of sortButtons) {
     iterator.addEventListener('click', () => {
         resetActive();
-        iterator.classList.add('active-new');
+        iterator.classList.add('active');
         inputButton.value = iterator.value;
         closeDropdown();
     });
@@ -173,4 +150,5 @@ export default async function initPhotographer() {
     enableLightbox(medias);
     enableLikeToggler(medias);
     enableSortMedias(medias);
+    enableSortMenuDropdown();
 }

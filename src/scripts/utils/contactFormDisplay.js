@@ -44,8 +44,8 @@ export function modalDisplay() {
     const closeButton = document.querySelector('.close-button');
     closeButton.addEventListener('click', closeModal);
 
-    const contactButton = document.getElementsByClassName('contact_button');
-    contactButton[0].addEventListener('click', displayModal);
+    const contactButton = document.querySelector('.contact-button');
+    contactButton.addEventListener('click', displayModal);
 
     // Keyboard controls
     window.addEventListener('keydown', (e) => {

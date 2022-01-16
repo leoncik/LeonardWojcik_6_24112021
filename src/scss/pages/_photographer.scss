@@ -36,19 +36,6 @@
     object-fit: cover;
 }
 
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: variables.$primary-color;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .photographer-info {
     display: flex;
     flex-direction: row-reverse;

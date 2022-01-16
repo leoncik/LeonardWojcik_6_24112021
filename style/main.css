@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* General styles */
 *:focus {
     border: 3px solid steelblue;
@@ -6,6 +5,31 @@
 
 a {
     text-decoration: none;
+}
+
+.button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901c1c;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.button:hover {
+    color: black;
+    background-color: #d3573c;
+}
+
+.sort-button {
+    border-radius: 0;
+}
+
+.dropdown-expanded {
+    border-radius: 5px 5px 0 0;
 }
 
 .photographer_section article {
@@ -95,23 +119,29 @@ a {
     fill: black;
 }
 
+.media-sorting {
+    display: flex;
+    gap: 25px;
+}
+
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
 .dropdown-options {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 200px;
-    background-color: #750080;
+    width: 170px;
 }
 
-.sort-button {
-    margin: 15px;
+.last-dropdown-option {
+    border-radius: 0 0 5px 5px;
 }
 
 .active {
-    display: block;
-}
-
-.active-new {
     display: none;
 }
 
@@ -119,24 +149,41 @@ a {
     display: none;
 }
 
-.unexpanded::before {
-    content: '▲';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 15px;
-    height: 20px;
-    background-color: #ff9100;
+.sort-button {
+    position: relative;
 }
 
-.expanded::after {
-    content: '▼';
+.sort-button:not(.active)::before {
+    content: '';
+    width: 150px;
+    height: 1px;
+    background-color: white;
     position: absolute;
     top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dropdown-input {
+    position: relative;
+}
+
+.dropdown-container svg path {
+    fill: white;
+}
+
+.dropdown-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     right: 0;
-    width: 15px;
-    height: 20px;
-    background-color: #ff9100;
+}
+
+.dropdown-arrow_rotate {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    transform: rotate(180deg);
 }
 
 body {
@@ -208,19 +255,6 @@ h1 {
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
-}
-
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901c1c;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .photographer-info {

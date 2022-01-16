@@ -1,20 +1,28 @@
+// Dropdown container and layout
+.media-sorting {
+    display: flex;
+    gap: 25px;
+}
+
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+// Dropdown buttons
 .dropdown-options {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 200px;
-    background-color: rgb(117, 0, 128);
+    width: 170px;
 }
 
-.sort-button {
-    margin: 15px;
+.last-dropdown-option {
+    border-radius: 0 0 5px 5px;
 }
 
 .active {
-    display: block;
-}
-
-.active-new {
     display: none;
 }
 
@@ -22,22 +30,40 @@
     display: none;
 }
 
-.unexpanded::before {
-    content: "▲";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 15px;
-    height: 20px;
-    background-color:rgb(255, 145, 0);
+.sort-button {
+    position: relative;
 }
 
-.expanded::after {
-    content: "▼";
+.sort-button:not(.active)::before {
+    content: "";
+    width: 150px;
+    height: 1px;
+    background-color: white;
     position: absolute;
     top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dropdown-input {
+    position: relative;
+}
+
+// Arrow
+.dropdown-container svg path {
+    fill: white;
+}
+
+.dropdown-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     right: 0;
-    width: 15px;
-    height: 20px;
-    background-color:rgb(255, 145, 0);
+}
+
+.dropdown-arrow_rotate {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    transform: rotate(180deg);
 }
