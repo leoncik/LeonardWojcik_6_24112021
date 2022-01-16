@@ -5,9 +5,12 @@
 }
 
 .dropdown-container {
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    // Old rules, replaced with position absolute to overlay media content
+    // display: flex;
+    // flex-direction: column;
+    // position: relative;
+    position: absolute;
+    left: 185px;
 }
 
 // Dropdown buttons
@@ -45,7 +48,7 @@
     transform: translateX(-50%);
 }
 
-.dropdown-input {
+.dropdown-input-container {
     position: relative;
 }
 
@@ -58,12 +61,13 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 0;
+    right: 10px;
 }
 
 .dropdown-arrow_rotate {
     position: absolute;
-    top: 25px;
-    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
     transform: rotate(180deg);
 }

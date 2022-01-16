@@ -74,9 +74,7 @@ async function enableSortMedias(media) {
 
 // Display options of the dropdown menu (except the active one)
 const dropdownInput = document.querySelector('#dropdown-input');
-const dropdownArrow = document.querySelector(
-    '.dropdown-container > svg:nth-child(2)'
-);
+const dropdownArrow = document.querySelector('svg.dropdown-arrow:nth-child(2)');
 const enableSortMenuDropdown = () => {
     dropdownInput.addEventListener('click', () => {
         const notActiveButtons = document.querySelectorAll(
@@ -123,6 +121,8 @@ const closeDropdown = () => {
         iterator.classList.add('wrapped');
     }
     dropdownInput.classList.remove('dropdown-expanded');
+    dropdownArrow.classList.toggle('dropdown-arrow');
+    dropdownArrow.classList.toggle('dropdown-arrow_rotate');
 };
 
 // Set sort option value to dropdown-input and close dropdown menu
