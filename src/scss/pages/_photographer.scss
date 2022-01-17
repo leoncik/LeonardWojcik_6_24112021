@@ -2,6 +2,14 @@
 
 // Header section
 
+.photographer-page-header {
+    display: flex;
+    align-items: center;
+    height: 90px;
+}
+
+// Header banner section
+
 .photograph-header {
     display: flex;
     flex-wrap: wrap;
@@ -101,6 +109,15 @@
     margin: auto;
 }
 
+// Modal header
+
+.close-button {
+    align-self: flex-start;
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
 .modal header {
     justify-content: space-between;
     width: 100%;
@@ -110,11 +127,24 @@
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+.contact-header {
+    display: flex;
 }
+
+.contact-header__title {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal header h2 {
+    margin: 0;
+}
+
+.contact-photographer {
+    margin-top: 0;
+}
+
+// Inputs form
 
 form {
     display: flex;
@@ -131,11 +161,6 @@ form {
     align-items: self-start;
 }
 
-.label-text {
-    color: #312E2E;
-    font-size: 36px;
-}
-
 .input-field, .message-area {
     width: 100%;
 }
@@ -143,20 +168,23 @@ form {
 form input {
     width: 100%;
     height: 68px;
+    padding-left: 15px;
     border: none;
     border-radius: 5px;
+}
+
+#message {
+    height: 170px;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-top: 10px;
+    border: none;
+    resize: none;
 }
 
 .submission-message {
     display: inline-block;
     margin-top: 100px;
-}
-
-// Error messages
-
-.error-message {
-    font-size: 1.2rem;
-    color: white;
 }
 
 // Lightbox

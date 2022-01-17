@@ -7,6 +7,27 @@ a {
     text-decoration: none;
 }
 
+.modal header h2,
+.contact-photographer {
+    font-size: 3.5rem;
+    font-weight: normal;
+}
+
+.label-text {
+    color: #312e2e;
+    font-size: 2.4rem;
+}
+
+form input,
+#message {
+    font-size: 1.4rem;
+}
+
+.error-message {
+    font-size: 1.2rem;
+    color: white;
+}
+
 .media-sorting label {
     font-weight: bold;
     font-size: 1.2rem;
@@ -211,9 +232,10 @@ body {
     margin: 0;
 }
 
-header {
+.home-header {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     height: 90px;
@@ -241,6 +263,12 @@ h1 {
     justify-content: center;
     gap: 140px;
     margin-top: 100px;
+}
+
+.photographer-page-header {
+    display: flex;
+    align-items: center;
+    height: 90px;
 }
 
 .photograph-header {
@@ -336,6 +364,13 @@ h1 {
     margin: auto;
 }
 
+.close-button {
+    align-self: flex-start;
+}
+.close-button:hover {
+    opacity: 0.8;
+}
+
 .modal header {
     justify-content: space-between;
     width: 100%;
@@ -345,10 +380,21 @@ h1 {
     cursor: pointer;
 }
 
+.contact-header {
+    display: flex;
+}
+
+.contact-header__title {
+    display: flex;
+    flex-direction: column;
+}
+
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+    margin: 0;
+}
+
+.contact-photographer {
+    margin-top: 0;
 }
 
 form {
@@ -366,11 +412,6 @@ form {
     align-items: self-start;
 }
 
-.label-text {
-    color: #312e2e;
-    font-size: 36px;
-}
-
 .input-field,
 .message-area {
     width: 100%;
@@ -379,18 +420,23 @@ form {
 form input {
     width: 100%;
     height: 68px;
+    padding-left: 15px;
     border: none;
     border-radius: 5px;
+}
+
+#message {
+    height: 170px;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-top: 10px;
+    border: none;
+    resize: none;
 }
 
 .submission-message {
     display: inline-block;
     margin-top: 100px;
-}
-
-.error-message {
-    font-size: 1.2rem;
-    color: white;
 }
 
 #lightbox-modal {

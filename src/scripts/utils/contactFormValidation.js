@@ -19,12 +19,12 @@ const checkInputText = (elt, key, className) => {
     if (elt.value === '') {
         document.querySelector(
             `.${className} .error-message`
-        ).innerHTML = `Veuillez saisir un ${key}`;
+        ).innerHTML = `⚠ Veuillez saisir un ${key}`;
         return false;
     } else if (elt.value.length < 2) {
         document.querySelector(
             `.${className} .error-message`
-        ).innerHTML = `Votre ${key} doit contenir au moins deux caractères.`;
+        ).innerHTML = `⚠ Votre ${key} doit contenir au moins deux caractères.`;
         return false;
     } else {
         document.querySelector(`.${className} .error-message`).innerHTML = ` `;
@@ -39,11 +39,11 @@ const checkEmail = () => {
         // ? Why is nextElementSiblings null ? And why is the console.log displayed twice ?
         console.log(email.nextElementSibling);
         document.querySelector('.email .error-message').innerHTML =
-            'Veuillez saisir votre courriel.';
+            '⚠ Veuillez saisir votre courriel.';
         return false;
     } else if (!email.value.match(mailformat)) {
         document.querySelector('.email .error-message').innerHTML =
-            'Veuillez saisir un courriel valide.';
+            '⚠ Veuillez saisir un courriel valide.';
         return false;
     } else {
         document.querySelector('.email .error-message').innerHTML = ' ';

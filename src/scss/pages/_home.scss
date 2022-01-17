@@ -5,10 +5,10 @@ body {
     margin: 0;
 }
 
-
-header {
+.home-header {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     height: 90px;

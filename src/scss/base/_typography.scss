@@ -1,5 +1,27 @@
 @use "../utils/variables";
 
+// Contact form
+.modal header h2, .contact-photographer {
+    font-size: 3.5rem;
+    font-weight: normal;
+}
+
+.label-text {
+    color: #312E2E;
+    font-size: 2.4rem;
+}
+
+form input, #message {
+    font-size: 1.4rem;
+}
+
+.error-message {
+    font-size: 1.2rem;
+    color: white
+}
+
+
+// Sorting menu
 .media-sorting label {
     font-weight: bold;
     font-size: 1.2rem;
