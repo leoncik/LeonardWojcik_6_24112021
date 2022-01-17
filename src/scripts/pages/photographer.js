@@ -83,6 +83,7 @@ const enableSortMenuDropdown = () => {
         for (const iterator of notActiveButtons) {
             iterator.classList.toggle('wrapped');
         }
+        // Toggle arrow
         dropdownInput.classList.toggle('dropdown-expanded');
         dropdownArrow.classList.toggle('dropdown-arrow');
         dropdownArrow.classList.toggle('dropdown-arrow_rotate');
@@ -95,6 +96,8 @@ const enableSortMenuDropdown = () => {
         const lastNotActiveButton =
             notActiveButtons2[notActiveButtons2.length - 1];
         lastNotActiveButton.classList.add('last-dropdown-option');
+        // ARIA
+        setAriaExpanded();
     });
 };
 
@@ -123,6 +126,8 @@ const closeDropdown = () => {
     dropdownInput.classList.remove('dropdown-expanded');
     dropdownArrow.classList.toggle('dropdown-arrow');
     dropdownArrow.classList.toggle('dropdown-arrow_rotate');
+    // ARIA
+    setAriaExpanded();
 };
 
 // Set sort option value to dropdown-input and close dropdown menu
@@ -134,8 +139,19 @@ for (const iterator of sortButtons) {
         iterator.classList.add('active');
         inputButton.value = iterator.value;
         closeDropdown();
+        // ARIA
+        const activeId = iterator.id;
+        dropdownInput.setAttribute('aria-activedescendant', `${activeId}`);
     });
 }
+
+const setAriaExpanded = () => {
+    if (dropdownInput.matches('.dropdown-expanded')) {
+        dropdownInput.setAttribute('aria-expanded', 'true');
+    } else {
+        dropdownInput.setAttribute('aria-expanded', 'false');
+    }
+};
 
 // Initialize page (fetch data, then display It on the page and add behaviour to contact modal)
 export default async function initPhotographer() {

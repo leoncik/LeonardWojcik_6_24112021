@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,8 +13,8 @@
         <!-- <script src="/polyfill.bundle.js" defer></script>
         <script src="/app.bundle.js" defer></script> -->
         <!-- JavaScript (production) -->
-        <script src="../..//dist/polyfill.bundle.js" defer></script>
-        <script src="../..//dist/app.bundle.js" defer></script>
+        <script src="../../dist/polyfill.bundle.js" defer></script>
+        <script src="../../dist/app.bundle.js" defer></script>
         <title>Fisheye - photographe</title>
     </head>
 
@@ -54,13 +54,13 @@
                 <label for="dropdown-input">Trier par</label>
                 <div class="dropdown-container">
                     <div class="dropdown-input-container">
-                        <input type="button" id="dropdown-input" class="button dropdown-button" value="Popularité" aria-haspopup="listbox">
+                        <input type="button" id="dropdown-input" class="button dropdown-button" value="Popularité" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="sort-popularity-button">
                         <svg class="dropdown-arrow" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.12 0.453125L8 6.55979L1.88 0.453125L0 2.33312L8 10.3331L16 2.33312L14.12 0.453125Z" fill="white"/>
                             </svg>
                     </div>
 
-                    <div class="dropdown-options">
+                    <div class="dropdown-options" role="listbox">
                         <button id="sort-popularity-button" class="button sort-button active" value="Popularité">Popularité</button>
                         <button id="sort-date-button" class="button sort-button wrapped" value="Date">Date</button>
                         <button id="sort-title-button" class="button sort-button wrapped" value="Titre">Titre</button>
