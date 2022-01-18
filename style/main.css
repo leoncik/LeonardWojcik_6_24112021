@@ -126,6 +126,49 @@ form input,
     object-fit: cover;
 }
 
+.photographer-medias article {
+    position: relative;
+}
+
+.video-icon::after {
+    content: '';
+    background: url('../../../assets/icons/video-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 70px;
+    height: 70px;
+}
+
+.video-icon:hover::after {
+    content: '';
+    background: url('../../../assets/icons/video-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 70px;
+    height: 70px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.video-icon:hover .media {
+    opacity: 0.8;
+}
+
+.media:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
 .media-description {
     display: flex;
     justify-content: space-between;
@@ -154,6 +197,7 @@ form input,
     align-items: center;
     padding: 0 25px;
     font-weight: bold;
+    z-index: 1;
 }
 
 .total-likes-icon svg path {
@@ -441,6 +485,7 @@ form input {
 
 #lightbox-modal {
     background-color: rgba(196, 196, 196, 0.9);
+    z-index: 2;
 }
 
 .lightbox-modal__content {

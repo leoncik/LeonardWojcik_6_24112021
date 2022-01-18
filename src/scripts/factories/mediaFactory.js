@@ -40,11 +40,12 @@ export default function mediaFactory(data) {
         mediaContent.classList.add('media-content');
         article.appendChild(mediaContent);
 
-        /* 
+        /*
         TODO : refactor media creation. This should replace all the section starting with "// Image / video"
         const createMediaDom = (type) => {
             const media = document.createElement(type);
-            media.setAttribute("src", imageSource);
+            const mediaSource = `/assets/images/${urlId}/${type}`;
+            media.setAttribute("src", mediaSource);
             media.classList.add("media");
             mediaContent.appendChild(media);
         }
@@ -65,9 +66,11 @@ export default function mediaFactory(data) {
             const mediaVideo = document.createElement('video');
             mediaVideo.setAttribute('src', videoSource);
             mediaVideo.setAttribute('alt', altText);
-            // mediaVideo.setAttribute('controls', '');
             mediaVideo.classList.add('media');
             mediaContent.appendChild(mediaVideo);
+            // Add video icon
+            console.log(mediaVideo.parentElement);
+            mediaVideo.parentElement.classList.add('video-icon');
         }
 
         // MEDIA DESCRIPTION
@@ -214,6 +217,9 @@ export default function mediaFactory(data) {
             document.querySelector('.current-media').appendChild(currentTag);
             document.querySelector('.current-image-title span').innerHTML =
                 title;
+            if (type === 'video') {
+                currentTag.setAttribute('controls', '');
+            }
         };
 
         const galleryItems = document.querySelectorAll(
@@ -287,6 +293,7 @@ export default function mediaFactory(data) {
         } else if (mediasSrc[currentIndex].split('.').pop() === 'mp4') {
             const videoTag = document.createElement('video');
             document.querySelector('.current-media').appendChild(videoTag);
+            videoTag.setAttribute('controls', '');
         }
     };
 

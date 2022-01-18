@@ -10,6 +10,52 @@
     object-fit: cover;
 }
 
+.photographer-medias article {
+    position: relative;
+}
+
+// ? Refactory needed ?
+
+.video-icon::after {
+    content: '';
+    background: url('../../../assets/icons/video-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 70px;
+    height: 70px;
+}
+
+.video-icon:hover::after {
+    content: '';
+    background: url('../../../assets/icons/video-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 70px;
+    height: 70px;
+    // Hover rules
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.video-icon:hover .media {
+    opacity: 0.8;
+}
+
+.media:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
 .media-description {
     display: flex;
     justify-content: space-between;
