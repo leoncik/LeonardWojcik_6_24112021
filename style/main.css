@@ -212,6 +212,7 @@ form input,
 .dropdown-container {
     position: absolute;
     left: 185px;
+    z-index: 1;
 }
 
 .dropdown-options {

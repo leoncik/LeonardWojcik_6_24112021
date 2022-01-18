@@ -69,7 +69,6 @@ export default function mediaFactory(data) {
             mediaVideo.classList.add('media');
             mediaContent.appendChild(mediaVideo);
             // Add video icon
-            console.log(mediaVideo.parentElement);
             mediaVideo.parentElement.classList.add('video-icon');
         }
 
@@ -373,6 +372,7 @@ export default function mediaFactory(data) {
         nextButton.addEventListener('click', nextMedia);
 
         // Keyboard controls
+        // Previous and next buttons interactions with keyboard
         previousButton.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 previousMedia();
@@ -385,11 +385,14 @@ export default function mediaFactory(data) {
             }
         });
 
-        // ! Prevent controls if lightbox is not displayed
+        // Previous and next media (prevent controls if lightbox is not displayed)
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
+            if (e.key === 'ArrowLeft' && lightbox.style.display === 'block') {
                 previousMedia();
-            } else if (e.key === 'ArrowRight') {
+            } else if (
+                e.key === 'ArrowRight' &&
+                lightbox.style.display === 'block'
+            ) {
                 nextMedia();
             }
         });
@@ -407,8 +410,12 @@ export default function mediaFactory(data) {
 
     // SORT MEDIAS
 
-    // TODO : prevent sorting if dropdown select menu if closed or if the same sorting method is used twice
-    // TODO : try to refactor using arguments. E.g : genericSort(type){...}
+    const resetSortMedias = () => {
+        likeToggler();
+        lightboxDisplay();
+        setLightboxMedias();
+    };
+
     const sortMedias = (media) => {
         // Sort by popularity
         const sortByPopularity = () => {
@@ -417,10 +424,7 @@ export default function mediaFactory(data) {
             });
             emptyGallery();
             displayMedia(media);
-            // TODO : needs refactoring. After displaying media, lightbox control and likes toggler needs to be reset
-            likeToggler();
-            lightboxDisplay();
-            setLightboxMedias();
+            resetSortMedias();
             console.log('Sorted by popularity');
         };
 
@@ -433,9 +437,7 @@ export default function mediaFactory(data) {
             });
             emptyGallery();
             displayMedia(media);
-            likeToggler();
-            lightboxDisplay();
-            setLightboxMedias();
+            resetSortMedias();
             console.log('Sorted by date');
         };
 
@@ -455,9 +457,7 @@ export default function mediaFactory(data) {
             });
             emptyGallery();
             displayMedia(media);
-            likeToggler();
-            lightboxDisplay();
-            setLightboxMedias();
+            resetSortMedias();
             console.log('Sorted by title');
         };
 

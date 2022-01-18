@@ -5,12 +5,9 @@
 }
 
 .dropdown-container {
-    // Old rules, replaced with position absolute to overlay media content
-    // display: flex;
-    // flex-direction: column;
-    // position: relative;
     position: absolute;
     left: 185px;
+    z-index: 1;
 }
 
 // Dropdown buttons
