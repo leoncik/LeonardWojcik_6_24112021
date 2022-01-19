@@ -155,7 +155,9 @@ const setAriaExpanded = () => {
 
 // Initialize page (fetch data, then display It on the page and add behaviour to contact modal)
 export default async function initPhotographer() {
-    const { photographers, media } = await fetchPhotographers();
+    const { photographers, media } = await fetchPhotographers(
+        '../../src/data/photographers.json'
+    );
     const profiles = await getProfile(photographers);
     const medias = await getMedia(media);
     displayData(profiles);

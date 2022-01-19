@@ -16,7 +16,9 @@ export async function displayData(photographers) {
 
 // Initialize page (fetch data, then display It on the page)
 export async function initHome() {
-    const photographersData = await fetchPhotographers();
+    const photographersData = await fetchPhotographers(
+        'src/data/photographers.json'
+    );
     const photographers = await photographersData.photographers;
     displayData(photographers);
 }
