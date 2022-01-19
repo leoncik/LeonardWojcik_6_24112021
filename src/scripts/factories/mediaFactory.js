@@ -22,8 +22,8 @@ let currentIndex;
 export default function mediaFactory(data) {
     const { id, price, title, date, image, video, likes, altText } = data;
 
-    const imageSource = `/assets/images/${urlId}/${image}`;
-    const videoSource = `/assets/images/${urlId}/${video}`;
+    const imageSource = `../../assets/images/${urlId}/${image}`;
+    const videoSource = `../../assets/images/${urlId}/${video}`;
 
     // -----------------------------
     // OBJECTS CREATION TEMPLATE
