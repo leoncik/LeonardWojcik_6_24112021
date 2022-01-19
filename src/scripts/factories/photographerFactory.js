@@ -1,7 +1,7 @@
 export default function photographerFactory(data, mediaRootPath) {
     const { name, city, tagline, price, id, portrait } = data;
 
-    const picture = `${mediaRootPath}assets/photographers/${portrait}`;
+    const picture = `${mediaRootPath}assets/photographers/medium/${portrait}`;
 
     function getUserCardDOM() {
         const article = document.createElement('article');
