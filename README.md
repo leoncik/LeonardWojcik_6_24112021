@@ -10,23 +10,55 @@ Project carried out as part of the Front-End Web Development Career Path of Open
 
 ## Table of content
 
+-   [Description](#description)
 -   [Live demo](#live-demo)
+-   [File structure](#file-structure)
 -   [List of dependencies](#list-of-dependencies)
 -   [Installation](#installation)
 -   [How to use](#how-to-use)
     -   [JavaScript](#javascript)
     -   [Styling](#styling)
 
+## Description
+
+Fisheye is a fictional website to display the work of various freelance photographers.
+
+This project has two main constraints :
+
+-   Accessibility : the website must be fully usable with a keyboard and be accessible for people with impaired vision (the website must be tested with a screen reader).
+-   Factory pattern : It is required to use a [Factory pattern](https://en.wikipedia.org/wiki/Factory_method_pattern) to create the different pages.
+
 ## Live demo
 
 Use this link to try the project : https://leoncik.github.io/LeonardWojcik_6_24112021/
 
+## File structure
+
+`assets/`, contains all medias needed for the project (icons, profile pictures, media pictures and videos).
+
+`dst/`, is where webpack will be building the project's script.
+
+`pages/photographer-pages/`, contains a single HTML page that is mostly created dynamically and contains the works of each photograph.
+
+`src/` :
+
+-   `data/`, contains a JSON file that is used for fetching all information needed for this project.
+-   `scripts/`, contains all JavaScript files.
+    -   `api/`, contains the functions used to fetch the JSON data file.
+    -   `factories/`, the heart of this project. Contains factories used to create most elements of the pages.
+    -   `pages/`, contains the functions used to initialize the pages.
+    -   `utils/`, contains generic functions and miscellaneous variables.
+-   `scss/`, contains all SCSS files. Their organisation follow the [7-1 pattern](https://sass-guidelin.es/#the-7-1-pattern).
+
 ## List of dependencies
 
--   Sass
--   Webpack
--   Eslint
--   Prettier
+-   [Babel](https://babel.dev/) — A JavaScript transpiler.
+-   [Eslint](https://eslint.org/) — A JavaScript linter.
+-   [Husky](https://typicode.github.io/husky) — Git hooks manager.
+-   [lint-staged](https://www.npmjs.com/package/lint-staged) — Run linters against staged git files.
+-   [Prettier](https://prettier.io/) — A code formatter.
+-   [Sass](https://sass-lang.com/) — A CSS preprocessor.
+-   [Webpack](https://webpack.js.org/) — A JavaScript bundler.
 
 ## Installation
 
@@ -63,6 +95,12 @@ Then, you can use webpack-dev-server with the command :
 
 ```sh
 yarn start
+```
+
+After editing you scripts, you can build the project with :
+
+```sh
+yarn build
 ```
 
 ### Styling
