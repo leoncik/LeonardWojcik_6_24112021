@@ -16,6 +16,8 @@ export async function genericFetch(
 }
 
 export async function fetchPhotographers() {
-    const photographersData = await genericFetch('src/data/photographers.json');
+    const photographersData = await genericFetch(
+        '/src/data/photographers.json'
+    );
     return photographersData;
 }
