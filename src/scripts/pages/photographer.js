@@ -22,7 +22,10 @@ async function getProfile(elt) {
 // Display photographer profile data on page
 async function displayData(photographerProfile) {
     const photographHeader = document.querySelector('.photographer-info');
-    const photographerModel = photographerFactory(photographerProfile);
+    const photographerModel = photographerFactory(
+        photographerProfile,
+        `../../`
+    );
     const userCardDOM = photographerModel.getProfile();
     photographHeader.appendChild(userCardDOM);
 }
