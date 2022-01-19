@@ -1,7 +1,7 @@
 export default function photographerFactory(data) {
     const { name, city, tagline, price, id, portrait } = data;
 
-    const picture = `/assets/photographers/${portrait}`;
+    const picture = `../../assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
         const article = document.createElement('article');
