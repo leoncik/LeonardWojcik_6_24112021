@@ -1,8 +1,3 @@
-/*
- TODO : both lightbox and form fall in the "modal" category. Refactor to make a single "modalDisplay" to control
- TODO : the lightbox and the modal.
- */
-
 import {
     modal,
     contactForm,
@@ -10,7 +5,7 @@ import {
     focusTrap,
 } from '../utils/helpers.js';
 
-export function modalDisplay() {
+export function contactFormDisplay() {
     function displayModal() {
         modal.style.display = 'block';
         contactForm.style.display = 'block';

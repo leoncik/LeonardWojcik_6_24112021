@@ -1,3 +1,8 @@
+// Empty an HTML element (brackets added to prevent "Arrow function should not return assignment" error of Eslint)
+const emptyHtmlElement = (element) => {
+    document.querySelector(element).innerHTML = ' ';
+};
+
 // Retrieve photographer id from URL
 const getParam = (param) => new URL(document.location).searchParams.get(param);
 
@@ -35,18 +40,6 @@ const titleButton = document.querySelector('#sort-title-button');
 const lightbox = document.getElementById('lightbox-modal');
 const previousButton = document.querySelector('.previous');
 const nextButton = document.querySelector('.next');
-
-// Empty lightbox media content
-const emptyMediaContainer = () => {
-    document.querySelector('.current-media').innerHTML = ' ';
-};
-// Empty gallery
-const emptyGallery = () => {
-    document.querySelector('.photographer-medias').innerHTML = ' ';
-};
-
-// TODO : Empty gallery and mediaContainer could be refactored with something more generic like this :
-// const emptyHtmlElt = (elt) => document.querySelector(elt).innerHTML = ' ';
 
 // Add focus trap to a section
 const focusTrap = (section) => {
@@ -92,10 +85,9 @@ export {
     lightbox,
     previousButton,
     nextButton,
-    emptyMediaContainer,
     popularityButton,
     dateButton,
     titleButton,
-    emptyGallery,
     focusTrap,
+    emptyHtmlElement,
 };

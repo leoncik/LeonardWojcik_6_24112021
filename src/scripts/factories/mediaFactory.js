@@ -1,12 +1,11 @@
 import {
     lightbox,
-    emptyMediaContainer,
     previousButton,
     nextButton,
     popularityButton,
     dateButton,
     titleButton,
-    emptyGallery,
+    emptyHtmlElement,
     focusTrap,
 } from '../utils/helpers.js';
 
@@ -233,7 +232,7 @@ export default function mediaFactory(data) {
             ).innerText;
             iterator.firstChild.addEventListener('click', () => {
                 displayLightbox();
-                emptyMediaContainer();
+                emptyHtmlElement('.current-media');
                 if (mediaSrc.split('.').pop() === 'jpg') {
                     return displayMedia(mediaSrc, title, 'img');
                 } else if (mediaSrc.split('.').pop() === 'mp4') {
@@ -251,7 +250,7 @@ export default function mediaFactory(data) {
             iterator.firstChild.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     displayLightbox();
-                    emptyMediaContainer();
+                    emptyHtmlElement('.current-media');
                     if (mediaSrc.split('.').pop() === 'jpg') {
                         return displayMedia(mediaSrc, title, 'img');
                     } else if (mediaSrc.split('.').pop() === 'mp4') {
@@ -338,7 +337,7 @@ export default function mediaFactory(data) {
         getMediasTitle(media);
 
         const previousMedia = () => {
-            emptyMediaContainer();
+            emptyHtmlElement('.current-media');
             // If at the beginning of the array, go to the end of the array
             if (currentIndex === 0) {
                 currentIndex = data.length - 1;
@@ -354,7 +353,7 @@ export default function mediaFactory(data) {
         };
 
         const nextMedia = () => {
-            emptyMediaContainer();
+            emptyHtmlElement('.current-media');
             // If at the end of the array, go to the beginning of the array
             if (currentIndex === data.length - 1) {
                 currentIndex = 0;
@@ -412,7 +411,14 @@ export default function mediaFactory(data) {
 
     // SORT MEDIAS
 
-    const resetSortMedias = () => {
+    // Reset gallery after sorting (empty gallery and display medias)
+    const resetGallery = (media) => {
+        emptyHtmlElement('.photographer-medias');
+        displayMedia(media);
+    };
+
+    // Re enable like toggler and lightbox after sorting
+    const reEnableLikesAndLightbox = () => {
         likeToggler();
         lightboxDisplay();
         setLightboxMedias();
@@ -424,9 +430,8 @@ export default function mediaFactory(data) {
             media.sort((a, b) => {
                 return b.likes - a.likes;
             });
-            emptyGallery();
-            displayMedia(media);
-            resetSortMedias();
+            resetGallery(media);
+            reEnableLikesAndLightbox();
             console.log('Sorted by popularity');
         };
 
@@ -437,9 +442,8 @@ export default function mediaFactory(data) {
                 const dateB = new Date(b.date);
                 return dateA - dateB;
             });
-            emptyGallery();
-            displayMedia(media);
-            resetSortMedias();
+            resetGallery(media);
+            reEnableLikesAndLightbox();
             console.log('Sorted by date');
         };
 
@@ -457,9 +461,8 @@ export default function mediaFactory(data) {
                 }
                 return 0;
             });
-            emptyGallery();
-            displayMedia(media);
-            resetSortMedias();
+            resetGallery(media);
+            reEnableLikesAndLightbox();
             console.log('Sorted by title');
         };
 

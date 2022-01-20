@@ -4,7 +4,7 @@ import mediaFactory from '../factories/mediaFactory.js';
 import { fetchPhotographers } from '../api/api.js';
 
 // Contact form scripts
-import { modalDisplay } from '../utils/contactFormDisplay';
+import { contactFormDisplay } from '../utils/contactFormDisplay';
 import { formSubmitValidation } from '../utils/contactFormValidation';
 
 const params = new URL(document.location).searchParams;
@@ -40,7 +40,6 @@ async function getMedia(elt) {
 }
 
 // Display photographer medias on page
-// TODO : remove display rules from factory and put them here.
 export async function displayMedia(media) {
     const photographHeader = document.querySelector('.photographer-medias');
     media.forEach((element) => {
@@ -166,7 +165,7 @@ export default async function initPhotographer() {
     displayData(profiles);
     displayMedia(medias);
     displayTotalLikes(medias);
-    modalDisplay();
+    contactFormDisplay();
     formSubmitValidation();
     enableLightbox(medias);
     enableLikeToggler(medias);
