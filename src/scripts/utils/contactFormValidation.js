@@ -84,7 +84,9 @@ export const formSubmitValidation = () => {
             e.preventDefault();
             fieldValidation();
             if (fieldValidationIsValid()) {
-                console.log(message.value);
+                console.log(`Nouveau message de : ${firstName.value} ${lastName.value}.
+
+Contenu du message : ${message.value}`);
                 submitedForm();
                 resetForm();
                 document.querySelector('.close-button').focus();

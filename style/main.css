@@ -391,6 +391,7 @@ h1 {
     height: 100%;
     width: 100%;
     overflow: auto;
+    z-index: 2;
 }
 
 #contact_modal {
@@ -486,7 +487,6 @@ form input {
 
 #lightbox-modal {
     background-color: rgba(196, 196, 196, 0.9);
-    z-index: 2;
 }
 
 .lightbox-modal__content {

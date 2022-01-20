@@ -22,7 +22,7 @@ let currentIndex;
 export default function mediaFactory(data) {
     const { id, price, title, date, image, video, likes, altText } = data;
 
-    const imageSource = `../../assets/medias/${urlId}/large/${image}`;
+    const imageSource = `../../assets/medias/${urlId}/medium/${image}`;
     const videoSource = `../../assets/medias/${urlId}/original/${video}`;
 
     // -----------------------------
@@ -307,7 +307,9 @@ export default function mediaFactory(data) {
         return media.map((media) => {
             mediasSrc = [
                 ...mediasSrc,
-                `/assets/medias/${urlId}/large/${media.image || media.video}`,
+                `../../assets/medias/${urlId}/large/${
+                    media.image || media.video
+                }`,
             ];
             return mediasSrc;
         });
