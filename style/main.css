@@ -132,7 +132,7 @@ form input,
 
 .video-icon::after {
     content: '';
-    background: url('../../../assets/icons/video-icon.svg');
+    background: url('../assets/icons/video-icon.svg');
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
