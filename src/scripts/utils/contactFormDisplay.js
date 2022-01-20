@@ -8,6 +8,7 @@ import {
 export function contactFormDisplay() {
     function displayModal() {
         modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
         contactForm.style.display = 'block';
         // Accessibility settings
         document.getElementById('main').setAttribute('aria-hidden', 'true');
@@ -27,6 +28,7 @@ export function contactFormDisplay() {
 
     function closeModal() {
         modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
         // Accessibility settings
         document.getElementById('main').setAttribute('aria-hidden', 'false');
         document

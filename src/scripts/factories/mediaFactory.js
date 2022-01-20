@@ -171,6 +171,7 @@ export default function mediaFactory(data) {
         // Display the lightbox
         function displayLightbox() {
             lightbox.style.display = 'block';
+            document.body.style.overflow = 'hidden';
             document.getElementById('main').setAttribute('aria-hidden', 'true');
             document
                 .getElementById('lightbox-modal')
@@ -182,6 +183,7 @@ export default function mediaFactory(data) {
         // Close the lightbox
         function closeLightbox() {
             lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
             document
                 .getElementById('main')
                 .setAttribute('aria-hidden', 'false');
