@@ -39,37 +39,21 @@ export default function mediaFactory(data) {
         mediaContent.classList.add('media-content');
         article.appendChild(mediaContent);
 
-        /*
-        TODO : refactor media creation. This should replace all the section starting with "// Image / video"
+        // Image / video
         const createMediaDom = (type) => {
             const media = document.createElement(type);
-            const mediaSource = `/assets/images/${urlId}/${type}`;
-            media.setAttribute("src", mediaSource);
-            media.classList.add("media");
+            media.setAttribute(
+                'src',
+                type === 'img' ? imageSource : videoSource
+            );
+            media.setAttribute('alt', altText);
+            if (type === 'img') media.setAttribute('tabindex', '0');
+            media.classList.add('media');
             mediaContent.appendChild(media);
-        }
-
+            if (type === 'video')
+                media.parentElement.classList.add('video-icon');
+        };
         createMediaDom(data.image ? 'img' : 'video');
-        */
-
-        // Image / video
-        if (data.image) {
-            // Profile picture
-            const mediaPicture = document.createElement('img');
-            mediaPicture.setAttribute('src', imageSource);
-            mediaPicture.setAttribute('alt', altText);
-            mediaPicture.setAttribute('tabindex', '0');
-            mediaPicture.classList.add('media');
-            mediaContent.appendChild(mediaPicture);
-        } else if (data.video) {
-            const mediaVideo = document.createElement('video');
-            mediaVideo.setAttribute('src', videoSource);
-            mediaVideo.setAttribute('alt', altText);
-            mediaVideo.classList.add('media');
-            mediaContent.appendChild(mediaVideo);
-            // Add video icon
-            mediaVideo.parentElement.classList.add('video-icon');
-        }
 
         // MEDIA DESCRIPTION
         const mediaInfos = document.createElement('div');
@@ -93,6 +77,8 @@ export default function mediaFactory(data) {
         <path d="M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z" fill="#911C1C"/>
         </svg>`;
         likesIcon.setAttribute('tabindex', '0');
+        likesIcon.setAttribute('role', 'button');
+        likesIcon.setAttribute('title', "J'aime");
         mediaLikesContainer.appendChild(likesIcon);
 
         // Number of likes

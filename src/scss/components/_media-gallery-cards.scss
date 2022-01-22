@@ -14,8 +14,6 @@
     position: relative;
 }
 
-// ? Refactory needed ?
-
 .video-icon::after {
     content: '';
     background: url('../assets/icons/video-icon.svg');
@@ -32,7 +30,7 @@
 
 .video-icon:hover::after {
     content: '';
-    background: url('../../../assets/icons/video-icon.svg');
+    background: url('../assets/icons/video-icon.svg');
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
@@ -44,7 +42,7 @@
     height: 70px;
     // Hover rules
     opacity: 0.8;
-    cursor: pointer;
+    cursor: zoom-in;
 }
 
 .video-icon:hover .media {
@@ -53,7 +51,7 @@
 
 .media:hover {
     opacity: 0.8;
-    cursor: pointer;
+    cursor: zoom-in;
 }
 
 .media-description {

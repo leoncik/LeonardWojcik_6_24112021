@@ -12,7 +12,6 @@ const urlId = parseInt(params.get('id'));
 
 async function getProfile(elt) {
     // Search photographer with It's "ID"
-    // TODO display error if photographerProfile is undefined (can't find photographer "ID")
     const photographerProfile = elt.find(
         (photographer) => parseInt(photographer.id) === urlId
     );
@@ -80,8 +79,9 @@ const dropdownArrow = document.querySelector('svg.dropdown-arrow:nth-child(2)');
 const enableSortMenuDropdown = () => {
     dropdownInput.addEventListener('click', () => {
         const notActiveButtons = document.querySelectorAll(
-            '.dropdown-options button:not(.active)'
+            '.sort-button:not(.active'
         );
+        console.log(notActiveButtons);
         for (const iterator of notActiveButtons) {
             iterator.classList.toggle('wrapped');
         }
@@ -90,13 +90,9 @@ const enableSortMenuDropdown = () => {
         dropdownArrow.classList.toggle('dropdown-arrow');
         dropdownArrow.classList.toggle('dropdown-arrow_rotate');
         // Give appropriate border-radius to the last element of the dropdown menu
-        // ? Could It be done with one line ? document.querySelector('sort-button:last-child:not(.active').style.borderRadius = "20px";
         resetLastButton();
-        const notActiveButtons2 = document.querySelectorAll(
-            '.sort-button:not(.active'
-        );
         const lastNotActiveButton =
-            notActiveButtons2[notActiveButtons2.length - 1];
+            notActiveButtons[notActiveButtons.length - 1];
         lastNotActiveButton.classList.add('last-dropdown-option');
         // ARIA
         setAriaExpanded();

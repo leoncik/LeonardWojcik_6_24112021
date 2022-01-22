@@ -146,7 +146,7 @@ form input,
 
 .video-icon:hover::after {
     content: '';
-    background: url('../../../assets/icons/video-icon.svg');
+    background: url('../assets/icons/video-icon.svg');
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
@@ -157,7 +157,7 @@ form input,
     width: 70px;
     height: 70px;
     opacity: 0.8;
-    cursor: pointer;
+    cursor: zoom-in;
 }
 
 .video-icon:hover .media {
@@ -166,7 +166,7 @@ form input,
 
 .media:hover {
     opacity: 0.8;
-    cursor: pointer;
+    cursor: zoom-in;
 }
 
 .media-description {
@@ -332,6 +332,7 @@ form input,
     transform: translate(-50%, -50%);
     width: 400px;
     height: 400px;
+    z-index: 1;
 }
 
 .lightbox-media img,
