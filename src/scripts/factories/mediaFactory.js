@@ -214,7 +214,10 @@ export default function mediaFactory(data) {
 
         // Display lightbox and media on click
         for (const iterator of galleryItems) {
-            const mediaSrc = iterator.querySelector('.media').src;
+            // Change src to display large medias inside lightbox
+            let mediaSrc = iterator.querySelector('.media').src.split('/');
+            mediaSrc.splice(6, 1, 'large');
+            mediaSrc = mediaSrc.join('/');
             const title = iterator.querySelector(
                 '.media-description h3'
             ).innerText;
@@ -231,7 +234,10 @@ export default function mediaFactory(data) {
 
         // Display lightbox and media (keyboard control)
         for (const iterator of galleryItems) {
-            const mediaSrc = iterator.querySelector('.media').src;
+            // Change src to display large medias inside lightbox
+            let mediaSrc = iterator.querySelector('.media').src.split('/');
+            mediaSrc.splice(6, 1, 'large');
+            mediaSrc = mediaSrc.join('/');
             const title = iterator.querySelector(
                 '.media-description h3'
             ).innerText;
