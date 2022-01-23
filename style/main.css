@@ -326,30 +326,25 @@ form input,
 }
 
 .lightbox-media {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
+    width: fit-content;
+    height: fit-content;
     z-index: 1;
+}
+
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .lightbox-media img,
 .lightbox-media video {
-    width: auto;
+    border-radius: 5px;
+    width: 100%;
     max-height: 400px;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.current-image-title {
-    position: absolute;
-    bottom: 10%;
-    left: 40%;
 }
 
 /* CONTACT MODAL */
@@ -387,6 +382,7 @@ form input,
 
 .contact-header {
     display: flex;
+    flex-direction: row-reverse;
 }
 
 .contact-header__title {

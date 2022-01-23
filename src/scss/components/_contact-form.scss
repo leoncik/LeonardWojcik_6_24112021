@@ -1,3 +1,5 @@
+@use "../utils/variables";
+
 /* CONTACT MODAL */
 
 #contact_modal {
@@ -5,7 +7,7 @@
 }
 
 .modal {
-    border-radius: 5px;
+    border-radius: variables.$common-radius;
     background-color: #DB8876;
     width: 50%;
     display: flex;
@@ -36,6 +38,7 @@
 
 .contact-header {
     display: flex;
+    flex-direction: row-reverse;
 }
 
 .contact-header__title {
@@ -77,12 +80,12 @@ form input {
     height: 68px;
     padding-left: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: variables.$common-radius;;
 }
 
 #message {
     height: 170px;
-    border-radius: 5px;
+    border-radius: variables.$common-radius;
     padding-left: 15px;
     padding-top: 10px;
     border: none;

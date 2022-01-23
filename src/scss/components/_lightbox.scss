@@ -1,3 +1,5 @@
+@use "../utils/variables";
+
 /* LIGHTBOX */
 
 #lightbox-modal {
@@ -55,33 +57,29 @@
 // Lightbox medias
 
 .lightbox-media {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
+    width: fit-content;
+    height: fit-content;
     z-index: 1;
 }
 
 // TODO : use flexbox to align media with It's title
-// .lightbox-content {
-//     display: flex;
-//     flex-direction: column;
-// }
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
 .lightbox-media img, .lightbox-media video {
-    width: auto;
+    border-radius: variables.$common-radius;
+    width: 100%;
     max-height: 400px;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
-.current-image-title {
-    position: absolute;
-    bottom: 10%;
-    left: 40%;
-}
+// .current-image-title {
+//     position: absolute;
+//     bottom: 10%;
+//     left: 40%;
+// }

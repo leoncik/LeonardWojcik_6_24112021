@@ -9,7 +9,7 @@
     height: 70px;
     border: none;
     background-color: variables.$primary-color;
-    border-radius: 5px;
+    border-radius: variables.$common-radius;;
     cursor: pointer;
     &:hover {
         color: black;
@@ -27,7 +27,7 @@
 }
 
 .dropdown-expanded {
-    border-radius: 5px 5px 0 0;
+    border-radius: variables.$common-radius variables.$common-radius 0 0;
 }
 
 .close-button {
