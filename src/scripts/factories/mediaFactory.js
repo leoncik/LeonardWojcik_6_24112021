@@ -216,7 +216,8 @@ export default function mediaFactory(data) {
         for (const iterator of galleryItems) {
             // Change src to display large medias inside lightbox
             let mediaSrc = iterator.querySelector('.media').src.split('/');
-            mediaSrc.splice(6, 1, 'large');
+            mediaSrc.splice(0, 3, '..', '..');
+            mediaSrc.splice(5, 1, 'large');
             mediaSrc = mediaSrc.join('/');
             const title = iterator.querySelector(
                 '.media-description h3'
