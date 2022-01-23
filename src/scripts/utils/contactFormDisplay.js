@@ -18,12 +18,10 @@ export function contactFormDisplay() {
         closeButton.focus();
         focusTrap(modal);
 
-        // Remove validation message.
-        validationMessage.textContent = ' ';
-        // TODO : use a condition to remove validation message ?
-        // if (validationMessage.textContent !== ' ') {
-        //    validationMessage.textContent = ' ';
-        // }
+        // Remove validation message if there is one.
+        if (validationMessage.childNodes.length === 2) {
+            validationMessage.textContent = ' ';
+        }
     }
 
     function closeModal() {

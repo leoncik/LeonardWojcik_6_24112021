@@ -6,12 +6,9 @@ import {
     message,
     contactForm,
     validationMessage,
-    // focusTrap
 } from '../utils/helpers.js';
 
 // *** Form fields validation *** //
-
-// TODO : add style to valid and invalid fields
 
 // Check if the name, surname and message fields are valid.
 
@@ -20,14 +17,26 @@ const checkInputText = (elt, key, className) => {
         document.querySelector(
             `.${className} .error-message`
         ).innerHTML = `⚠ Veuillez saisir un ${key}`;
+        document
+            .querySelector(`.${className} .error-message`)
+            .classList.add('visible');
+        elt.classList.add('input-error');
         return false;
     } else if (elt.value.length < 2) {
         document.querySelector(
             `.${className} .error-message`
         ).innerHTML = `⚠ Votre ${key} doit contenir au moins deux caractères.`;
+        document
+            .querySelector(`.${className} .error-message`)
+            .classList.add('visible');
+        elt.classList.add('input-error');
         return false;
     } else {
         document.querySelector(`.${className} .error-message`).innerHTML = ` `;
+        document
+            .querySelector(`.${className} .error-message`)
+            .classList.remove('visible');
+        elt.classList.remove('input-error');
     }
     return true;
 };
@@ -36,17 +45,28 @@ const checkInputText = (elt, key, className) => {
 
 const checkEmail = () => {
     if (email.value === '') {
-        // ? Why is nextElementSiblings null ? And why is the console.log displayed twice ?
-        console.log(email.nextElementSibling);
+        console.log(email);
         document.querySelector('.email .error-message').innerHTML =
             '⚠ Veuillez saisir votre courriel.';
+        document
+            .querySelector(`.email .error-message`)
+            .classList.add('visible');
+        email.classList.add('input-error');
         return false;
     } else if (!email.value.match(mailformat)) {
         document.querySelector('.email .error-message').innerHTML =
             '⚠ Veuillez saisir un courriel valide.';
+        document
+            .querySelector(`.email .error-message`)
+            .classList.add('visible');
+        email.classList.add('input-error');
         return false;
     } else {
         document.querySelector('.email .error-message').innerHTML = ' ';
+        document
+            .querySelector(`.email .error-message`)
+            .classList.remove('visible');
+        email.classList.remove('input-error');
     }
     return true;
 };
@@ -90,8 +110,6 @@ Contenu du message : ${message.value}`);
                 submitedForm();
                 resetForm();
                 document.querySelector('.close-button').focus();
-                // ! Makes focus stuck after opening modal again (Tab wont leave exit button but Shift + tab can)
-                // focusTrap(document.querySelector('.contact-header'));
             }
         },
         false
@@ -105,6 +123,7 @@ function submitedForm() {
         'afterbegin',
         "<span class='submission-message'>Votre message a bien été envoyé, merci ! Vous pouvez à présent fermer le formulaire de contact.</span>"
     );
+    console.log(validationMessage.childNodes.length);
 }
 
 // Reset form after closing the modal

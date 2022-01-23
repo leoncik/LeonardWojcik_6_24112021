@@ -25,7 +25,6 @@ form input,
 
 .error-message {
     font-size: 1.2rem;
-    color: white;
 }
 
 .media-sorting label {
@@ -426,13 +425,33 @@ form input {
     border-radius: 5px;
 }
 
-#message {
+form textarea {
     height: 170px;
     border-radius: 5px;
     padding-left: 15px;
     padding-top: 10px;
     border: none;
     resize: none;
+}
+
+.input-error {
+    border: 3px solid #e74616;
+}
+
+.inputform-assist {
+    margin-top: 13px;
+}
+
+.error-message {
+    visibility: hidden;
+    padding: 3px;
+    background-color: white;
+    color: #e74616;
+    border-radius: 5px;
+}
+
+.error-message.visible {
+    visibility: visible;
 }
 
 .submission-message {

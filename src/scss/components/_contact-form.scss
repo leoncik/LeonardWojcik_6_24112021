@@ -83,13 +83,33 @@ form input {
     border-radius: variables.$common-radius;;
 }
 
-#message {
+form textarea {
     height: 170px;
     border-radius: variables.$common-radius;
     padding-left: 15px;
     padding-top: 10px;
     border: none;
     resize: none;
+}
+
+.input-error {
+    border: 3px solid rgb(231, 70, 22);
+}
+
+.inputform-assist {
+    margin-top: 13px;
+}
+
+.error-message {
+    visibility: hidden;
+    padding: 3px;
+    background-color: white;
+    color: rgb(231, 70, 22);;
+    border-radius: variables.$common-radius;
+}
+
+.error-message.visible {
+    visibility: visible;
 }
 
 .submission-message {
