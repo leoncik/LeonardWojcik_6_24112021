@@ -81,7 +81,6 @@ const enableSortMenuDropdown = () => {
         const notActiveButtons = document.querySelectorAll(
             '.sort-button:not(.active'
         );
-        console.log(notActiveButtons);
         for (const iterator of notActiveButtons) {
             iterator.classList.toggle('wrapped');
         }

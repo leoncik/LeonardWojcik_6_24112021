@@ -30,9 +30,6 @@ export default function mediaFactory(data) {
 
     function getPhotographerData() {
         const article = document.createElement('article');
-        // Accessibility settings
-        article.setAttribute('tabindex', '0');
-        article.setAttribute('role', 'button');
 
         // MEDIA CONTENT
         const mediaContent = document.createElement('div');
@@ -46,6 +43,7 @@ export default function mediaFactory(data) {
                 'src',
                 type === 'img' ? imageSource : videoSource
             );
+            media.setAttribute('title', `${title}, vue rapprochée`);
             media.setAttribute('alt', altText);
             if (type === 'img') media.setAttribute('tabindex', '0');
             media.classList.add('media');
@@ -61,8 +59,9 @@ export default function mediaFactory(data) {
         article.appendChild(mediaInfos);
 
         // Title
-        const mediaTitle = document.createElement('h3');
+        const mediaTitle = document.createElement('h2');
         mediaTitle.textContent = title;
+        mediaTitle.setAttribute('lang', 'en');
         mediaInfos.appendChild(mediaTitle);
 
         // Likes container
@@ -224,7 +223,7 @@ export default function mediaFactory(data) {
             mediaSrc = mediaSrc.join('/');
             // Get title of medias
             const title = iterator.querySelector(
-                '.media-description h3'
+                '.media-description h2'
             ).innerText;
             iterator.firstChild.addEventListener('click', () => {
                 displayLightbox();
@@ -249,7 +248,7 @@ export default function mediaFactory(data) {
             mediaSrc = mediaSrc.join('/');
             // Get title of medias
             const title = iterator.querySelector(
-                '.media-description h3'
+                '.media-description h2'
             ).innerText;
             iterator.firstChild.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {

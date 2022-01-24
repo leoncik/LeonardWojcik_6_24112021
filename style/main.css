@@ -123,11 +123,8 @@ form input,
 .photographer-medias video {
     width: 350px;
     height: 300px;
-    border-radius: 5px;
-}
-
-.photographer-medias video {
     object-fit: cover;
+    border-radius: 5px;
 }
 
 .photographer-medias article {
@@ -180,7 +177,7 @@ form input,
     color: #901c1c;
 }
 
-.media-description h3 {
+.media-description h2 {
     margin: 0;
     font-size: 1.4rem;
 }

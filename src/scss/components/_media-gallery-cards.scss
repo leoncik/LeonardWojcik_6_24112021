@@ -3,11 +3,8 @@
 .photographer-medias img, .photographer-medias video  {
     width: 350px;
     height: 300px;
-    border-radius: variables.$common-radius;
-}
-
-.photographer-medias video {
     object-fit: cover;
+    border-radius: variables.$common-radius;
 }
 
 .photographer-medias article {
@@ -61,7 +58,7 @@
     color: variables.$primary-color;
 }
 
-.media-description h3 {
+.media-description h2 {
     margin: 0;
     font-size: 1.4rem;
 }
