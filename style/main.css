@@ -531,12 +531,31 @@ h1 {
 
 .photographer_section {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 350px);
+    grid-template-columns: repeat(auto-fill, 300px);
     justify-content: center;
     gap: 140px;
     margin-top: 100px;
 }
 
+@media all and (max-width: 760px) {
+    .home-header {
+        justify-content: space-around;
+    }
+
+    .home-header h1 {
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    .home-header .logo {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    .photographer_section {
+        gap: 50px;
+    }
+}
 .photographer-page-header {
     display: flex;
     align-items: center;
