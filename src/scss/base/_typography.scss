@@ -2,13 +2,13 @@
 
 // Contact form
 .modal header h2, .contact-photographer {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: normal;
 }
 
 .label-text {
     color: #312E2E;
-    font-size: 2.4rem;
+    font-size: 2rem;
 }
 
 form input, #message {
@@ -17,6 +17,11 @@ form input, #message {
 
 .error-message {
     font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.submission-message {
+    font-size: 2.5rem;
 }
 
 

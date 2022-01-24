@@ -74,6 +74,7 @@ export default function photographerFactory(data, mediaRootPath) {
         // Profile picture
         const profilePicture = document.createElement('img');
         profilePicture.setAttribute('src', picture);
+        profilePicture.setAttribute('alt', `Photo de profil de ${name}`);
         profilePicture.classList.add('photograph-header__profile-picture');
         document
             .getElementsByClassName('photographer-profile-picture')[0]

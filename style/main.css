@@ -9,13 +9,13 @@ a {
 
 .modal header h2,
 .contact-photographer {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: normal;
 }
 
 .label-text {
     color: #312e2e;
-    font-size: 2.4rem;
+    font-size: 2rem;
 }
 
 form input,
@@ -25,6 +25,11 @@ form input,
 
 .error-message {
     font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.submission-message {
+    font-size: 2.5rem;
 }
 
 .media-sorting label {
@@ -352,15 +357,16 @@ form input,
 }
 
 .modal {
-    border-radius: 5px;
-    background-color: #db8876;
-    width: 50%;
+    max-width: 669px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+    padding: 15px 42px 15px 25px;
+    border-radius: 5px;
+    background-color: #db8876;
+    margin: 50px auto;
 }
 
 .close-button {
@@ -395,6 +401,7 @@ form input,
 
 .contact-photographer {
     margin-top: 0;
+    margin-bottom: 20px;
 }
 
 form {
@@ -439,24 +446,26 @@ form textarea {
 }
 
 .inputform-assist {
+    display: none;
     margin-top: 13px;
 }
 
 .error-message {
-    visibility: hidden;
     padding: 3px;
     background-color: white;
     color: #e74616;
     border-radius: 5px;
 }
 
-.error-message.visible {
-    visibility: visible;
+.inputform-assist.visible {
+    display: block;
 }
 
 .submission-message {
     display: inline-block;
-    margin-top: 100px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    color: #fafafa;
 }
 
 body {

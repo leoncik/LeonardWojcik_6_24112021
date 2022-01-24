@@ -18,7 +18,7 @@ const checkInputText = (elt, key, className) => {
             `.${className} .error-message`
         ).innerHTML = `⚠ Veuillez saisir un ${key}`;
         document
-            .querySelector(`.${className} .error-message`)
+            .querySelector(`.${className} .inputform-assist`)
             .classList.add('visible');
         elt.classList.add('input-error');
         return false;
@@ -27,14 +27,14 @@ const checkInputText = (elt, key, className) => {
             `.${className} .error-message`
         ).innerHTML = `⚠ Votre ${key} doit contenir au moins deux caractères.`;
         document
-            .querySelector(`.${className} .error-message`)
+            .querySelector(`.${className} .inputform-assist`)
             .classList.add('visible');
         elt.classList.add('input-error');
         return false;
     } else {
         document.querySelector(`.${className} .error-message`).innerHTML = ` `;
         document
-            .querySelector(`.${className} .error-message`)
+            .querySelector(`.${className} .inputform-assist`)
             .classList.remove('visible');
         elt.classList.remove('input-error');
     }
@@ -49,7 +49,7 @@ const checkEmail = () => {
         document.querySelector('.email .error-message').innerHTML =
             '⚠ Veuillez saisir votre courriel.';
         document
-            .querySelector(`.email .error-message`)
+            .querySelector(`.email .inputform-assist`)
             .classList.add('visible');
         email.classList.add('input-error');
         return false;
@@ -57,14 +57,14 @@ const checkEmail = () => {
         document.querySelector('.email .error-message').innerHTML =
             '⚠ Veuillez saisir un courriel valide.';
         document
-            .querySelector(`.email .error-message`)
+            .querySelector(`.email .inputform-assist`)
             .classList.add('visible');
         email.classList.add('input-error');
         return false;
     } else {
         document.querySelector('.email .error-message').innerHTML = ' ';
         document
-            .querySelector(`.email .error-message`)
+            .querySelector(`.email .inputform-assist`)
             .classList.remove('visible');
         email.classList.remove('input-error');
     }

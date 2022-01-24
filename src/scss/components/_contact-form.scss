@@ -7,15 +7,16 @@
 }
 
 .modal {
-    border-radius: variables.$common-radius;
-    background-color: #DB8876;
-    width: 50%;
+    max-width: 669px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+    padding: 15px 42px 15px 25px;
+    border-radius: variables.$common-radius;
+    background-color: #DB8876;
+    margin: 50px auto;
 }
 
 // Modal header
@@ -52,6 +53,7 @@
 
 .contact-photographer {
     margin-top: 0;
+    margin-bottom: 20px;
 }
 
 // Inputs form
@@ -97,22 +99,24 @@ form textarea {
 }
 
 .inputform-assist {
+    display: none;
     margin-top: 13px;
 }
 
 .error-message {
-    visibility: hidden;
     padding: 3px;
     background-color: white;
     color: rgb(231, 70, 22);;
     border-radius: variables.$common-radius;
 }
 
-.error-message.visible {
-    visibility: visible;
+.inputform-assist.visible {
+    display: block;
 }
 
 .submission-message {
     display: inline-block;
-    margin-top: 100px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    color: #fafafa;
 }
