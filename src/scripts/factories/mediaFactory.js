@@ -108,6 +108,7 @@ export default function mediaFactory(data) {
         for (const iterator of likeIcon) {
             // Mouse controls
             iterator.addEventListener('click', () => {
+                iterator.classList.toggle('like-icon_active');
                 iterator.nextElementSibling.classList.toggle('liked');
                 if (String(iterator.nextElementSibling.classList) === 'liked') {
                     iterator.nextElementSibling.textContent =
@@ -126,6 +127,7 @@ export default function mediaFactory(data) {
             // Keyboard controls
             iterator.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
+                    iterator.classList.toggle('like-icon_active');
                     iterator.nextElementSibling.classList.toggle('liked');
                     if (
                         String(iterator.nextElementSibling.classList) ===

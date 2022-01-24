@@ -9,7 +9,8 @@
     height: 70px;
     border: none;
     background-color: variables.$primary-color;
-    border-radius: variables.$common-radius;;
+    border-radius: variables.$common-radius;
+    transition: 0.4s;
     cursor: pointer;
     &:hover {
         color: black;

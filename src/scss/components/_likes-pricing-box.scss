@@ -1,8 +1,11 @@
+@use '../utils/variables';
+
 .total-likes-pricing {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 25px;
+    border-radius: variables.$common-radius;
     font-weight: bold;
     z-index: 1;
 }
