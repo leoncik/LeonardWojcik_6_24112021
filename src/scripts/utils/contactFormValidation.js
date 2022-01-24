@@ -45,7 +45,6 @@ const checkInputText = (elt, key, className) => {
 
 const checkEmail = () => {
     if (email.value === '') {
-        console.log(email);
         document.querySelector('.email .error-message').innerHTML =
             '⚠ Veuillez saisir votre courriel.';
         document
@@ -123,7 +122,6 @@ function submitedForm() {
         'afterbegin',
         "<span class='submission-message'>Votre message a bien été envoyé, merci ! Vous pouvez à présent fermer le formulaire de contact.</span>"
     );
-    console.log(validationMessage.childNodes.length);
 }
 
 // Reset form after closing the modal

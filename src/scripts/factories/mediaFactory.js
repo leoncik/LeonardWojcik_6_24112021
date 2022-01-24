@@ -214,11 +214,15 @@ export default function mediaFactory(data) {
 
         // Display lightbox and media on click
         for (const iterator of galleryItems) {
-            // Change src to display large medias inside lightbox
+            // Change src to display large medias inside lightbox (use relative path to work on GitHub pages)
             let mediaSrc = iterator.querySelector('.media').src.split('/');
-            mediaSrc.splice(0, 3, '..', '..');
+            while (mediaSrc[0] !== 'assets') {
+                mediaSrc.shift();
+            }
+            mediaSrc.splice(0, 0, '..', '..');
             mediaSrc.splice(5, 1, 'large');
             mediaSrc = mediaSrc.join('/');
+            // Get title of medias
             const title = iterator.querySelector(
                 '.media-description h3'
             ).innerText;
@@ -235,10 +239,15 @@ export default function mediaFactory(data) {
 
         // Display lightbox and media (keyboard control)
         for (const iterator of galleryItems) {
-            // Change src to display large medias inside lightbox
+            // Change src to display large medias inside lightbox (use relative path to work on GitHub pages)
             let mediaSrc = iterator.querySelector('.media').src.split('/');
-            mediaSrc.splice(6, 1, 'large');
+            while (mediaSrc[0] !== 'assets') {
+                mediaSrc.shift();
+            }
+            mediaSrc.splice(0, 0, '..', '..');
+            mediaSrc.splice(5, 1, 'large');
             mediaSrc = mediaSrc.join('/');
+            // Get title of medias
             const title = iterator.querySelector(
                 '.media-description h3'
             ).innerText;
@@ -427,7 +436,6 @@ export default function mediaFactory(data) {
             });
             resetGallery(media);
             reEnableLikesAndLightbox();
-            console.log('Sorted by popularity');
         };
 
         // Sort by Date
@@ -439,7 +447,6 @@ export default function mediaFactory(data) {
             });
             resetGallery(media);
             reEnableLikesAndLightbox();
-            console.log('Sorted by date');
         };
 
         // Sort by title
@@ -458,7 +465,6 @@ export default function mediaFactory(data) {
             });
             resetGallery(media);
             reEnableLikesAndLightbox();
-            console.log('Sorted by title');
         };
 
         popularityButton.addEventListener('click', sortByPopularity);

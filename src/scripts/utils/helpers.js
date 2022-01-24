@@ -46,7 +46,6 @@ const focusTrap = (section) => {
     const focusableElements = section.querySelectorAll(
         '[tabindex], a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), input[type="submit"]:not([disabled]), select:not([disabled])'
     );
-    console.log(focusableElements);
     const firstFocusableElement = focusableElements[0];
     const lastFocusableElement =
         focusableElements[focusableElements.length - 1];
