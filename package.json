@@ -4,7 +4,8 @@
   "description": "An OpenClassrooms project focusing on accessibility",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch src/scss/main.scss:style/main.css",
+    "sass": "sass --watch src/scss/main.scss:style/main.css -w --style compressed",
+    "prefix": "postcss style/main.css --use=autoprefixer --output=style/prefixed/style.css",
     "build": "webpack",
     "prepare": "husky install",
     "start": "webpack serve"
@@ -15,6 +16,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
+    "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
     "babel-polyfill": "^6.26.0",
     "eslint": "^7.32.0",
@@ -25,6 +27,8 @@
     "eslint-plugin-promise": "^5.2.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
+    "postcss": "^8.4.5",
+    "postcss-cli": "^9.1.0",
     "prettier": "^2.5.0",
     "sass": "^1.43.4",
     "webpack": "^5.48.0",
