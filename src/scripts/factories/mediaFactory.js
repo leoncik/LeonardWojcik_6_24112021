@@ -45,7 +45,7 @@ export default function mediaFactory(data) {
             );
             media.setAttribute('title', `${title}, vue rapprochée`);
             media.setAttribute('alt', altText);
-            if (type === 'img') media.setAttribute('tabindex', '0');
+            media.setAttribute('tabindex', '0');
             media.classList.add('media');
             mediaContent.appendChild(media);
             if (type === 'video')
@@ -61,7 +61,6 @@ export default function mediaFactory(data) {
         // Title
         const mediaTitle = document.createElement('h2');
         mediaTitle.textContent = title;
-        mediaTitle.setAttribute('lang', 'en');
         mediaInfos.appendChild(mediaTitle);
 
         // Likes container
@@ -77,7 +76,8 @@ export default function mediaFactory(data) {
         </svg>`;
         likesIcon.setAttribute('tabindex', '0');
         likesIcon.setAttribute('role', 'button');
-        likesIcon.setAttribute('title', "J'aime");
+        likesIcon.setAttribute('aria-pressed', 'false');
+        likesIcon.setAttribute('title', `${likes} J'aime`);
         mediaLikesContainer.appendChild(likesIcon);
 
         // Number of likes
@@ -107,16 +107,23 @@ export default function mediaFactory(data) {
         const likeIcon = document.querySelectorAll('.like-icon');
         for (const iterator of likeIcon) {
             // Mouse controls
+            const likeNumber = parseInt(
+                iterator.parentElement.lastChild.textContent
+            );
             iterator.addEventListener('click', () => {
                 iterator.classList.toggle('like-icon_active');
                 iterator.nextElementSibling.classList.toggle('liked');
                 if (String(iterator.nextElementSibling.classList) === 'liked') {
+                    iterator.setAttribute('aria-pressed', 'true');
+                    iterator.setAttribute('title', `${likeNumber + 1} J'aime`);
                     iterator.nextElementSibling.textContent =
                         parseInt(iterator.nextElementSibling.textContent) + 1;
                     totalOfLikes += 1;
                     document.querySelector('.total-likes').textContent =
                         totalOfLikes;
                 } else {
+                    iterator.setAttribute('aria-pressed', 'false');
+                    iterator.setAttribute('title', `${likeNumber} J'aime`);
                     iterator.nextElementSibling.textContent =
                         parseInt(iterator.nextElementSibling.textContent) - 1;
                     totalOfLikes -= 1;
@@ -128,11 +135,17 @@ export default function mediaFactory(data) {
             iterator.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     iterator.classList.toggle('like-icon_active');
+                    iterator.toggleAttribute('aria-pressed');
                     iterator.nextElementSibling.classList.toggle('liked');
                     if (
                         String(iterator.nextElementSibling.classList) ===
                         'liked'
                     ) {
+                        iterator.setAttribute('aria-pressed', 'true');
+                        iterator.setAttribute(
+                            'title',
+                            `${likeNumber + 1} J'aime`
+                        );
                         iterator.nextElementSibling.textContent =
                             parseInt(iterator.nextElementSibling.textContent) +
                             1;
@@ -140,6 +153,8 @@ export default function mediaFactory(data) {
                         document.querySelector('.total-likes').textContent =
                             totalOfLikes;
                     } else {
+                        iterator.setAttribute('aria-pressed', 'false');
+                        iterator.setAttribute('title', `${likeNumber} J'aime`);
                         iterator.nextElementSibling.textContent =
                             parseInt(iterator.nextElementSibling.textContent) -
                             1;
