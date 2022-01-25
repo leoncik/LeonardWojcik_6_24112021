@@ -53,6 +53,15 @@
     right: 0;
 }
 
+.previous img {
+    position: relative;
+    right: 45px;
+}
+
+.next img {
+    position: relative;
+    left: 45px;
+}
 
 // Lightbox medias
 
@@ -76,9 +85,3 @@
     width: 100%;
     max-height: 400px;
 }
-
-// .current-image-title {
-//     position: absolute;
-//     bottom: 10%;
-//     left: 40%;
-// }

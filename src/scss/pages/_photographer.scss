@@ -12,11 +12,11 @@
 
 .photograph-header {
     display: flex;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     background-color: #FAFAFA;
-    margin: 0 100px;
+    margin: 70px 100px 0 100px;
     padding: 70px 50px;
 }
 
@@ -47,11 +47,6 @@
 .photographer-info {
     display: flex;
     flex-direction: row-reverse;
-}
-
-.photographer-info img {
-    width: 100px;
-    height: 100px;
 }
 
 .total-likes-pricing {
@@ -92,4 +87,56 @@
     width: 100%;
     overflow: auto;
     z-index: 2;
+}
+
+// Responsive mode
+
+@media all and (max-width: 1000px) {
+
+    // Header banner
+    .photograph-header {
+        flex-wrap: wrap;
+        margin: 35px 50px 0 50px;
+    }
+
+    .contact-button {
+        order: 1;
+        margin-top: 42px;
+        flex-basis: 100%;
+    }
+}
+
+@media all and (max-width: 750px) {
+
+    // Header banner
+    .photograph-header {
+        margin: 0;
+    }
+}
+
+@media all and (max-width: 535px) {
+
+    // Header banner
+    .photograph-header {
+        padding: 35px 25px;
+    }
+    .photographer-profile-picture {
+        width: 100px;
+        height: 100px;
+        align-self:flex-start;
+    }
+    .photograph-header img {
+        width: 100px;
+        height: 100px;
+    }
+    .total-likes-pricing {
+        position: initial;
+        width: 500px;
+        height: 60px;
+    }
+
+    // Contact form
+    .modal {
+        margin: 0;
+    }
 }

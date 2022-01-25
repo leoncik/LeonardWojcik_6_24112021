@@ -232,7 +232,7 @@ form input,
     padding: 0 25px;
     border-radius: 5px;
     font-weight: bold;
-    z-index: 1;
+    z-index: 2;
 }
 
 .total-likes-icon svg path {
@@ -358,6 +358,16 @@ form input,
 
 .next {
     right: 0;
+}
+
+.previous img {
+    position: relative;
+    right: 45px;
+}
+
+.next img {
+    position: relative;
+    left: 45px;
 }
 
 .lightbox-media {
@@ -513,7 +523,7 @@ body {
     height: 90px;
 }
 
-h1 {
+.home-header h1 {
     color: #901c1c;
     margin-right: 100px;
 }
@@ -523,7 +533,7 @@ h1 {
     margin-left: 100px;
 }
 
-.api-error {
+.api-error p {
     margin: 100px 50px 0 50px;
     font-size: 2.5rem;
     text-align: center;
@@ -564,11 +574,10 @@ h1 {
 
 .photograph-header {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     background-color: #fafafa;
-    margin: 0 100px;
+    margin: 70px 100px 0 100px;
     padding: 70px 50px;
 }
 
@@ -599,11 +608,6 @@ h1 {
 .photographer-info {
     display: flex;
     flex-direction: row-reverse;
-}
-
-.photographer-info img {
-    width: 100px;
-    height: 100px;
 }
 
 .total-likes-pricing {
@@ -638,6 +642,50 @@ h1 {
     width: 100%;
     overflow: auto;
     z-index: 2;
+}
+
+@media all and (max-width: 1000px) {
+    .photograph-header {
+        flex-wrap: wrap;
+        margin: 35px 50px 0 50px;
+    }
+
+    .contact-button {
+        order: 1;
+        margin-top: 42px;
+        flex-basis: 100%;
+    }
+}
+@media all and (max-width: 750px) {
+    .photograph-header {
+        margin: 0;
+    }
+}
+@media all and (max-width: 535px) {
+    .photograph-header {
+        padding: 35px 25px;
+    }
+
+    .photographer-profile-picture {
+        width: 100px;
+        height: 100px;
+        align-self: flex-start;
+    }
+
+    .photograph-header img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .total-likes-pricing {
+        position: initial;
+        width: 500px;
+        height: 60px;
+    }
+
+    .modal {
+        margin: 0;
+    }
 }
 
 /*# sourceMappingURL=main.css.map */

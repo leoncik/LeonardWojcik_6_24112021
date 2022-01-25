@@ -1,7 +1,7 @@
 // Fetch photographers data
 export async function genericFetch(
     url,
-    err = 'ERREUR : impossible de récupérer les données des photographes. Veuillez réessayer plus tard.',
+    err = '<p>ERREUR : impossible de récupérer les données des photographes. Veuillez réessayer plus tard.</p>',
     method = 'GET',
     headers = {}
 ) {
