@@ -1,9 +1,3 @@
-![Made with HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![Made with CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Made with JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=white&style=for-the-badge)
-![Made with SASS](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![Made with NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
-
 # Fisheye
 
 Project carried out as part of the Front-End Web Development Career Path of OpenClassrooms.
@@ -34,24 +28,27 @@ Use this link to try the project : https://leoncik.github.io/LeonardWojcik_6_241
 
 ## File structure
 
-`assets/`, contains all medias needed for the project (icons, profile pictures, media pictures and videos).
+`assets/` contains all medias needed for the project (icons, profile pictures, media pictures and videos).
 
-`dst/`, is where webpack will be building the project's script.
+`dst/` is where webpack will be building the project's script.
 
-`pages/photographer-pages/`, contains a single HTML page that is mostly created dynamically and contains the works of each photograph.
+`pages/photographer-pages/` contains a single HTML page that is mostly created dynamically and contains the works of each photograph.
+
+`style/` is where SASS will be building the project's CSS. It also contains a subfolder for the autoprefixed CSS.
 
 `src/` :
 
--   `data/`, contains a JSON file that is used for fetching all information needed for this project.
--   `scripts/`, contains all JavaScript files.
-    -   `api/`, contains the functions used to fetch the JSON data file.
-    -   `factories/`, the heart of this project. Contains factories used to create most elements of the pages.
-    -   `pages/`, contains the functions used to initialize the pages.
-    -   `utils/`, contains generic functions and miscellaneous variables.
--   `scss/`, contains all SCSS files. Their organisation follow the [7-1 pattern](https://sass-guidelin.es/#the-7-1-pattern).
+-   `data/` contains a JSON file that is used for fetching all information needed for this project.
+-   `scripts/` contains all JavaScript files.
+    -   `api/` contains the functions used to fetch the JSON data file.
+    -   `factories/` the heart of this project. Contains factories used to create most elements of the pages.
+    -   `pages/` contains the functions used to initialize the pages.
+    -   `utils/` contains generic functions, miscellaneous variables and functions associated to the contact form.
+-   `scss/` contains all SCSS files. Their organisation follow the [7-1 pattern](https://sass-guidelin.es/#the-7-1-pattern).
 
 ## List of dependencies
 
+-   [Autoprefixer](https://github.com/postcss/autoprefixer) — [PostCSS](https://github.com/postcss/postcss) plugin to parse CSS and add vendor prefixes to CSS rules using values from [Can I Use](https://caniuse.com/).
 -   [Babel](https://babel.dev/) — A JavaScript transpiler.
 -   [Eslint](https://eslint.org/) — A JavaScript linter.
 -   [Husky](https://typicode.github.io/husky) — Git hooks manager.
@@ -123,5 +120,7 @@ npm run sass
 ```
 
 to watch SASS and work on styling.
+
+Once you have finished styling, run the command `npm run prefix` to autoprefix your code.
 
 [⬆ Back to top](#fisheye)
