@@ -13,6 +13,7 @@
   "keywords": [],
   "author": "Léonard Wojcik",
   "license": "ISC",
+  "browserslist": "last 2 versions",
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",

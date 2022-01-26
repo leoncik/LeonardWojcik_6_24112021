@@ -6,6 +6,8 @@ import {
     message,
     contactForm,
     validationMessage,
+    focusTrap,
+    modal,
 } from '../utils/helpers.js';
 
 // *** Form fields validation *** //
@@ -21,6 +23,7 @@ const checkInputText = (elt, key, className) => {
             .querySelector(`.${className} .inputform-assist`)
             .classList.add('visible');
         elt.classList.add('input-error');
+        elt.focus();
         return false;
     } else if (elt.value.length < 2) {
         document.querySelector(
@@ -30,6 +33,7 @@ const checkInputText = (elt, key, className) => {
             .querySelector(`.${className} .inputform-assist`)
             .classList.add('visible');
         elt.classList.add('input-error');
+        elt.focus();
         return false;
     } else {
         document.querySelector(`.${className} .error-message`).innerHTML = ` `;
@@ -51,6 +55,7 @@ const checkEmail = () => {
             .querySelector(`.email .inputform-assist`)
             .classList.add('visible');
         email.classList.add('input-error');
+        email.focus();
         return false;
     } else if (!email.value.match(mailformat)) {
         document.querySelector('.email .error-message').innerHTML =
@@ -59,6 +64,7 @@ const checkEmail = () => {
             .querySelector(`.email .inputform-assist`)
             .classList.add('visible');
         email.classList.add('input-error');
+        email.focus();
         return false;
     } else {
         document.querySelector('.email .error-message').innerHTML = ' ';
@@ -108,7 +114,8 @@ export const formSubmitValidation = () => {
 Contenu du message : ${message.value}`);
                 submitedForm();
                 resetForm();
-                document.querySelector('.close-button').focus();
+                focusTrap(modal);
+                document.querySelector('.submission-message').focus();
             }
         },
         false
@@ -120,7 +127,7 @@ function submitedForm() {
     contactForm.style.display = 'none';
     validationMessage.insertAdjacentHTML(
         'afterbegin',
-        "<span class='submission-message'>Votre message a bien été envoyé, merci ! Vous pouvez à présent fermer le formulaire de contact.</span>"
+        "<span class='submission-message' tabindex='0'>Votre message a bien été envoyé, merci ! Vous pouvez à présent fermer le formulaire de contact.</span>"
     );
 }
 

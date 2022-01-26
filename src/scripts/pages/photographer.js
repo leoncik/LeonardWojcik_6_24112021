@@ -19,7 +19,7 @@ async function getProfile(elt) {
 }
 
 // Display photographer profile data on page
-async function displayData(photographerProfile) {
+function displayData(photographerProfile) {
     const photographHeader = document.querySelector('.photographer-info');
     const photographerModel = photographerFactory(
         photographerProfile,
@@ -39,7 +39,7 @@ async function getMedia(elt) {
 }
 
 // Display photographer medias on page
-export async function displayMedia(media) {
+export function displayMedia(media) {
     const photographHeader = document.querySelector('.photographer-medias');
     media.forEach((element) => {
         const photographerMedias = mediaFactory(element);
@@ -49,25 +49,25 @@ export async function displayMedia(media) {
 }
 
 // Enable like toggler
-async function enableLikeToggler(media) {
+function enableLikeToggler(media) {
     mediaFactory(media).likeToggler();
 }
 
-// Display total likes (is async necessary ?)
-async function displayTotalLikes(media) {
+// Display total likes
+function displayTotalLikes(media) {
     const totalLikesContainer = document.querySelector('.total-likes');
     const totalLikes = mediaFactory(media).findTotalLikes(media);
     totalLikesContainer.innerHTML = totalLikes;
 }
 
 // Enable lightbox
-async function enableLightbox(media) {
+function enableLightbox(media) {
     mediaFactory(media).lightboxDisplay();
     mediaFactory(media).lightboxControls(media);
 }
 
 // Enable media sorting
-async function enableSortMedias(media) {
+function enableSortMedias(media) {
     mediaFactory(media).sortMedias(media);
 }
 
