@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         polyfill: 'babel-polyfill',
         app: './src/scripts/index.js',
