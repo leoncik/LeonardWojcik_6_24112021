@@ -4,6 +4,7 @@
 
 #contact_modal {
     background-color: rgba(196, 196, 196, 0.4);
+    animation: background-fading 0.4s;
 }
 
 .modal {
@@ -17,6 +18,7 @@
     border-radius: variables.$common-radius;
     background-color: #DB8876;
     margin: 50px auto;
+    animation: modal-display 0.7s;
 }
 
 // Modal header
@@ -119,4 +121,25 @@ form textarea {
     margin-top: 70px;
     margin-bottom: 20px;
     color: #fafafa;
+}
+
+// Display animation
+
+@keyframes background-fading {
+    from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+}
+
+@keyframes modal-display {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+      to {
+        opacity: 1;
+      }
 }
