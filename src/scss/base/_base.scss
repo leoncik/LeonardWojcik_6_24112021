@@ -1,10 +1,15 @@
 /* General styles */
 
-// TODO : add better custom focus
-// *:focus {
-//     outline: none;
-//     border: 3px solid steelblue;
-// }
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+}
+
+*:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(98, 185, 231, 0.753);
+    transition: all 0.3s ease;
+}
 
 a {
     text-decoration: none;

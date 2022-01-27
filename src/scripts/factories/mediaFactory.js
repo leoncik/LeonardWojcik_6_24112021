@@ -45,6 +45,7 @@ export default function mediaFactory(data) {
             );
             media.setAttribute('title', `${title}, vue rapprochée`);
             media.setAttribute('alt', altText);
+            media.setAttribute('role', 'link');
             media.setAttribute('tabindex', '0');
             media.classList.add('media');
             mediaContent.appendChild(media);
@@ -444,6 +445,8 @@ export default function mediaFactory(data) {
         setLightboxMedias();
     };
 
+    const dropdownInput = document.querySelector('#dropdown-input');
+
     const sortMedias = (media) => {
         // Sort by popularity
         const sortByPopularity = () => {
@@ -452,6 +455,7 @@ export default function mediaFactory(data) {
             });
             resetGallery(media);
             reEnableLikesAndLightbox();
+            dropdownInput.focus();
         };
 
         // Sort by Date
@@ -463,6 +467,7 @@ export default function mediaFactory(data) {
             });
             resetGallery(media);
             reEnableLikesAndLightbox();
+            dropdownInput.focus();
         };
 
         // Sort by title
@@ -481,6 +486,7 @@ export default function mediaFactory(data) {
             });
             resetGallery(media);
             reEnableLikesAndLightbox();
+            dropdownInput.focus();
         };
 
         popularityButton.addEventListener('click', sortByPopularity);

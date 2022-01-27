@@ -85,3 +85,24 @@
     width: 100%;
     max-height: 400px;
 }
+
+// Responsive mode
+
+@media all and (max-width: 760px) {
+
+    // Lightbox controls
+    .close {
+        height: 65%;
+    }
+    .previous, .next {
+        height: 35%;
+    }
+
+    // Lightbox media
+    .lightbox-content {
+        top: 50%;
+    }
+
+
+
+}
