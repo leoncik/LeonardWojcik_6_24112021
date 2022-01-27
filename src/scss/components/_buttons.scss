@@ -12,7 +12,7 @@
     border-radius: variables.$common-radius;
     transition: 0.4s;
     cursor: pointer;
-    &:hover {
+    &:hover, &:focus {
         color: black;
         background-color: variables.$secondary-color;
     }

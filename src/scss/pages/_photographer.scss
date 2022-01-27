@@ -1,5 +1,7 @@
 @use "../utils/variables";
 
+/* PHOTOGRAPHER PAGE */
+
 // Header section
 
 .photographer-page-header {
@@ -12,7 +14,6 @@
 
 .photograph-header {
     display: flex;
-    // flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     background-color: #FAFAFA;
@@ -63,7 +64,6 @@
 .media-sorting {
     margin: 25px 0 70px 100px;
 }
-
 
 // Media gallery section
 

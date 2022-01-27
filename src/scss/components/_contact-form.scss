@@ -25,8 +25,9 @@
 
 .close-button {
     align-self: flex-start;
-    &:hover {
-        opacity: 0.8;
+    opacity: 0.5;
+    &:hover, &:focus {
+        opacity: 1;
     }
 }
 
