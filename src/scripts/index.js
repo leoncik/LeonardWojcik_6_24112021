@@ -9,14 +9,12 @@ import initPhotographer from './pages/photographer.js';
 // CALL FUNCTIONS
 
 const main = async () => {
-    switch (window.location.pathname) {
-        case '/':
-        case '/index.html':
-        case '/LeonardWojcik_6_24112021/':
+    switch (window.location.pathname.split('/').pop()) {
+        case '':
+        case 'index.html':
             await initHome();
             break;
-        case '/pages/photographer-pages/photographer.html':
-        case '/LeonardWojcik_6_24112021/pages/photographer-pages/photographer.html':
+        case 'photographer.html':
             await initPhotographer();
             break;
     }

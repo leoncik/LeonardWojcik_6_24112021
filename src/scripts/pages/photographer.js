@@ -142,13 +142,11 @@ for (const iterator of sortButtons) {
     });
 }
 
-const setAriaExpanded = () => {
-    if (dropdownInput.matches('.dropdown-expanded')) {
-        dropdownInput.setAttribute('aria-expanded', 'true');
-    } else {
-        dropdownInput.setAttribute('aria-expanded', 'false');
-    }
-};
+const setAriaExpanded = () =>
+    dropdownInput.setAttribute(
+        'aria-expanded',
+        dropdownInput.matches('.dropdown-expanded')
+    );
 
 // Initialize page (fetch data, then display It on the page and add behaviour to contact modal)
 export default async function initPhotographer() {
