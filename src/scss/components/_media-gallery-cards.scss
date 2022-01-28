@@ -39,6 +39,7 @@
     height: 70px;
     // Hover rules
     opacity: 0.8;
+    cursor: pointer; // Fallback rule. Some computers do not have built-in "zoom-in" cursor.
     cursor: zoom-in;
 }
 
@@ -48,12 +49,14 @@
 
 .media:hover {
     opacity: 0.8;
+    cursor: pointer; // Fallback rule. Some computers do not have built-in "zoom-in" cursor.
     cursor: zoom-in;
 }
 
 .media-description {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     margin-top: 10px;
     color: variables.$primary-color;
 }
@@ -61,6 +64,11 @@
 .media-description h2 {
     margin: 0;
     font-size: 1.4rem;
+}
+
+.likes-container {
+    display: flex;
+    align-items: baseline;
 }
 
 .like-icon {
