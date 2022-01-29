@@ -4,14 +4,16 @@ Project carried out as part of the Front-End Web Development Career Path of Open
 
 ## Table of content
 
--   [Description](#description)
--   [Live demo](#live-demo)
--   [File structure](#file-structure)
--   [List of dependencies](#list-of-dependencies)
--   [Installation](#installation)
--   [How to use](#how-to-use)
-    -   [JavaScript](#javascript)
-    -   [Styling](#styling)
+-   [Fisheye](#fisheye)
+    -   [Table of content](#table-of-content)
+    -   [Description](#description)
+    -   [Live demo](#live-demo)
+    -   [File structure](#file-structure)
+    -   [List of dependencies](#list-of-dependencies)
+    -   [Installation](#installation)
+    -   [How to use](#how-to-use)
+        -   [JavaScript](#javascript)
+        -   [Styling](#styling)
 
 ## Description
 
@@ -30,7 +32,7 @@ Use this link to try the project : https://leoncik.github.io/LeonardWojcik_6_241
 
 `assets/` contains all medias needed for the project (icons, profile pictures, media pictures and videos).
 
-`dst/` is where webpack will be building the project's script.
+`dist/` is where webpack will be building the project's script.
 
 `pages/photographer-pages/` contains a single HTML page that is mostly created dynamically and contains the works of each photograph.
 
