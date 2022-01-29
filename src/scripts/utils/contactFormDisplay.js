@@ -32,7 +32,7 @@ export function contactFormDisplay() {
         document
             .getElementById('contact_modal')
             .setAttribute('aria-hidden', 'true');
-        document.querySelector('a').focus();
+        document.querySelector('.contact-button').focus();
     }
 
     // Mouse controls
