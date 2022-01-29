@@ -39,7 +39,6 @@
     height: 70px;
     // Hover rules
     opacity: 0.8;
-    cursor: pointer; // Fallback rule. Some computers do not have built-in "zoom-in" cursor.
     cursor: zoom-in;
 }
 
@@ -49,7 +48,6 @@
 
 .media:hover {
     opacity: 0.8;
-    cursor: pointer; // Fallback rule. Some computers do not have built-in "zoom-in" cursor.
     cursor: zoom-in;
 }
 
