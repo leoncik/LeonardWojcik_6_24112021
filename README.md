@@ -4,16 +4,14 @@ Project carried out as part of the Front-End Web Development Career Path of Open
 
 ## Table of content
 
--   [Fisheye](#fisheye)
-    -   [Table of content](#table-of-content)
-    -   [Description](#description)
-    -   [Live demo](#live-demo)
-    -   [File structure](#file-structure)
-    -   [List of dependencies](#list-of-dependencies)
-    -   [Installation](#installation)
-    -   [How to use](#how-to-use)
-        -   [JavaScript](#javascript)
-        -   [Styling](#styling)
+-   [Description](#description)
+-   [Live demo](#live-demo)
+-   [File structure](#file-structure)
+-   [List of dependencies](#list-of-dependencies)
+-   [Installation](#installation)
+-   [How to use](#how-to-use)
+    -   [JavaScript](#javascript)
+    -   [Styling](#styling)
 
 ## Description
 
