@@ -282,7 +282,7 @@ export default function mediaFactory(data) {
         }
     }
 
-    // LIGHTBOX CONTROLS
+    // LIGHTBOX CONTROLS (Clicked media in gallery)
 
     // Get the index of the selected media
     const getMediaIndex = () => {
@@ -349,7 +349,7 @@ export default function mediaFactory(data) {
         currentTitle.innerText = mediasTitle[currentIndex];
     };
 
-    // LIGHTBOX CONTROL
+    // LIGHTBOX CONTROLS (Previous and next buttons inside lightbox)
 
     // Events when user clicks on "next" and "previous" buttons of the lightbox.
     const lightboxControls = (media) => {
